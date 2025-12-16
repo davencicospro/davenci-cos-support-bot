@@ -19,6 +19,22 @@
       --btn2:#0bbcd6;
     }
 
+    .brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(111,175,194,0.14);
+  border: 1px solid rgba(111,175,194,0.25);
+  padding: 7px 12px;
+  border-radius: 999px;
+}
+
+.brand img{
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
     body{
       margin:0;
       font-family: Arial, sans-serif;
@@ -172,7 +188,11 @@
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="badge"><span class="dot"></span><span id="brandBadge">Davenci C.O.S Support</span></div>
+     <div class="badge">
+  <span class="dot"></span>
+  <span id="brandBadge">Davenci C.O.S Support</span>
+</div>
+
 
       <select id="lang">
         <option value="it">🇮🇹 Italiano</option>
