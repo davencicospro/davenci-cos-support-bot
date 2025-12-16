@@ -1,81 +1,116 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
   <title>Davenci C.O.S – Support</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ===== CSS أساسي ===== -->
   <style>
-    body {
-      margin: 0;
+    :root{
+      --bg1:#0b1c2d;
+      --bg2:#0f2f4a;
+      --card:rgba(255,255,255,0.08);
+      --border:rgba(255,255,255,0.18);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,0.85);
+      --main:#6FAFC2;
+    }
+
+    *{
+      box-sizing:border-box;
       font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-      background: linear-gradient(135deg, #0e1e3a, #0b2c4d);
-      color: #ffffff;
     }
 
-    .container {
-      max-width: 420px;
-      margin: 40px auto;
-      padding: 20px;
+    body{
+      margin:0;
+      min-height:100vh;
+      background: radial-gradient(circle at right, #1b4b6b, var(--bg1));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--text);
     }
 
-    /* ===== Card ===== */
-    .card {
-      background: rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      text-align: center;
+    .hero{
+      background:var(--card);
+      border:1px solid var(--border);
+      backdrop-filter: blur(10px);
+      border-radius:18px;
+      padding:30px 24px;
+      width:100%;
+      max-width:420px;
+      text-align:center;
     }
 
-    /* ===== Header ===== */
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 16px;
+    .logo{
+      width:72px;
+      height:72px;
+      border-radius:14px;
+      object-fit:contain;
+      margin-bottom:12px;
+      background:#fff;
+      padding:6px;
     }
 
-    .header img {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: #fff;
-      padding: 4px;
+    h1{
+      margin:8px 0 6px;
+      font-size:22px;
+      font-weight:700;
     }
 
-    .header h1 {
-      font-size: 20px;
-      margin: 0;
+    p{
+      margin:0 0 18px;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
     }
 
-    .subtitle {
-      font-size: 14px;
-      opacity: 0.85;
-      margin-bottom: 20px;
+    .langs{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .lang-btn{
+      padding:12px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.06);
+      color:#fff;
+      cursor:pointer;
+      font-size:14px;
+      transition:0.2s;
+    }
+
+    .lang-btn:hover{
+      background:var(--main);
+      color:#000;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <div class="card">
+  <!-- ========================= -->
+  <!--  القسم 1 : الترحيب -->
+  <!-- ========================= -->
 
-      <!-- ===== الهيدر + اللوجو ===== -->
-      <div class="header">
-        <img src="logo.png" alt="Davenci C.O.S Logo">
-        <h1>Davenci C.O.S</h1>
-      </div>
+  <div class="hero">
+    <img src="logo.png" alt="Davenci COS Logo" class="logo">
 
-      <div class="subtitle">
-        مرحبًا بك في دعم وكالة Davenci C.O.S  
-        <br>
-        اختر نوع المشكلة وسنرشدك خطوة بخطوة
-      </div>
+    <h1>Davenci C.O.S</h1>
 
+    <p>
+      مرحبًا بك في دعم وكالة Davenci C.O.S  
+      <br>
+      اختر اللغة للمتابعة
+    </p>
+
+    <div class="langs">
+      <button class="lang-btn">العربية</button>
+      <button class="lang-btn">Français</button>
+      <button class="lang-btn">English</button>
+      <button class="lang-btn">Italiano</button>
     </div>
   </div>
 
