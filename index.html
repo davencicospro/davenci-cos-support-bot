@@ -56,6 +56,14 @@
       gap:8px;
     }
 
+    .logo{
+      width:32px;
+      height:32px;
+      border-radius:8px;
+      object-fit:contain;
+    }
+
+    
     .dot{
       width:8px;height:8px;border-radius:50%;
       background: var(--teal);
@@ -170,17 +178,17 @@
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="badge"><span class="dot"></span><span id="brandBadge">Davenci C.O.S Support</span></div>
+  <div class="topbar">
+  <div class="badge">
+    <img src="logo.png" class="logo" alt="Davenci C.O.S"> <span id="brandBadge">Davenci C.O.S Support</span> </div>
 
-      <select id="lang">
-        <option value="it">🇮🇹 Italiano</option>
-        <option value="fr">🇫🇷 Français</option>
-        <option value="en">🇬🇧 English</option>
-        <option value="ar">🇹🇳 العربية</option>
-      </select>
-    </div>
+  <select id="lang">
+    <option value="it">🇮🇹 Italiano</option>
+    <option value="fr">🇫🇷 Français</option>
+    <option value="en">🇬🇧 English</option>
+    <option value="ar">🇹🇳 عربي</option>
+  </select>
+</div>
 
     <div class="card">
       <h1 id="title"></h1>
