@@ -1,815 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <title>Davenci C.O.S – Support</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Davenci C.O.S – Support</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    :root{
-      --navy:#0E1E3A;      /* لون قريب للّوغو */
-      --teal:#6FAFC2;
-      --bg1:#0b1c2d;
-      --bg2:#0f2f4a;
-      --card:rgba(255,255,255,0.09);
-      --border:rgba(255,255,255,0.16);
-      --text:#ffffff;
-      --muted:rgba(255,255,255,0.85);
-      --btn:#1dd3b0;
-      --btn2:#0bbcd6;
-    }
-
-.brand{
+<style>
+:root{
+  --bg1:#0b1c2d;
+  --bg2:#0f2f4a;
+  --card:rgba(255,255,255,0.08);
+  --border:rgba(255,255,255,0.18);
+  --accent:#5af0ff;
+  --text:#fff;
+}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.card{
+  width:95%;
+  max-width:460px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:22px;
+  backdrop-filter:blur(10px);
+}
+.header{
   display:flex;
   align-items:center;
-  justify-content:center;
   gap:12px;
-  margin-bottom:20px;
+  margin-bottom:10px;
 }
-
-.brand img{
-  width:60px;
-  height:60px;
-  object-fit:contain;
-  border-radius:50%;
-  background:rgba(255,255,255,0.15);
-  padding:6px;
+.header img{
+  width:42px;
+  height:42px;
 }
-
-
-    body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      color: var(--text);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-    }
-
-    .wrap{
-      width:100%;
-      max-width: 460px;
-    }
-
-    .topbar{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom: 10px;
-    }
-
-    .badge{
-      font-size: 12px;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(111,175,194,0.14);
-      border: 1px solid rgba(111,175,194,0.25);
-      color: var(--muted);
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background: var(--teal);
-      display:inline-block;
-    }
-
-    select{
-      width: 180px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.10);
-      color: white;
-      font-size: 14px;
-      outline:none;
-    }
-    option{ color:#111; }
-
-    .card{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.38);
-      backdrop-filter: blur(10px);
-    }
-
-    h1{
-      margin: 0 0 8px 0;
-      font-size: 18px;
-      color: #fff;
-    }
-    p{
-      margin: 0 0 14px 0;
-      font-size: 13.5px;
-      line-height: 1.5;
-      color: var(--muted);
-    }
-
-    .list{ margin-top: 10px; display:flex; flex-direction:column; gap:10px; }
-
-    .btn{
-      width:100%;
-      border: 0;
-      border-radius: 14px;
-      padding: 12px 12px;
-      cursor:pointer;
-      font-size: 14px;
-      font-weight: 700;
-      color: #05222a;
-      background: linear-gradient(135deg, var(--btn), var(--btn2));
-      text-align: start;
-    }
-
-    .btn.secondary{
-      background: transparent;
-      color: #fff;
-      border: 1px solid var(--border);
-      font-weight: 600;
-    }
-
-    .btn.ghost{
-      background: rgba(255,255,255,0.08);
-      color:#fff;
-      border: 1px solid rgba(255,255,255,0.14);
-      font-weight: 600;
-    }
-
-    .mini{
-      font-size: 12px;
-      opacity: .92;
-      margin-top: 10px;
-    }
-
-    .divider{
-      height:1px;
-      background: rgba(255,255,255,0.16);
-      margin: 12px 0;
-    }
-
-    .k{ color: rgba(255,255,255,0.92); font-weight: 700; }
-    ul{ margin: 8px 0 0 0; padding: 0 18px; color: var(--muted); }
-    li{ margin: 6px 0; line-height: 1.5; font-size: 13.5px; }
-
-    .field{
-      display:flex; flex-direction:column; gap:6px;
-      margin-top: 10px;
-    }
-    .field label{
-      font-size: 12px; color: rgba(255,255,255,0.85);
-    }
-    .field input, .field textarea{
-      width:100%;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.10);
-      color: white;
-      padding: 10px 12px;
-      font-size: 14px;
-      outline:none;
-      box-sizing:border-box;
-    }
-    textarea{ min-height: 92px; resize: vertical; }
-
-    .footerNote{
-      margin-top: 12px;
-      font-size: 11.5px;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.5;
-    }
-  </style>
+h1{font-size:18px;margin:0}
+select,button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:12px;
+  border:none;
+  font-size:14px;
+}
+select{background:#fff}
+button{
+  background:var(--accent);
+  color:#002;
+  font-weight:bold;
+  cursor:pointer;
+}
+button.secondary{
+  background:transparent;
+  color:#fff;
+  border:1px solid var(--border);
+}
+.hidden{display:none}
+.question{background:rgba(255,255,255,0.12)}
+.solution{
+  font-size:14px;
+  line-height:1.6;
+  opacity:.95;
+}
+</style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="topbar">
-     <div class="badge">
-  <span class="dot"></span>
-  <span id="brandBadge">Davenci C.O.S Support</span>
-</div>
 
-
-      <select id="lang">
-        <option value="it">🇮🇹 Italiano</option>
-        <option value="fr">🇫🇷 Français</option>
-        <option value="en">🇬🇧 English</option>
-        <option value="ar">🇹🇳 العربية</option>
-      </select>
-    </div>
-
-    <div class="card">
-      <h1 id="title"></h1>
-      <p id="desc"></p>
-
-      <div id="content" class="list"></div>
-
-      <div class="footerNote" id="footerNote"></div>
-    </div>
+<div class="card">
+  <div class="header">
+    <img src="logo.png" alt="Davenci C.O.S">
+    <h1 id="title">دعم وكالة Davenci C.O.S</h1>
   </div>
 
+  <select onchange="setLang(this.value)">
+    <option value="ar">🇹🇳 عربي</option>
+    <option value="fr">🇫🇷 Français</option>
+    <option value="en">🇬🇧 English</option>
+    <option value="it">🇮🇹 Italiano</option>
+  </select>
+
+  <!-- MENU -->
+  <div id="menu"></div>
+
+  <!-- FAQ -->
+  <div id="faq" class="hidden"></div>
+
+  <!-- SOLUTION -->
+  <div id="solution" class="hidden"></div>
+</div>
+
 <script>
-/** غيّر الإيميل متاع الدعم هنا */
-const SUPPORT_EMAIL = "support@davenci-cos.com";
+let lang="ar";
+let currentSection=null;
 
-/** حالة التنقل */
-let state = {
-  view: "home",      // home | faq | answer | ticket
-  sectionId: null,   // مثل A
-  faqId: null,       // مثل A_1
-  lang: "it"
+const DATA={
+ar:{
+title:"دعم وكالة Davenci C.O.S",
+sections:{
+violations:{
+name:"قوانين الحظر والانتهاكات",
+qs:{
+q1:["حظر مؤقت","انتظر انتهاء المدة، احذف المحتوى المخالف، وقلّل النشر 48 ساعة."],
+q2:["حظر دائم","قدّم استئنافًا داخل TikTok، وإن رُفض افتح تيكت دعم."],
+q3:["حذف فيديو","راجع السبب، لا تعيد رفعه فورًا، واحترم الإرشادات."]
+}},
+live:{
+name:"البث المباشر والمشاهدات",
+qs:{
+q1:["البث لا يفتح","تأكد من استيفاء الشروط وعدم وجود مخالفات."],
+q2:["مشاهدات ضعيفة","غيّر التوقيت، تفاعل مع الجمهور، وابدأ بخطاف قوي."],
+q3:["إيقاف LIVE","راجع سياسات LIVE وتجنب الموسيقى المحمية."]
+}},
+security:{
+name:"أمان ومشاكل الحساب",
+qs:{
+q1:["حساب مخترق","غيّر كلمة السر وفعّل التحقق الثنائي فورًا."],
+q2:["نسيان الإيميل","استعمل نموذج استرجاع الحساب داخل TikTok."],
+q3:["تغيير رقم الهاتف","حدّث المعلومات من الإعدادات فقط."]
+}},
+earnings:{
+name:"الأرباح والسحب",
+qs:{
+q1:["السحب لا يتم","تحقق من الهوية وطريقة الدفع."],
+q2:["تأخير الأرباح","المدفوعات تحتاج وقت معالجة."],
+q3:["غير مؤهل للأرباح","تأكد من الشروط وعدد المتابعين."]
+}},
+cleanup:{
+name:"تنظيف الحساب",
+qs:{
+q1:["مشاهدات ضعيفة","احذف الفيديوهات الضعيفة وتوقف عن النشر 48 ساعة."],
+q2:["سبام","أوقف البوتات واحذف المتابعين الوهميين."],
+q3:["حساب مهجور","ارجع تدريجيًا بمحتوى قصير." ]
+}},
+join:{
+name:"الشروط والانضمام للوكالة",
+qs:{
+q1:["من يمكنه الانضمام؟","مبدعون نشطون بدون مخالفات خطيرة."],
+q2:["طريقة التقديم","عبر التواصل مع فريق الدعم."],
+q3:["شروط القبول","الالتزام بسياسات TikTok."]
+}},
+benefits:{
+name:"استفادة المبدع من الانضمام",
+qs:{
+q1:["حماية الحساب","متابعة وتنبيهات مبكرة."],
+q2:["تحسين الأداء","إرشاد واستراتيجية محتوى."],
+q3:["زيادة الأرباح","دعم مباشر وفرص أفضل."]
+}},
+team:{
+name:"فريق دعم Davenci C.O.S",
+qs:{
+q1:["من نحن؟","فريق مختص في TikTok."],
+q2:["وقت الرد","في أقرب وقت ممكن."],
+q3:["طرق التواصل","Telegram – Email – Lark."]
+}}
+},
+ticket:"لم تُحل المشكلة؟ فتح تيكت دعم"
+}
 };
 
-const i18n = {
-  ar: {
-    brand: "دعم Davenci C.O.S",
-    homeTitle: "👋 مرحبًا بك في دعم Davenci C.O.S",
-    homeDesc: "اختر القسم، ثم اختر السؤال الشائع، وستحصل على حل مختصر وواضح. وإذا لم تُحل المشكلة، افتح تذكرة دعم.",
-    back: "🔙 رجوع",
-    openTicket: "❌ لم تُحل المشكلة – فتح تذكرة دعم",
-    ticketTitle: "🎫 فتح تذكرة دعم",
-    ticketDesc: "اكتب معلومات بسيطة لنفهم الحالة بسرعة. (التيكت آخر حل)",
-    name: "الاسم (اختياري)",
-    contact: "وسيلة تواصل (بريد/رقم) (اختياري)",
-    details: "وصف مختصر للمشكلة (مهم)",
-    send: "📨 إرسال التذكرة",
-    sentTip: "سيفتح تطبيق البريد لإرسال التذكرة. إن لم يفتح، انسخ النص وأرسله يدويًا.",
-    soon: "قريبًا سنضيف هذا القسم بالتفصيل.",
-    footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
-  },
-  fr: {
-    brand: "Support Davenci C.O.S",
-    homeTitle: "👋 Bienvenue sur le support Davenci C.O.S",
-    homeDesc: "Choisissez une section, puis une question fréquente. Vous recevez une solution courte et claire. Si ce n’est pas résolu, ouvrez un ticket.",
-    back: "🔙 Retour",
-    openTicket: "❌ Non résolu – Ouvrir un ticket",
-    ticketTitle: "🎫 Ouvrir un ticket",
-    ticketDesc: "Donnez quelques infos pour comprendre rapidement. (Ticket en dernier recours)",
-    name: "Nom (optionnel)",
-    contact: "Contact (email/téléphone) (optionnel)",
-    details: "Description courte (important)",
-    send: "📨 Envoyer le ticket",
-    sentTip: "Votre application email s’ouvrira pour envoyer le ticket. Sinon, copiez le texte et envoyez-le manuellement.",
-    soon: "Nous ajouterons bientôt le détail de cette section.",
-    footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
-  },
-  en: {
-    brand: "Davenci C.O.S Support",
-    homeTitle: "👋 Welcome to Davenci C.O.S Support",
-    homeDesc: "Pick a section, then a common question. You’ll get a short, clear solution. If it’s not solved, open a support ticket.",
-    back: "🔙 Back",
-    openTicket: "❌ Not solved – Open a ticket",
-    ticketTitle: "🎫 Open a support ticket",
-    ticketDesc: "Share a few details so we can help quickly. (Ticket is the last step)",
-    name: "Name (optional)",
-    contact: "Contact (email/phone) (optional)",
-    details: "Short description (required)",
-    send: "📨 Send ticket",
-    sentTip: "Your email app will open to send the ticket. If not, copy the text and send it manually.",
-    soon: "We’ll add full content for this section soon.",
-    footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
-  },
-  it: {
-    brand: "Supporto Davenci C.O.S",
-    homeTitle: "👋 Benvenuto nel supporto Davenci C.O.S",
-    homeDesc: "Scegli una sezione, poi una domanda frequente. Riceverai una soluzione breve e chiara. Se non è risolto, apri un ticket.",
-    back: "🔙 Indietro",
-    openTicket: "❌ Non risolto – Apri un ticket",
-    ticketTitle: "🎫 Apri un ticket",
-    ticketDesc: "Inserisci pochi dettagli per aiutarti più velocemente. (Ticket come ultimo passo)",
-    name: "Nome (opzionale)",
-    contact: "Contatto (email/telefono) (opzionale)",
-    details: "Descrizione breve (obbligatorio)",
-    send: "📨 Invia ticket",
-    sentTip: "Si aprirà l’app email per inviare il ticket. Se non si apre, copia il testo e invialo manualmente.",
-    soon: "Aggiungeremo presto i dettagli di questa sezione.",
-    footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
+function setLang(l){
+  lang=l;
+  document.getElementById("title").innerText=DATA[l].title;
+  renderMenu();
+}
+setLang("ar");
+
+function renderMenu(){
+  const m=document.getElementById("menu");
+  m.innerHTML="";
+  for(let k in DATA[lang].sections){
+    const b=document.createElement("button");
+    b.textContent=DATA[lang].sections[k].name;
+    b.onclick=()=>openSection(k);
+    m.appendChild(b);
   }
-};
-
-/**
- * الأقسام الرئيسية (كما كتبتهم)
- * A معمّرة بالكامل الآن.
- */
-const sections = [
-  { id:"A", icon:"🚫", key:"violations", labels:{
-      ar:"قوانين الحظر والانتهاكات",
-      fr:"Sanctions & violations",
-      en:"Violations & bans",
-      it:"Violazioni e blocchi"
-    }
-  },
-  { id:"B", icon:"📡", key:"live_views", labels:{
-      ar:"البث المباشر والمشاهدات",
-      fr:"Live & vues",
-      en:"Live & views",
-      it:"Live e visualizzazioni"
-    }
-  },
-  { id:"C", icon:"🔐", key:"security_account", labels:{
-      ar:"أمان ومشاكل الحساب",
-      fr:"Sécurité & compte",
-      en:"Security & account",
-      it:"Sicurezza e account"
-    }
-  },
-  { id:"D", icon:"💰", key:"earnings", labels:{
-      ar:"الأرباح والسحب",
-      fr:"Gains & retraits",
-      en:"Earnings & payouts",
-      it:"Guadagni e prelievi"
-    }
-  },
-  { id:"E", icon:"🧹", key:"cleanup", labels:{
-      ar:"تنظيف الحساب",
-      fr:"Nettoyage du compte",
-      en:"Account cleanup",
-      it:"Pulizia account"
-    }
-  },
-  { id:"F", icon:"📝", key:"join_terms", labels:{
-      ar:"الشروط والانضمام إلى وكالتنا",
-      fr:"Conditions & adhésion",
-      en:"Terms & joining",
-      it:"Condizioni e iscrizione"
-    }
-  },
-  { id:"G", icon:"🚀", key:"benefits", labels:{
-      ar:"استفادة المبدع من الانضمام إلى وكالتنا",
-      fr:"Avantages pour le créateur",
-      en:"Creator benefits",
-      it:"Vantaggi per il creator"
-    }
-  },
-  { id:"H", icon:"🛡️", key:"team", labels:{
-      ar:"فريق دعم وكالة Davenci C.O.S",
-      fr:"Équipe support Davenci C.O.S",
-      en:"Davenci C.O.S support team",
-      it:"Team di supporto Davenci C.O.S"
-    }
-  },
-];
-
-/**
- * محتوى القسم A (FAQ + حلول) بأربع لغات
- * الحلول: سبب سطر + 3-5 خطوات قصيرة
- */
-const contentA = {
-  A_1: {
-    labels: {
-      ar:"حظر مؤقت: ماذا أفعل؟",
-      fr:"Blocage temporaire : que faire ?",
-      en:"Temporary ban: what to do?",
-      it:"Blocco temporaneo: cosa fare?"
-    },
-    answer: {
-      ar: {
-        cause: "غالبًا بسبب مخالفة بسيطة أو بلاغات متكرّرة خلال وقت قصير.",
-        steps: [
-          "انتظر انتهاء مدة الحظر كاملة (لا تحاول التحايل).",
-          "راجع الإشعارات لمعرفة سبب التقييد إن وُجد.",
-          "احذف/أخفِ أي محتوى قد يسبب مخالفة.",
-          "خفّف النشر ليومين، ثم ارجع تدريجيًا بمحتوى ملتزم."
-        ]
-      },
-      fr: {
-        cause: "Souvent dû à une infraction légère ou à plusieurs signalements en peu de temps.",
-        steps: [
-          "Attendez la fin du blocage (pas de contournement).",
-          "Vérifiez les notifications pour la raison si disponible.",
-          "Supprimez/masquez le contenu à risque.",
-          "Réduisez la publication 48h puis reprenez progressivement."
-        ]
-      },
-      en: {
-        cause: "Often caused by minor policy issues or repeated reports in a short time.",
-        steps: [
-          "Wait until the ban ends (do not bypass).",
-          "Check notifications for the reason if available.",
-          "Remove/hide risky content.",
-          "Pause posting for 48h, then return gradually with compliant content."
-        ]
-      },
-      it: {
-        cause: "Spesso dovuto a una violazione lieve o a segnalazioni ripetute in poco tempo.",
-        steps: [
-          "Attendi la fine del blocco (niente aggiramenti).",
-          "Controlla le notifiche per la motivazione se presente.",
-          "Rimuovi/nascondi contenuti a rischio.",
-          "Pausa 48h e riprendi gradualmente con contenuti conformi."
-        ]
-      }
-    }
-  },
-
-  A_2: {
-    labels: {
-      ar:"حظر دائم: هل يوجد استئناف؟",
-      fr:"Blocage permanent : y a-t-il un recours ?",
-      en:"Permanent ban: can I appeal?",
-      it:"Blocco permanente: posso fare ricorso?"
-    },
-    answer: {
-      ar: {
-        cause: "عادةً بسبب مخالفات جسيمة أو تكرار مخالفات سابقة.",
-        steps: [
-          "افتح الإشعارات داخل TikTok وابحث عن خيار الاستئناف إن وُجد.",
-          "إن وُجد نموذج استئناف: اكتب باختصار وبأسلوب محترم.",
-          "جهّز إثباتات ملكية الحساب (هاتف/بريد/اسم المستخدم/تواريخ تقريبية).",
-          "إذا رُفض الاستئناف أو لم يظهر: افتح تذكرة دعم لنراجع الحالة معك."
-        ]
-      },
-      fr: {
-        cause: "Généralement dû à des infractions graves ou répétées.",
-        steps: [
-          "Dans TikTok, vérifiez s’il existe un bouton d’appel/recours.",
-          "Si oui, rédigez un message court et respectueux.",
-          "Préparez des preuves de propriété (email/téléphone/username/dates).",
-          "Si refusé ou indisponible: ouvrez un ticket pour analyse."
-        ]
-      },
-      en: {
-        cause: "Usually due to severe or repeated violations.",
-        steps: [
-          "In TikTok, check if an appeal option exists.",
-          "If available, write a short and respectful appeal.",
-          "Prepare ownership proof (email/phone/username/approx dates).",
-          "If denied or unavailable: open a ticket so we can review."
-        ]
-      },
-      it: {
-        cause: "Di solito per violazioni gravi o ripetute.",
-        steps: [
-          "In TikTok verifica se esiste l’opzione di ricorso.",
-          "Se disponibile, scrivi un ricorso breve e rispettoso.",
-          "Prepara prove di proprietà (email/telefono/username/date).",
-          "Se rifiutato o assente: apri un ticket per analisi."
-        ]
-      }
-    }
-  },
-
-  A_3: {
-    labels: {
-      ar:"تم حذف فيديو أو تقييد النشر: كيف أتصرف؟",
-      fr:"Vidéo supprimée / publication limitée : que faire ?",
-      en:"Video removed / posting limited: what to do?",
-      it:"Video rimossa / pubblicazione limitata: cosa fare?"
-    },
-    answer: {
-      ar: {
-        cause: "قد يكون المحتوى مخالفًا أو تم الإبلاغ عنه أو اعتبره النظام سبام.",
-        steps: [
-          "اقرأ سبب الحذف من الإشعارات إن وُجد.",
-          "إن كان لديك حق: قدّم استئنافًا من داخل التطبيق.",
-          "تجنب إعادة رفع نفس الفيديو نفسه مباشرة.",
-          "خفّف الهاشتاغات (لا تكثر) وتجنّب الكلمات الحساسة."
-        ]
-      },
-      fr: {
-        cause: "Le contenu peut être jugé non conforme, signalé, ou considéré comme spam.",
-        steps: [
-          "Lisez la raison via les notifications si disponible.",
-          "Si vous avez raison: faites un recours dans l’app.",
-          "Évitez de republier la même vidéo immédiatement.",
-          "Réduisez les hashtags et évitez les termes sensibles."
-        ]
-      },
-      en: {
-        cause: "Content may be non-compliant, reported, or flagged as spam.",
-        steps: [
-          "Check the removal reason in notifications if available.",
-          "If you have grounds: submit an in-app appeal.",
-          "Avoid reuploading the exact same video right away.",
-          "Use fewer hashtags and avoid sensitive wording."
-        ]
-      },
-      it: {
-        cause: "Il contenuto può essere non conforme, segnalato o considerato spam.",
-        steps: [
-          "Controlla la motivazione nelle notifiche se presente.",
-          "Se hai ragione: invia un ricorso dall’app.",
-          "Evita di ripubblicare subito la stessa identica video.",
-          "Usa meno hashtag ed evita parole sensibili."
-        ]
-      }
-    }
-  },
-
-  A_4: {
-    labels: {
-      ar:"تقييد التعليقات أو الرسائل: ما الحل؟",
-      fr:"Commentaires/MP limités : solution ?",
-      en:"Comments/DM restricted: solution?",
-      it:"Commenti/DM limitati: soluzione?"
-    },
-    answer: {
-      ar: {
-        cause: "عادة بسبب نشاط متكرر (سبام) أو كلمات/روابط تعتبرها المنصة غير مناسبة.",
-        steps: [
-          "توقف عن التعليق المتكرر 24–48 ساعة.",
-          "تجنب الروابط المختصرة والكلمات الحساسة.",
-          "حدّث التطبيق وأعد تسجيل الدخول.",
-          "ارجع تدريجيًا وبنمط طبيعي."
-        ]
-      },
-      fr: {
-        cause: "Souvent lié au spam (activité répétée) ou à des mots/liens sensibles.",
-        steps: [
-          "Stoppez l’activité 24–48h.",
-          "Évitez liens raccourcis et mots sensibles.",
-          "Mettez à jour l’app et reconnectez-vous.",
-          "Reprenez progressivement avec un rythme normal."
-        ]
-      },
-      en: {
-        cause: "Often due to spam-like repeated activity or sensitive words/links.",
-        steps: [
-          "Pause activity for 24–48 hours.",
-          "Avoid short links and sensitive wording.",
-          "Update the app and re-login.",
-          "Return gradually with normal behavior."
-        ]
-      },
-      it: {
-        cause: "Spesso per attività ripetuta (spam) o parole/link sensibili.",
-        steps: [
-          "Pausa 24–48 ore.",
-          "Evita link abbreviati e parole sensibili.",
-          "Aggiorna l’app e fai logout/login.",
-          "Riprendi gradualmente con un ritmo normale."
-        ]
-      }
-    }
-  },
-
-  A_5: {
-    labels: {
-      ar:"حظر LIVE بسبب مخالفة: ماذا أعمل؟",
-      fr:"LIVE bloqué pour violation : que faire ?",
-      en:"LIVE banned due to violation: what to do?",
-      it:"LIVE bloccata per violazione: cosa fare?"
-    },
-    answer: {
-      ar: {
-        cause: "بسبب سياسات LIVE (موسيقى محمية/محتوى غير مناسب/بلاغات أثناء البث).",
-        steps: [
-          "تحقق من مدة التقييد داخل الحساب.",
-          "عند العودة: تجنب الموسيقى المحمية وراعِ سياسات LIVE.",
-          "قلّل المثيرات/الألفاظ/الجدل أثناء البث.",
-          "إذا كنت ترى أن الأمر خطأ: افتح تذكرة دعم وسنراجع معك التفاصيل."
-        ]
-      },
-      fr: {
-        cause: "Règles LIVE (musique protégée, contenu sensible, signalements).",
-        steps: [
-          "Vérifiez la durée de restriction sur le compte.",
-          "À la reprise: évitez musique protégée et respectez les règles.",
-          "Limitez propos/controverses pendant le live.",
-          "Si erreur probable: ouvrez un ticket pour analyse."
-        ]
-      },
-      en: {
-        cause: "LIVE policies (copyright music, sensitive content, reports during live).",
-        steps: [
-          "Check the restriction duration in your account.",
-          "When back: avoid copyrighted music and follow LIVE rules.",
-          "Keep the live safe and non-controversial.",
-          "If you believe it’s a mistake: open a ticket for review."
-        ]
-      },
-      it: {
-        cause: "Regole LIVE (musica protetta, contenuti sensibili, segnalazioni).",
-        steps: [
-          "Controlla la durata della restrizione nell’account.",
-          "Al ritorno: evita musica protetta e rispetta le regole.",
-          "Mantieni il live sicuro e senza contenuti controversi.",
-          "Se pensi sia un errore: apri un ticket per verifica."
-        ]
-      }
-    }
-  }
-};
-
-function t() { return i18n[state.lang]; }
-
-function setLang(lang){
-  state.lang = lang;
-  document.documentElement.lang = lang;
-  document.body.dir = (lang === "ar") ? "rtl" : "ltr";
-  document.getElementById("brandBadge").innerText = t().brand;
-  document.getElementById("footerNote").innerText = t().footer;
+  document.getElementById("faq").classList.add("hidden");
+  document.getElementById("solution").classList.add("hidden");
 }
 
-function renderHome(){
-  state.view = "home";
-  state.sectionId = null;
-  state.faqId = null;
-
-  document.getElementById("title").innerText = t().homeTitle;
-  document.getElementById("desc").innerText = t().homeDesc;
-
-  const content = document.getElementById("content");
-  content.innerHTML = "";
-
-  sections.forEach(s => {
-    const b = document.createElement("button");
-    b.className = "btn";
-    b.textContent = `${s.icon} ${s.labels[state.lang]}`;
-    b.onclick = () => openSection(s.id);
-    content.appendChild(b);
-  });
-}
-
-function openSection(sectionId){
-  state.view = "faq";
-  state.sectionId = sectionId;
-
-  const sec = sections.find(x => x.id === sectionId);
-  document.getElementById("title").innerText = `${sec.icon} ${sec.labels[state.lang]}`;
-
-  if(sectionId !== "A"){
-    document.getElementById("desc").innerText = t().soon;
-    const content = document.getElementById("content");
-    content.innerHTML = "";
-    const back = document.createElement("button");
-    back.className = "btn secondary";
-    back.textContent = t().back;
-    back.onclick = renderHome;
-    content.appendChild(back);
-    return;
+function openSection(k){
+  currentSection=k;
+  const f=document.getElementById("faq");
+  f.innerHTML="";
+  for(let q in DATA[lang].sections[k].qs){
+    const b=document.createElement("button");
+    b.className="question";
+    b.textContent=DATA[lang].sections[k].qs[q][0];
+    b.onclick=()=>openSolution(q);
+    f.appendChild(b);
   }
-
-  document.getElementById("desc").innerText =
-    (state.lang === "ar")
-      ? "اختر سؤالًا شائعًا، ثم اقرأ الحل. إذا لم تُحل المشكلة، افتح تذكرة."
-      : (state.lang === "fr")
-        ? "Choisissez une question fréquente, puis lisez la solution. Si non résolu, ouvrez un ticket."
-        : (state.lang === "it")
-          ? "Scegli una domanda frequente, poi leggi la soluzione. Se non risolto, apri un ticket."
-          : "Pick a common question, read the solution. If not solved, open a ticket.";
-
-  const content = document.getElementById("content");
-  content.innerHTML = "";
-
-  const faqIds = Object.keys(contentA);
-
-  faqIds.forEach(fid => {
-    const b = document.createElement("button");
-    b.className = "btn";
-    b.textContent = `❓ ${contentA[fid].labels[state.lang]}`;
-    b.onclick = () => openAnswer(fid);
-    content.appendChild(b);
-  });
-
-  const back = document.createElement("button");
-  back.className = "btn secondary";
-  back.textContent = t().back;
-  back.onclick = renderHome;
-  content.appendChild(back);
+  f.appendChild(backBtn(renderMenu));
+  document.getElementById("menu").innerHTML="";
+  f.classList.remove("hidden");
 }
 
-function openAnswer(faqId){
-  state.view = "answer";
-  state.faqId = faqId;
+function openSolution(q){
+  const s=document.getElementById("solution");
+  s.innerHTML=`
+    <p class="solution">✅ ${DATA[lang].sections[currentSection].qs[q][1]}</p>
+    <button onclick="openTicket()">${DATA[lang].ticket}</button>
+  `;
+  s.appendChild(backBtn(()=>openSection(currentSection)));
+  document.getElementById("faq").classList.add("hidden");
+  s.classList.remove("hidden");
+}
 
-  const item = contentA[faqId];
-  const ans = item.answer[state.lang];
-
-  document.getElementById("title").innerText = `✅ ${item.labels[state.lang]}`;
-  const desc = document.getElementById("desc");
-  desc.innerHTML = "";
-
-  const content = document.getElementById("content");
-  content.innerHTML = "";
-
-  // cause
-  const p1 = document.createElement("p");
-  p1.innerHTML = `<span class="k">🔍 ${state.lang==="ar"?"السبب المحتمل":"Cause"}:</span> ${ans.cause}`;
-  content.appendChild(p1);
-
-  // steps
-  const p2 = document.createElement("p");
-  p2.innerHTML = `<span class="k">✅ ${state.lang==="ar"?"الحل":"Steps"}:</span>`;
-  content.appendChild(p2);
-
-  const ul = document.createElement("ul");
-  ans.steps.forEach(s => {
-    const li = document.createElement("li");
-    li.textContent = s;
-    ul.appendChild(li);
-  });
-  content.appendChild(ul);
-
-  const div = document.createElement("div");
-  div.className = "divider";
-  content.appendChild(div);
-
-  const openT = document.createElement("button");
-  openT.className = "btn";
-  openT.textContent = t().openTicket;
-  openT.onclick = () => openTicket();
-  content.appendChild(openT);
-
-  const back = document.createElement("button");
-  back.className = "btn secondary";
-  back.textContent = t().back;
-  back.onclick = () => openSection(state.sectionId);
-  content.appendChild(back);
+function backBtn(fn){
+  const b=document.createElement("button");
+  b.className="secondary";
+  b.textContent="⬅ رجوع";
+  b.onclick=fn;
+  return b;
 }
 
 function openTicket(){
-  state.view = "ticket";
-  const sec = sections.find(x => x.id === state.sectionId);
-  const question = state.faqId ? contentA[state.faqId].labels[state.lang] : "(direct)";
-
-  document.getElementById("title").innerText = t().ticketTitle;
-  document.getElementById("desc").innerText = t().ticketDesc;
-
-  const content = document.getElementById("content");
-  content.innerHTML = "";
-
-  const f1 = document.createElement("div");
-  f1.className = "field";
-  f1.innerHTML = `<label>${t().name}</label><input id="tk_name" placeholder="">`;
-  content.appendChild(f1);
-
-  const f2 = document.createElement("div");
-  f2.className = "field";
-  f2.innerHTML = `<label>${t().contact}</label><input id="tk_contact" placeholder="">`;
-  content.appendChild(f2);
-
-  const f3 = document.createElement("div");
-  f3.className = "field";
-  f3.innerHTML = `<label>${t().details}</label><textarea id="tk_details" placeholder=""></textarea>`;
-  content.appendChild(f3);
-
-  const send = document.createElement("button");
-  send.className = "btn";
-  send.textContent = t().send;
-  send.onclick = () => {
-    const name = document.getElementById("tk_name").value || "-";
-    const contact = document.getElementById("tk_contact").value || "-";
-    const details = document.getElementById("tk_details").value || "-";
-
-    const subject = encodeURIComponent(`Davenci C.O.S Ticket | ${sec ? sec.labels[state.lang] : ""}`);
-    const body = encodeURIComponent(
-`Language: ${state.lang}
-Section: ${sec ? sec.labels[state.lang] : ""}
-Question: ${question}
-
-Name: ${name}
-Contact: ${contact}
-
-Details:
-${details}
-
----
-Sent from davenci-cos-support-bot.pages.dev`
-    );
-
-    window.location.href = `mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
-  };
-  content.appendChild(send);
-
-  const tip = document.createElement("p");
-  tip.className = "mini";
-  tip.textContent = t().sentTip;
-  content.appendChild(tip);
-
-  const back = document.createElement("button");
-  back.className = "btn secondary";
-  back.textContent = t().back;
-  back.onclick = () => {
-    if(state.faqId) openAnswer(state.faqId);
-    else renderHome();
-  };
-  content.appendChild(back);
+  window.open("https://t.me/DavenciSupport","_blank");
 }
-
-/** init */
-document.getElementById("lang").addEventListener("change", (e) => {
-  setLang(e.target.value);
-  // أعِد رسم نفس الشاشة الحالية بعد تغيير اللغة
-  if(state.view === "home") renderHome();
-  else if(state.view === "faq") openSection(state.sectionId);
-  else if(state.view === "answer") openAnswer(state.faqId);
-  else if(state.view === "ticket") openTicket();
-});
-
-(function boot(){
-  // اختار افتراضي: إيطالي (كما طلبت قبل) — تنجم تبدله
-  const defaultLang = "it";
-  document.getElementById("lang").value = defaultLang;
-  setLang(defaultLang);
-  renderHome();
-})();
 </script>
+
 </body>
 </html>
