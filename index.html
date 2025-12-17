@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
 <meta charset="UTF-8" />
-<title>Davenci C.O.S – Support Bot</title>
+<title>Davenci C.O.S – Support</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
-:root{
-  --navy:#0E1E3A;
-  --blue:#1F3C5B;
-  --teal:#6FAFC2;
-  --white:#ffffff;
-}
-
-/* ===== خلفية بصورة اللوغو ===== */
 body{
   margin:0;
   font-family: Arial, sans-serif;
@@ -21,68 +13,45 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-
-  background-image: url("agency-bg.jpg");
-  background-size: cover;
+  background-image: url("logo.png");
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
-
-/* تغميق خفيف */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background: rgba(14,30,58,0.55);
+  background: rgba(14,30,58,0.65);
   z-index:-1;
 }
-
-/* ===== الحاوية ===== */
-.wrap{
-  width:100%;
-  max-width:520px;
-  padding:18px;
-}
-
-/* ===== الكارت ===== */
+.wrap{ width:100%; max-width:520px; padding:18px; }
 .card{
-  background: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.9);
   border-radius:18px;
   padding:22px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   text-align:center;
 }
-
-/* ===== اللوجو ===== */
 .logoTop{
-  width:72px;
-  height:72px;
-  border-radius:50%;
-  background:#fff;
-  padding:10px;
-  box-shadow: 0 0 18px rgba(31,60,91,0.4);
-  object-fit:contain;
-  margin-bottom:10px;
+  width:70px; height:70px; border-radius:50%;
+  background:#fff; padding:10px;
+  box-shadow:0 0 18px rgba(31,60,91,0.4);
+}
+h1{ color:#0E1E3A; margin:8px 0 6px; }
+p{ color:#2f3e4f; font-size:14px; }
+
+.langRow{ margin:10px 0; }
+select{
+  padding:8px 12px;
+  border-radius:10px;
 }
 
-/* ===== النص ===== */
-h1{
-  margin:6px 0 4px;
-  font-size:20px;
-  color:var(--navy);
-}
-p{
-  margin:0 0 14px;
-  font-size:14px;
-  color:#2f3e4f;
-}
-
-/* ===== أزرار ===== */
 .list{
   display:flex;
   flex-direction:column;
   gap:10px;
-  margin-top:10px;
+  margin-top:12px;
 }
 .btn{
   padding:12px;
@@ -91,19 +60,20 @@ p{
   cursor:pointer;
   font-weight:700;
   color:#fff;
-  background: linear-gradient(135deg, var(--blue), var(--teal));
-}
-.btn.secondary{
-  background: transparent;
-  color: var(--blue);
-  border:1px solid var(--blue);
+  background: linear-gradient(135deg,#1F3C5B,#6FAFC2);
 }
 
-/* ===== الفوتر ===== */
-.footerNote{
-  margin-top:14px;
-  font-size:11.5px;
-  color:#4a5b6b;
+.support-fab{
+  position:fixed;
+  right:16px;
+  bottom:18px;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:0;
+  font-size:22px;
+  background:linear-gradient(135deg,#1F3C5B,#6FAFC2);
+  color:#fff;
 }
 </style>
 </head>
@@ -113,33 +83,101 @@ p{
 <div class="wrap">
   <div class="card">
 
-    <!-- لوجو الوكالة -->
-    <img src="logo.png" class="logoTop" alt="Davenci C.O.S" />
-
-    <!-- العنوان -->
+    <img src="logo.png" class="logoTop" alt="Davenci C.O.S">
     <h1>Davenci C.O.S</h1>
+    <p id="subtitle">الدعم • التوجيه • الحماية</p>
 
-    <!-- الوصف -->
-    <p>
-      Support – Orientation – Sécurité<br>
-      الدعم • التوجيه • الحماية
-    </p>
-
-    <!-- أزرار البوت -->
-    <div class="list">
-      <button class="btn">🚫 Bans & Violations</button>
-      <button class="btn">📡 LIVE & Views</button>
-      <button class="btn">🔐 Account Security</button>
-      <button class="btn secondary">Contact Support</button>
+    <!-- اختيار اللغة -->
+    <div class="langRow">
+      <select id="lang">
+        <option value="ar">🇹🇳 عربي</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="it">🇮🇹 Italiano</option>
+        <option value="en">🇬🇧 English</option>
+      </select>
     </div>
 
-    <!-- الفوتر -->
-    <div class="footerNote">
-      Davenci C.O.S – Conseils, Orientation & Sécurité
+    <!-- الأزرار -->
+    <div class="list">
+      <button class="btn" id="btnA"></button>
+      <button class="btn" id="btnB"></button>
+      <button class="btn" id="btnC"></button>
+      <button class="btn" id="btnD"></button>
+      <button class="btn" id="btnE"></button>
+      <button class="btn" id="btnF"></button>
+      <button class="btn" id="btnG"></button>
+      <button class="btn" id="btnH"></button>
     </div>
 
   </div>
 </div>
+
+<button class="support-fab">💬</button>
+
+<script>
+const texts = {
+  ar:{
+    sub:"الدعم • التوجيه • الحماية",
+    A:"🚫 قوانين الحظر والانتهاكات",
+    B:"📡 البث المباشر والمشاهدات",
+    C:"🔐 أمان ومشاكل الحساب",
+    D:"💰 الأرباح والسحب",
+    E:"🧹 تنظيف الحساب",
+    F:"📝 الشروط والانضمام إلى وكالتنا",
+    G:"🚀 استفادة المبدع من الانضمام إلى وكالتنا",
+    H:"🛡️ فريق دعم وكالة Davenci C.O.S"
+  },
+  fr:{
+    sub:"Support • Orientation • Sécurité",
+    A:"🚫 Règles de sanctions et violations",
+    B:"📡 LIVE et vues",
+    C:"🔐 Sécurité et problèmes de compte",
+    D:"💰 Gains et retraits",
+    E:"🧹 Nettoyage du compte",
+    F:"📝 Conditions et adhésion à notre agence",
+    G:"🚀 Avantages pour le créateur",
+    H:"🛡️ Équipe de support Davenci C.O.S"
+  },
+  it:{
+    sub:"Supporto • Orientamento • Sicurezza",
+    A:"🚫 Regole di blocchi e violazioni",
+    B:"📡 LIVE e visualizzazioni",
+    C:"🔐 Sicurezza e problemi account",
+    D:"💰 Guadagni e prelievi",
+    E:"🧹 Pulizia account",
+    F:"📝 Condizioni e adesione alla nostra agenzia",
+    G:"🚀 Vantaggi per il creator",
+    H:"🛡️ Team di supporto Davenci C.O.S"
+  },
+  en:{
+    sub:"Support • Guidance • Security",
+    A:"🚫 Bans and violations rules",
+    B:"📡 LIVE and views",
+    C:"🔐 Account security and issues",
+    D:"💰 Earnings and withdrawals",
+    E:"🧹 Account cleanup",
+    F:"📝 Terms and joining our agency",
+    G:"🚀 Creator benefits",
+    H:"🛡️ Davenci C.O.S support team"
+  }
+};
+
+function setLang(l){
+  document.documentElement.dir = l==="ar"?"rtl":"ltr";
+  subtitle.innerText = texts[l].sub;
+  btnA.innerText = texts[l].A;
+  btnB.innerText = texts[l].B;
+  btnC.innerText = texts[l].C;
+  btnD.innerText = texts[l].D;
+  btnE.innerText = texts[l].E;
+  btnF.innerText = texts[l].F;
+  btnG.innerText = texts[l].G;
+  btnH.innerText = texts[l].H;
+}
+
+lang.onchange = e => setLang(e.target.value);
+setLang("ar");
+</script>
 
 </body>
 </html>
