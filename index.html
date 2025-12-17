@@ -164,10 +164,9 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   };
 
+  /* عناصر */
+  const langSelector = document.getElementById("lang");
 
-  /** =============================
-   *    العناصر المجموعة تلقائيا
-   * ============================= */
   const elements = {
     subtitle: document.getElementById("subtitle"),
     btnA: document.getElementById("btnA"),
@@ -180,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function(){
     btnH: document.getElementById("btnH")
   };
 
-
+  /*  تفعيل اللغات */
   function setLang(lang){
 
     if(!BOT_LANG[lang]) return;
@@ -190,20 +189,25 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const dict = BOT_LANG[lang];
 
-    if(elements.subtitle) elements.subtitle.textContent = dict.subtitle;
-    if(elements.btnA) elements.btnA.textContent = dict.A;
-    if(elements.btnB) elements.btnB.textContent = dict.B;
-    if(elements.btnC) elements.btnC.textContent = dict.C;
-    if(elements.btnD) elements.btnD.textContent = dict.D;
-    if(elements.btnE) elements.btnE.textContent = dict.E;
-    if(elements.btnF) elements.btnF.textContent = dict.F;
-    if(elements.btnG) elements.btnG.textContent = dict.G;
-    if(elements.btnH) elements.btnH.textContent = dict.H;
+    elements.subtitle.textContent = dict.subtitle;
+    elements.btnA.textContent = dict.A;
+    elements.btnB.textContent = dict.B;
+    elements.btnC.textContent = dict.C;
+    elements.btnD.textContent = dict.D;
+    elements.btnE.textContent = dict.E;
+    elements.btnF.textContent = dict.F;
+    elements.btnG.textContent = dict.G;
+    elements.btnH.textContent = dict.H;
   }
 
+  /* عند تغيير select */
+  langSelector.addEventListener("change", function(){
+    setLang(this.value);
+  });
 
-  /** 🔥 فرض العربية */
+  /* لغة أولية عربية */
   setLang("ar");
+  langSelector.value = "ar";
 
 });
 </script>
