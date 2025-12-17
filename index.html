@@ -954,6 +954,297 @@ B_8:{
       ]
     }
   }
+};
+
+  const contentC = {
+  C_1:{
+  labels:{
+    ar:"حسابي مخترق: ماذا أفعل فورًا؟",
+    fr:"Compte piraté : que faire immédiatement ?",
+    en:"Account hacked: what to do immediately?",
+    it:"Account hackerato: cosa fare subito?"
+  },
+  answer:{
+    ar:{
+      cause:"تم الدخول إلى حسابك من جهاز أو دولة غير معروفة.",
+      steps:[
+        "غيّر كلمة السر فورًا من إعدادات TikTok.",
+        "فعّل التحقق الثنائي (2FA).",
+        "افصل كل الأجهزة الغريبة من الإعدادات.",
+        "بلّغ TikTok عن الاختراق من مركز المساعدة."
+      ]
+    },
+    fr:{
+      cause:"Connexion depuis un appareil ou pays inconnu.",
+      steps:[
+        "Changez immédiatement le mot de passe.",
+        "Activez la vérification en deux étapes.",
+        "Déconnectez les appareils inconnus.",
+        "Signalez le piratage au support TikTok."
+      ]
+    },
+    en:{
+      cause:"Login from an unknown device or country.",
+      steps:[
+        "Change your password immediately.",
+        "Enable two-factor authentication.",
+        "Remove unknown devices.",
+        "Report the hack to TikTok support."
+      ]
+    },
+    it:{
+      cause:"Accesso da dispositivo o paese sconosciuto.",
+      steps:[
+        "Cambia subito la password.",
+        "Attiva l’autenticazione a due fattori.",
+        "Rimuovi dispositivi sconosciuti.",
+        "Segnala l’hackeraggio a TikTok."
+      ]
+    }
+  }
+},
+
+    C_2:{
+  labels:{
+    ar:"نسيت البريد أو رقم الهاتف المرتبط بالحساب",
+    fr:"Email ou téléphone oublié",
+    en:"Forgot linked email or phone",
+    it:"Email o telefono dimenticato"
+  },
+  answer:{
+    ar:{
+      cause:"تم فقدان الوصول للبريد أو الرقم القديم.",
+      steps:[
+        "جرّب استرجاع الحساب من صفحة تسجيل الدخول.",
+        "اختر (لا أستطيع الوصول إلى هذه المعلومات).",
+        "أدخل اسم المستخدم بدقة.",
+        "انتظر رد TikTok عبر النموذج."
+      ]
+    },
+    fr:{
+      cause:"Perte d’accès à l’email ou au numéro.",
+      steps:[
+        "Utilisez la récupération depuis la connexion.",
+        "Choisissez l’option sans accès.",
+        "Entrez le nom d’utilisateur الصحيح.",
+        "Attendez la réponse TikTok."
+      ]
+    },
+    en:{
+      cause:"Lost access to email or phone number.",
+      steps:[
+        "Use account recovery from login page.",
+        "Select no access option.",
+        "Enter correct username.",
+        "Wait for TikTok reply."
+      ]
+    },
+    it:{
+      cause:"Accesso perso a email o numero.",
+      steps:[
+        "Usa il recupero account dal login.",
+        "Scegli opzione senza accesso.",
+        "Inserisci username corretto.",
+        "Attendi risposta TikTok."
+      ]
+    }
+  }
+},
+
+    C_3:{
+  labels:{
+    ar:"لا أستطيع تسجيل الدخول إلى الحساب",
+    fr:"Impossible de se connecter",
+    en:"Cannot log into account",
+    it:"Impossibile accedere all’account"
+  },
+  answer:{
+    ar:{
+      cause:"خطأ في كلمة السر، كاش التطبيق، أو حظر مؤقت.",
+      steps:[
+        "تأكد من صحة كلمة السر.",
+        "امسح الكاش وحدّث التطبيق.",
+        "جرّب جهاز أو شبكة أخرى.",
+        "إن استمر المشكل، افتح تذكرة دعم."
+      ]
+    },
+    fr:{
+      cause:"Mot de passe incorrect ou cache.",
+      steps:[
+        "Vérifiez le mot de passe.",
+        "Videz le cache et mettez à jour l’app.",
+        "Essayez un autre appareil.",
+        "Sinon, ouvrez un ticket."
+      ]
+    },
+    en:{
+      cause:"Wrong password or app cache issues.",
+      steps:[
+        "Check password.",
+        "Clear cache and update app.",
+        "Try another device.",
+        "If persists, open a ticket."
+      ]
+    },
+    it:{
+      cause:"Password errata o cache.",
+      steps:[
+        "Controlla password.",
+        "Pulisci cache e aggiorna app.",
+        "Prova altro dispositivo.",
+        "Se continua, apri ticket."
+      ]
+    }
+  }
+},
+
+   C_4:{
+  labels:{
+    ar:"كيف أفعّل التحقق الثنائي (2FA)؟",
+    fr:"Activer la vérification en deux étapes",
+    en:"How to enable 2FA?",
+    it:"Come attivare 2FA?"
+  },
+  answer:{
+    ar:{
+      cause:"عدم تفعيل الحماية الإضافية.",
+      steps:[
+        "ادخل إلى الإعدادات ثم الأمان.",
+        "فعّل التحقق عبر SMS أو Email.",
+        "احفظ رموز الاسترجاع.",
+        "لا تشارك الرمز مع أي شخص."
+      ]
+    },
+    fr:{ cause:"Protection non activée.", steps:[ "Paramètres > Sécurité.", "Activez SMS ou Email.", "Sauvegardez les codes.", "Ne partagez jamais le code." ] },
+    en:{ cause:"Extra security not enabled.", steps:[ "Settings > Security.", "Enable SMS or Email.", "Save recovery codes.", "Never share the code." ] },
+    it:{ cause:"Protezione non attiva.", steps:[ "Impostazioni > Sicurezza.", "Attiva SMS o Email.", "Salva codici.", "Non condividere il codice." ] }
+  }
+},
+
+    C_5:{
+  labels:{
+    ar:"تم تقييد الحساب أمنيًا بدون سبب واضح",
+    fr:"Restriction de sécurité sans raison claire",
+    en:"Security restriction without clear reason",
+    it:"Restrizione di sicurezza senza motivo"
+  },
+  answer:{
+    ar:{
+      cause:"نشاط غير طبيعي أو تسجيلات دخول متكررة.",
+      steps:[
+        "أوقف أي VPN أو تطبيقات خارجية.",
+        "ثبّت جهاز واحد للدخول.",
+        "انتظر 24–48 ساعة.",
+        "إذا لم يُرفع، افتح تذكرة دعم."
+      ]
+    },
+    fr:{ cause:"Activité suspecte détectée.", steps:[ "Désactivez VPN.", "Utilisez un seul appareil.", "Attendez 24–48h.", "Sinon ticket." ] },
+    en:{ cause:"Suspicious activity detected.", steps:[ "Disable VPN.", "Use one device.", "Wait 24–48h.", "If not lifted, open ticket." ] },
+    it:{ cause:"Attività sospetta rilevata.", steps:[ "Disattiva VPN.", "Usa un solo dispositivo.", "Attendi 24–48h.", "Apri ticket se persiste." ] }
+  }
+    }  
+  }
+  },
+    C_6: {
+  labels:{
+    ar:"مشكلة ربط الحساب (Gmail / Facebook / Apple)",
+    fr:"Problème de liaison du compte (Gmail / Facebook / Apple)",
+    en:"Account linking issue (Gmail / Facebook / Apple)",
+    it:"Problema collegamento account (Gmail / Facebook / Apple)"
+  },
+  answer:{
+    ar:{
+      cause:"غالبًا بسبب تعارض حسابات، بريد مستعمل سابقًا، أو إعدادات أمان غير مكتملة.",
+      steps:[
+        "تأكد أن البريد أو الحساب غير مربوط بحساب TikTok آخر.",
+        "حدّث تطبيق TikTok إلى آخر نسخة.",
+        "جرّب الربط من إعدادات الحساب وليس من نافذة منبثقة.",
+        "عطّل VPN أثناء عملية الربط.",
+        "إذا فشل الربط، لا تكرر المحاولة كثيرًا وانتظر 24 ساعة."
+      ]
+    },
+    fr:{
+      cause:"Souvent causé par un conflit de comptes ou un email déjà utilisé.",
+      steps:[
+        "Vérifiez que l’email n’est pas lié à un autre compte TikTok.",
+        "Mettez l’application TikTok à jour.",
+        "Liez le compte depuis les paramètres.",
+        "Désactivez le VPN.",
+        "En cas d’échec, attendez 24h avant de réessayer."
+      ]
+    },
+    en:{
+      cause:"Usually caused by account conflicts or an email already linked.",
+      steps:[
+        "Make sure the email is not linked to another TikTok account.",
+        "Update TikTok to the latest version.",
+        "Link accounts from settings, not pop-ups.",
+        "Disable VPN during linking.",
+        "If it fails, wait 24 hours before retrying."
+      ]
+    },
+    it:{
+      cause:"Spesso dovuto a conflitti di account o email già collegata.",
+      steps:[
+        "Verifica che l’email non sia già collegata a un altro account.",
+        "Aggiorna TikTok all’ultima versione.",
+        "Collega l’account dalle impostazioni.",
+        "Disattiva la VPN.",
+        "Se fallisce, attendi 24 ore prima di riprovare."
+      ]
+    }
+  }
+},
+
+  C_7: {
+  labels:{
+    ar:"حماية الحساب وتجنّب الاختراق (تحديثات 2025)",
+    fr:"Sécuriser le compte et éviter le piratage (2025)",
+    en:"Account protection & anti-hacking (2025)",
+    it:"Protezione account e anti-hacking (2025)"
+  },
+  answer:{
+    ar:{
+      cause:"اختراقات تحصل بسبب روابط وهمية، كلمات مرور ضعيفة، أو تسجيل دخول من أجهزة غير موثوقة.",
+      steps:[
+        "استعمل كلمة مرور قوية وفريدة (أحرف + أرقام + رموز).",
+        "فعّل التحقق الثنائي (2FA) عبر البريد والهاتف.",
+        "لا تضغط على روابط تدّعي زيادة المتابعين أو التوثيق.",
+        "راجع الأجهزة المتصلة واحذف أي جهاز غير معروف.",
+        "غيّر كلمة المرور فورًا عند أي نشاط مشبوه."
+      ]
+    },
+    fr:{
+      cause:"Les piratages viennent souvent de liens frauduleux ou mots de passe faibles.",
+      steps:[
+        "Utilisez un mot de passe fort et unique.",
+        "Activez l’authentification à deux facteurs (2FA).",
+        "N’ouvrez pas de liens promettant followers ou vérification.",
+        "Supprimez les appareils inconnus.",
+        "Changez le mot de passe en cas d’activité suspecte."
+      ]
+    },
+    en:{
+      cause:"Hacks usually come from phishing links or weak passwords.",
+      steps:[
+        "Use a strong and unique password.",
+        "Enable two-factor authentication (2FA).",
+        "Avoid links promising followers or verification.",
+        "Remove unknown connected devices.",
+        "Change your password if anything looks suspicious."
+      ]
+    },
+    it:{
+      cause:"Gli hack avvengono spesso tramite link falsi o password deboli.",
+      steps:[
+        "Usa una password forte e unica.",
+        "Attiva l’autenticazione a due fattori (2FA).",
+        "Evita link che promettono follower o verifica.",
+        "Rimuovi dispositivi sconosciuti.",
+        "Cambia password in caso di attività sospetta."
+      ]
+    }
+  }
 }
 
  };
