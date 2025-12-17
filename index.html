@@ -115,80 +115,82 @@ select{
 <button class="support-fab">💬</button>
 
 <script>
-const BOT_LANG = {
-  ar:{
-    subtitle:"الدعم • التوجيه • الحماية",
-    A:"🚫 قوانين الحظر والانتهاكات",
-    B:"📡 البث المباشر والمشاهدات",
-    C:"🔐 أمان ومشاكل الحساب",
-    D:"💰 الأرباح والسحب",
-    E:"🧹 تنظيف الحساب",
-    F:"📝 الشروط والانضمام إلى وكالتنا",
-    G:"🚀 استفادة المبدع من الانضمام إلى وكالتنا",
-    H:"🛡️ فريق دعم وكالة Davenci C.O.S"
-  },
-  fr:{
-    subtitle:"Support • Orientation • Sécurité",
-    A:"🚫 Règles de sanctions et violations",
-    B:"📡 LIVE et vues",
-    C:"🔐 Sécurité et problèmes de compte",
-    D:"💰 Gains et retraits",
-    E:"🧹 Nettoyage du compte",
-    F:"📝 Conditions et adhésion à notre agence",
-    G:"🚀 Avantages pour le créateur",
-    H:"🛡️ Équipe de support Davenci C.O.S"
-  },
-  it:{
-    subtitle:"Supporto • Orientamento • Sicurezza",
-    A:"🚫 Regole di blocchi e violazioni",
-    B:"📡 LIVE e visualizzazioni",
-    C:"🔐 Sicurezza e problemi account",
-    D:"💰 Guadagni e prelievi",
-    E:"🧹 Pulizia account",
-    F:"📝 Condizioni e adesione alla nostra agenzia",
-    G:"🚀 Vantaggi per il creator",
-    H:"🛡️ Team di supporto Davenci C.O.S"
-  },
-  en:{
-    subtitle:"Support • Guidance • Security",
-    A:"🚫 Bans and violations rules",
-    B:"📡 LIVE and views",
-    C:"🔐 Account security and issues",
-    D:"💰 Earnings and withdrawals",
-    E:"🧹 Account cleanup",
-    F:"📝 Terms and joining our agency",
-    G:"🚀 Creator benefits",
-    H:"🛡️ Davenci C.O.S support team"
+document.addEventListener("DOMContentLoaded", function(){
+
+  const BOT_LANG = {
+    ar:{
+      subtitle:"الدعم • التوجيه • الحماية",
+      A:"🚫 قوانين الحظر والانتهاكات",
+      B:"📡 البث المباشر والمشاهدات",
+      C:"🔐 أمان ومشاكل الحساب",
+      D:"💰 الأرباح والسحب",
+      E:"🧹 تنظيف الحساب",
+      F:"📝 الشروط والانضمام إلى وكالتنا",
+      G:"🚀 استفادة المبدع من الانضمام إلى وكالتنا",
+      H:"🛡️ فريق دعم وكالة Davenci C.O.S"
+    },
+    fr:{
+      subtitle:"Support • Orientation • Sécurité",
+      A:"🚫 Règles de sanctions et violations",
+      B:"📡 LIVE et vues",
+      C:"🔐 Sécurité et problèmes de compte",
+      D:"💰 Gains et retraits",
+      E:"🧹 Nettoyage du compte",
+      F:"📝 Conditions et adhésion à notre agence",
+      G:"🚀 Avantages pour le créateur",
+      H:"🛡️ Équipe de support Davenci C.O.S"
+    },
+    it:{
+      subtitle:"Supporto • Orientamento • Sicurezza",
+      A:"🚫 Regole di blocchi e violazioni",
+      B:"📡 LIVE e visualizzazioni",
+      C:"🔐 Sicurezza e problemi account",
+      D:"💰 Guadagni e prelievi",
+      E:"🧹 Pulizia account",
+      F:"📝 Condizioni e adesione alla nostra agenzia",
+      G:"🚀 Vantaggi per il creator",
+      H:"🛡️ Team di supporto Davenci C.O.S"
+    },
+    en:{
+      subtitle:"Support • Guidance • Security",
+      A:"🚫 Bans and violations rules",
+      B:"📡 LIVE and views",
+      C:"🔐 Account security and issues",
+      D:"💰 Earnings and withdrawals",
+      E:"🧹 Account cleanup",
+      F:"📝 Terms and joining our agency",
+      G:"🚀 Creator benefits",
+      H:"🛡️ Davenci C.O.S support team"
+    }
+  };
+
+  const subtitle = document.getElementById("subtitle");
+  const btnA = document.getElementById("btnA");
+  const btnB = document.getElementById("btnB");
+  const btnC = document.getElementById("btnC");
+  const btnD = document.getElementById("btnD");
+  const btnE = document.getElementById("btnE");
+  const btnF = document.getElementById("btnF");
+  const btnG = document.getElementById("btnG");
+  const btnH = document.getElementById("btnH");
+
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.documentElement.dir  = (lang === "ar") ? "rtl" : "ltr";
+
+    subtitle.textContent = BOT_LANG[lang].subtitle;
+    btnA.textContent = BOT_LANG[lang].A;
+    btnB.textContent = BOT_LANG[lang].B;
+    btnC.textContent = BOT_LANG[lang].C;
+    btnD.textContent = BOT_LANG[lang].D;
+    btnE.textContent = BOT_LANG[lang].E;
+    btnF.textContent = BOT_LANG[lang].F;
+    btnG.textContent = BOT_LANG[lang].G;
+    btnH.textContent = BOT_LANG[lang].H;
   }
-};
 
-/* ربط العناصر */
-const subtitle = document.getElementById("subtitle");
-const btnA = document.getElementById("btnA");
-const btnB = document.getElementById("btnB");
-const btnC = document.getElementById("btnC");
-const btnD = document.getElementById("btnD");
-const btnE = document.getElementById("btnE");
-const btnF = document.getElementById("btnF");
-const btnG = document.getElementById("btnG");
-const btnH = document.getElementById("btnH");
+  /* 🔥 فرض العربي */
+  setLang("ar");
 
-/* تغيير اللغة */
-function setLang(lang){
-  document.documentElement.lang = lang;
-  document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
-
-  subtitle.textContent = BOT_LANG[lang].subtitle;
-  btnA.textContent = BOT_LANG[lang].A;
-  btnB.textContent = BOT_LANG[lang].B;
-  btnC.textContent = BOT_LANG[lang].C;
-  btnD.textContent = BOT_LANG[lang].D;
-  btnE.textContent = BOT_LANG[lang].E;
-  btnF.textContent = BOT_LANG[lang].F;
-  btnG.textContent = BOT_LANG[lang].G;
-  btnH.textContent = BOT_LANG[lang].H;
-}
-
-/* تشغيل افتراضي: عربي */
-setLang("ar");
+});
 </script>
