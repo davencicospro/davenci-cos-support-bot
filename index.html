@@ -2,341 +2,144 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Davenci C.O.S – Support</title>
+<title>Davenci C.O.S – Support Bot</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
 :root{
-  --bg1:#0b1c2d; --bg2:#0f2f4a;
-  --card:rgba(255,255,255,0.09);
-  --border:rgba(255,255,255,0.16);
-  --text:#fff; --muted:rgba(255,255,255,0.85);
-  --btn:#1dd3b0; --btn2:#0bbcd6;
+  --navy:#0E1E3A;
+  --blue:#1F3C5B;
+  --teal:#6FAFC2;
+  --white:#ffffff;
 }
+
+/* ===== خلفية بصورة اللوغو ===== */
 body{
-  margin:0; font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,var(--bg1),var(--bg2));
-  color:var(--text); min-height:100vh;
-  display:flex; align-items:center; justify-content:center;
+  margin:0;
+  font-family: Arial, sans-serif;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background-image: url("agency-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-.wrap{ width:100%; max-width:520px; padding:18px; }
+
+/* تغميق خفيف */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background: rgba(14,30,58,0.55);
+  z-index:-1;
+}
+
+/* ===== الحاوية ===== */
+.wrap{
+  width:100%;
+  max-width:520px;
+  padding:18px;
+}
+
+/* ===== الكارت ===== */
 .card{
-  background:var(--card); border:1px solid var(--border);
-  border-radius:18px; padding:18px;
+  background: rgba(255,255,255,0.88);
+  border-radius:18px;
+  padding:22px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  text-align:center;
 }
-.header{ text-align:center; margin-bottom:10px; }
+
+/* ===== اللوجو ===== */
 .logoTop{
-  width:60px; height:60px; border-radius:14px;
-  background:rgba(255,255,255,.1); padding:10px;
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  background:#fff;
+  padding:10px;
+  box-shadow: 0 0 18px rgba(31,60,91,0.4);
+  object-fit:contain;
+  margin-bottom:10px;
 }
-.langRow{ text-align:center; margin:10px 0; }
-select{
-  padding:10px; border-radius:12px;
-  background:rgba(255,255,255,.1); color:#fff;
+
+/* ===== النص ===== */
+h1{
+  margin:6px 0 4px;
+  font-size:20px;
+  color:var(--navy);
 }
-option{ color:#000; }
-h1{ font-size:18px; margin:8px 0; }
-p{ font-size:13.5px; color:var(--muted); }
-.list{ display:flex; flex-direction:column; gap:10px; }
+p{
+  margin:0 0 14px;
+  font-size:14px;
+  color:#2f3e4f;
+}
+
+/* ===== أزرار ===== */
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:10px;
+}
 .btn{
-  padding:12px; border-radius:14px;
-  border:0; cursor:pointer; font-weight:700;
-  background:linear-gradient(135deg,var(--btn),var(--btn2));
+  padding:12px;
+  border-radius:14px;
+  border:0;
+  cursor:pointer;
+  font-weight:700;
+  color:#fff;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
 }
 .btn.secondary{
-  background:transparent; color:#fff;
-  border:1px solid var(--border);
+  background: transparent;
+  color: var(--blue);
+  border:1px solid var(--blue);
 }
-.footerNote{ font-size:11px; text-align:center; margin-top:10px; }
+
+/* ===== الفوتر ===== */
+.footerNote{
+  margin-top:14px;
+  font-size:11.5px;
+  color:#4a5b6b;
+}
 </style>
 </head>
 
 <body>
+
 <div class="wrap">
-<div class="card">
+  <div class="card">
 
-<div class="header">
-  <img src="logo.png" class="logoTop" />
-  <div id="brandBadge">Davenci C.O.S Support</div>
+    <!-- لوجو الوكالة -->
+    <img src="logo.png" class="logoTop" alt="Davenci C.O.S" />
+
+    <!-- العنوان -->
+    <h1>Davenci C.O.S</h1>
+
+    <!-- الوصف -->
+    <p>
+      Support – Orientation – Sécurité<br>
+      الدعم • التوجيه • الحماية
+    </p>
+
+    <!-- أزرار البوت -->
+    <div class="list">
+      <button class="btn">🚫 Bans & Violations</button>
+      <button class="btn">📡 LIVE & Views</button>
+      <button class="btn">🔐 Account Security</button>
+      <button class="btn secondary">Contact Support</button>
+    </div>
+
+    <!-- الفوتر -->
+    <div class="footerNote">
+      Davenci C.O.S – Conseils, Orientation & Sécurité
+    </div>
+
+  </div>
 </div>
 
-<div class="langRow">
-<select id="lang">
-  <option value="it">🇮🇹 Italiano</option>
-  <option value="fr">🇫🇷 Français</option>
-  <option value="en">🇬🇧 English</option>
-  <option value="ar">🇹🇳 عربي</option>
-</select>
-</div>
-
-<h1 id="title"></h1>
-<p id="desc"></p>
-<div id="content" class="list"></div>
-<div class="footerNote" id="footerNote"></div>
-
-</div>
-</div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>Davenci C.O.S – Support</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<style>
-:root{
-  --bg1:#0b1c2d; --bg2:#0f2f4a;
-  --card:rgba(255,255,255,0.09);
-  --border:rgba(255,255,255,0.16);
-  --text:#fff; --muted:rgba(255,255,255,0.85);
-  --btn:#1dd3b0; --btn2:#0bbcd6;
-}
-body{
-  margin:0; font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,var(--bg1),var(--bg2));
-  color:var(--text); min-height:100vh;
-  display:flex; align-items:center; justify-content:center;
-}
-.wrap{ width:100%; max-width:520px; padding:18px; }
-.card{
-  background:var(--card); border:1px solid var(--border);
-  border-radius:18px; padding:18px;
-}
-.header{ text-align:center; margin-bottom:10px; }
-.logoTop{
-  width:60px; height:60px; border-radius:14px;
-  background:rgba(255,255,255,.1); padding:10px;
-}
-.langRow{ text-align:center; margin:10px 0; }
-select{
-  padding:10px; border-radius:12px;
-  background:rgba(255,255,255,.1); color:#fff;
-}
-option{ color:#000; }
-h1{ font-size:18px; margin:8px 0; }
-p{ font-size:13.5px; color:var(--muted); }
-.list{ display:flex; flex-direction:column; gap:10px; }
-.btn{
-  padding:12px; border-radius:14px;
-  border:0; cursor:pointer; font-weight:700;
-  background:linear-gradient(135deg,var(--btn),var(--btn2));
-}
-.btn.secondary{
-  background:transparent; color:#fff;
-  border:1px solid var(--border);
-}
-.footerNote{ font-size:11px; text-align:center; margin-top:10px; }
-</style>
-</head>
-
-<body>
-<div class="wrap">
-<div class="card">
-
-<div class="header">
-  <img src="logo.png" class="logoTop" />
-  <div id="brandBadge">Davenci C.O.S Support</div>
-</div>
-
-<div class="langRow">
-<select id="lang">
-  <option value="it">🇮🇹 Italiano</option>
-  <option value="fr">🇫🇷 Français</option>
-  <option value="en">🇬🇧 English</option>
-  <option value="ar">🇹🇳 عربي</option>
-</select>
-</div>
-
-<h1 id="title"></h1>
-<p id="desc"></p>
-<div id="content" class="list"></div>
-<div class="footerNote" id="footerNote"></div>
-
-</div>
-</div>
-
-<script>
-const SUPPORT_EMAIL="support@davenci-cos.com";
-
-let state={ view:"home", sectionId:null, faqId:null, lang:"it" };
-
-const i18n={
-ar:{brand:"دعم Davenci C.O.S",homeTitle:"مرحبا بك",homeDesc:"اختر القسم ثم السؤال",back:"رجوع",openTicket:"فتح تذكرة",footer:"Davenci C.O.S – الحماية والدعم"},
-fr:{brand:"Support Davenci C.O.S",homeTitle:"Bienvenue",homeDesc:"Choisissez une section",back:"Retour",openTicket:"Ouvrir ticket",footer:"Davenci C.O.S – Support"},
-en:{brand:"Davenci C.O.S Support",homeTitle:"Welcome",homeDesc:"Choose a section",back:"Back",openTicket:"Open ticket",footer:"Davenci C.O.S Support"},
-it:{brand:"Supporto Davenci C.O.S",homeTitle:"Benvenuto",homeDesc:"Scegli una sezione",back:"Indietro",openTicket:"Apri ticket",footer:"Davenci C.O.S Support"}
-};
-
-const sections = [
-  {
-    id:"A",
-    icon:"🚫",
-    labels:{
-      ar:"قوانين الحظر والانتهاكات",
-      fr:"Règles de sanctions et violations",
-      en:"Bans & violations rules",
-      it:"Regole di blocchi e violazioni"
-    }
-  },
-  {
-    id:"B",
-    icon:"📡",
-    labels:{
-      ar:"البث المباشر والمشاهدات",
-      fr:"LIVE et vues",
-      en:"LIVE & views",
-      it:"LIVE e visualizzazioni"
-    }
-  },
-  {
-    id:"C",
-    icon:"🔐",
-    labels:{
-      ar:"أمان ومشاكل الحساب",
-      fr:"Sécurité et problèmes de compte",
-      en:"Account security & issues",
-      it:"Sicurezza e problemi account"
-    }
-  },
-  {
-    id:"D",
-    icon:"💰",
-    labels:{
-      ar:"الأرباح والسحب",
-      fr:"Gains et retraits",
-      en:"Earnings & withdrawals",
-      it:"Guadagni e prelievi"
-    }
-  },
-  {
-    id:"E",
-    icon:"🧹",
-    labels:{
-      ar:"تنظيف الحساب",
-      fr:"Nettoyage du compte",
-      en:"Account cleanup",
-      it:"Pulizia account"
-    }
-  },
-  {
-    id:"F",
-    icon:"📝",
-    labels:{
-      ar:"الشروط والانضمام إلى وكالتنا",
-      fr:"Conditions et adhésion à notre agence",
-      en:"Terms & joining our agency",
-      it:"Condizioni e adesione alla nostra agenzia"
-    }
-  },
-  {
-    id:"G",
-    icon:"🚀",
-    labels:{
-      ar:"استفادة المبدع من الانضمام إلى وكالتنا",
-      fr:"Avantages pour le créateur",
-      en:"Creator benefits",
-      it:"Vantaggi per il creator"
-    }
-  },
-  {
-    id:"H",
-    icon:"🛡️",
-    labels:{
-      ar:"فريق دعم وكالة Davenci C.O.S",
-      fr:"Équipe de support Davenci C.O.S",
-      en:"Davenci C.O.S support team",
-      it:"Team di supporto Davenci C.O.S"
-    }
-  }
-];
-
-
-const contentA={
-A_1:{
-labels:{ar:"تم حظر الحساب",fr:"Compte banni",en:"Account banned",it:"Account bloccato"},
-answer:{
-ar:{cause:"مخالفة سياسات",steps:["راجع الإشعارات","انتظر المدة","تجنب التكرار"]},
-fr:{cause:"Violation des règles",steps:["Vérifier notifications","Attendre","Éviter récidive"]},
-en:{cause:"Policy violation",steps:["Check notifications","Wait","Avoid repeat"]},
-it:{cause:"Violazione regole",steps:["Controlla","Attendi","Evita errori"]}
-}
-}
-};
-
-const contentB={
-B_1:{
-labels:{ar:"البث لا يفتح",fr:"LIVE ne démarre pas",en:"LIVE not starting",it:"LIVE non parte"},
-answer:{
-ar:{cause:"عدم الأهلية",steps:["تأكد من العمر","عدد المتابعين","لا مخالفات"]},
-fr:{cause:"Non éligible",steps:["Âge","Abonnés","Aucune sanction"]},
-en:{cause:"Not eligible",steps:["Age","Followers","No bans"]},
-it:{cause:"Non idoneo",steps:["Età","Follower","Nessuna violazione"]}
-}
-}
-};
-
-const contentsMap={A:contentA,B:contentB};
-
-function t(){return i18n[state.lang];}
-function setLang(l){
-state.lang=l;
-document.documentElement.lang=l;
-document.body.dir=l==="ar"?"rtl":"ltr";
-brandBadge.innerText=t().brand;
-footerNote.innerText=t().footer;
-}
-
-function renderHome(){
-title.innerText=t().homeTitle;
-desc.innerText=t().homeDesc;
-content.innerHTML="";
-sections.forEach(s=>{
-let b=document.createElement("button");
-b.className="btn";
-b.textContent=s.icon+" "+s.labels[state.lang];
-b.onclick=()=>openSection(s.id);
-content.appendChild(b);
-});
-}
-
-function openSection(id){
-state.sectionId=id;
-let sec=sections.find(s=>s.id===id);
-title.innerText=sec.labels[state.lang];
-desc.innerText="";
-content.innerHTML="";
-Object.entries(contentsMap[id]).forEach(([k,v])=>{
-let b=document.createElement("button");
-b.className="btn";
-b.textContent="❓ "+v.labels[state.lang];
-b.onclick=()=>openAnswer(k);
-content.appendChild(b);
-});
-let back=document.createElement("button");
-back.className="btn secondary";
-back.textContent=t().back;
-back.onclick=renderHome;
-content.appendChild(back);
-}
-
-function openAnswer(fid){
-let item=contentsMap[state.sectionId][fid];
-title.innerText=item.labels[state.lang];
-desc.innerText=item.answer[state.lang].cause;
-content.innerHTML="";
-item.answer[state.lang].steps.forEach(s=>{
-let p=document.createElement("p"); p.textContent="• "+s; content.appendChild(p);
-});
-let back=document.createElement("button");
-back.className="btn secondary";
-back.textContent=t().back;
-back.onclick=()=>openSection(state.sectionId);
-content.appendChild(back);
-}
-
-lang.onchange=e=>{setLang(e.target.value); renderHome();};
-setLang("it"); renderHome();
-</script>
 </body>
 </html>
-
