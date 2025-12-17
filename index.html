@@ -164,32 +164,45 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   };
 
-  const subtitle = document.getElementById("subtitle");
-  const btnA = document.getElementById("btnA");
-  const btnB = document.getElementById("btnB");
-  const btnC = document.getElementById("btnC");
-  const btnD = document.getElementById("btnD");
-  const btnE = document.getElementById("btnE");
-  const btnF = document.getElementById("btnF");
-  const btnG = document.getElementById("btnG");
-  const btnH = document.getElementById("btnH");
+
+  /** =============================
+   *    العناصر المجموعة تلقائيا
+   * ============================= */
+  const elements = {
+    subtitle: document.getElementById("subtitle"),
+    btnA: document.getElementById("btnA"),
+    btnB: document.getElementById("btnB"),
+    btnC: document.getElementById("btnC"),
+    btnD: document.getElementById("btnD"),
+    btnE: document.getElementById("btnE"),
+    btnF: document.getElementById("btnF"),
+    btnG: document.getElementById("btnG"),
+    btnH: document.getElementById("btnH")
+  };
+
 
   function setLang(lang){
+
+    if(!BOT_LANG[lang]) return;
+
     document.documentElement.lang = lang;
     document.documentElement.dir  = (lang === "ar") ? "rtl" : "ltr";
 
-    subtitle.textContent = BOT_LANG[lang].subtitle;
-    btnA.textContent = BOT_LANG[lang].A;
-    btnB.textContent = BOT_LANG[lang].B;
-    btnC.textContent = BOT_LANG[lang].C;
-    btnD.textContent = BOT_LANG[lang].D;
-    btnE.textContent = BOT_LANG[lang].E;
-    btnF.textContent = BOT_LANG[lang].F;
-    btnG.textContent = BOT_LANG[lang].G;
-    btnH.textContent = BOT_LANG[lang].H;
+    const dict = BOT_LANG[lang];
+
+    if(elements.subtitle) elements.subtitle.textContent = dict.subtitle;
+    if(elements.btnA) elements.btnA.textContent = dict.A;
+    if(elements.btnB) elements.btnB.textContent = dict.B;
+    if(elements.btnC) elements.btnC.textContent = dict.C;
+    if(elements.btnD) elements.btnD.textContent = dict.D;
+    if(elements.btnE) elements.btnE.textContent = dict.E;
+    if(elements.btnF) elements.btnF.textContent = dict.F;
+    if(elements.btnG) elements.btnG.textContent = dict.G;
+    if(elements.btnH) elements.btnH.textContent = dict.H;
   }
 
-  /* 🔥 فرض العربي */
+
+  /** 🔥 فرض العربية */
   setLang("ar");
 
 });
