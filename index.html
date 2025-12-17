@@ -115,9 +115,9 @@ select{
 <button class="support-fab">💬</button>
 
 <script>
-const texts = {
+const BOT_LANG = {
   ar:{
-    sub:"الدعم • التوجيه • الحماية",
+    subtitle:"الدعم • التوجيه • الحماية",
     A:"🚫 قوانين الحظر والانتهاكات",
     B:"📡 البث المباشر والمشاهدات",
     C:"🔐 أمان ومشاكل الحساب",
@@ -128,7 +128,7 @@ const texts = {
     H:"🛡️ فريق دعم وكالة Davenci C.O.S"
   },
   fr:{
-    sub:"Support • Orientation • Sécurité",
+    subtitle:"Support • Orientation • Sécurité",
     A:"🚫 Règles de sanctions et violations",
     B:"📡 LIVE et vues",
     C:"🔐 Sécurité et problèmes de compte",
@@ -139,7 +139,7 @@ const texts = {
     H:"🛡️ Équipe de support Davenci C.O.S"
   },
   it:{
-    sub:"Supporto • Orientamento • Sicurezza",
+    subtitle:"Supporto • Orientamento • Sicurezza",
     A:"🚫 Regole di blocchi e violazioni",
     B:"📡 LIVE e visualizzazioni",
     C:"🔐 Sicurezza e problemi account",
@@ -150,7 +150,7 @@ const texts = {
     H:"🛡️ Team di supporto Davenci C.O.S"
   },
   en:{
-    sub:"Support • Guidance • Security",
+    subtitle:"Support • Guidance • Security",
     A:"🚫 Bans and violations rules",
     B:"📡 LIVE and views",
     C:"🔐 Account security and issues",
@@ -162,40 +162,33 @@ const texts = {
   }
 };
 
-const el = {
-  subtitle: document.getElementById("subtitle"),
-  btnA: document.getElementById("btnA"),
-  btnB: document.getElementById("btnB"),
-  btnC: document.getElementById("btnC"),
-  btnD: document.getElementById("btnD"),
-  btnE: document.getElementById("btnE"),
-  btnF: document.getElementById("btnF"),
-  btnG: document.getElementById("btnG"),
-  btnH: document.getElementById("btnH"),
-  lang: document.getElementById("lang")
-};
+/* ربط العناصر */
+const subtitle = document.getElementById("subtitle");
+const btnA = document.getElementById("btnA");
+const btnB = document.getElementById("btnB");
+const btnC = document.getElementById("btnC");
+const btnD = document.getElementById("btnD");
+const btnE = document.getElementById("btnE");
+const btnF = document.getElementById("btnF");
+const btnG = document.getElementById("btnG");
+const btnH = document.getElementById("btnH");
 
+/* تغيير اللغة */
 function setLang(lang){
   document.documentElement.lang = lang;
   document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
 
-  el.subtitle.textContent = texts[lang].sub;
-  el.btnA.textContent = texts[lang].A;
-  el.btnB.textContent = texts[lang].B;
-  el.btnC.textContent = texts[lang].C;
-  el.btnD.textContent = texts[lang].D;
-  el.btnE.textContent = texts[lang].E;
-  el.btnF.textContent = texts[lang].F;
-  el.btnG.textContent = texts[lang].G;
-  el.btnH.textContent = texts[lang].H;
+  subtitle.textContent = BOT_LANG[lang].subtitle;
+  btnA.textContent = BOT_LANG[lang].A;
+  btnB.textContent = BOT_LANG[lang].B;
+  btnC.textContent = BOT_LANG[lang].C;
+  btnD.textContent = BOT_LANG[lang].D;
+  btnE.textContent = BOT_LANG[lang].E;
+  btnF.textContent = BOT_LANG[lang].F;
+  btnG.textContent = BOT_LANG[lang].G;
+  btnH.textContent = BOT_LANG[lang].H;
 }
 
-/* تغيير اللغة */
-el.lang.addEventListener("change", e => {
-  setLang(e.target.value);
-});
-
-/* 🔴 هذا السطر هو المفتاح */
-el.lang.value = "ar";
+/* تشغيل افتراضي: عربي */
 setLang("ar");
 </script>
