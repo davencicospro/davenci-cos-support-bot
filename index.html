@@ -89,10 +89,89 @@ en:{brand:"Davenci C.O.S Support",homeTitle:"Welcome",homeDesc:"Choose a section
 it:{brand:"Supporto Davenci C.O.S",homeTitle:"Benvenuto",homeDesc:"Scegli una sezione",back:"Indietro",openTicket:"Apri ticket",footer:"Davenci C.O.S Support"}
 };
 
-const sections=[
-{id:"A",icon:"🚫",labels:{ar:"الحظر",fr:"Sanctions",en:"Bans",it:"Blocchi"}},
-{id:"B",icon:"📡",labels:{ar:"البث",fr:"LIVE",en:"LIVE",it:"LIVE"}}
+const sections = [
+  {
+    id:"A",
+    icon:"🚫",
+    labels:{
+      ar:"قوانين الحظر والانتهاكات",
+      fr:"Règles de sanctions et violations",
+      en:"Bans & violations rules",
+      it:"Regole di blocchi e violazioni"
+    }
+  },
+  {
+    id:"B",
+    icon:"📡",
+    labels:{
+      ar:"البث المباشر والمشاهدات",
+      fr:"LIVE et vues",
+      en:"LIVE & views",
+      it:"LIVE e visualizzazioni"
+    }
+  },
+  {
+    id:"C",
+    icon:"🔐",
+    labels:{
+      ar:"أمان ومشاكل الحساب",
+      fr:"Sécurité et problèmes de compte",
+      en:"Account security & issues",
+      it:"Sicurezza e problemi account"
+    }
+  },
+  {
+    id:"D",
+    icon:"💰",
+    labels:{
+      ar:"الأرباح والسحب",
+      fr:"Gains et retraits",
+      en:"Earnings & withdrawals",
+      it:"Guadagni e prelievi"
+    }
+  },
+  {
+    id:"E",
+    icon:"🧹",
+    labels:{
+      ar:"تنظيف الحساب",
+      fr:"Nettoyage du compte",
+      en:"Account cleanup",
+      it:"Pulizia account"
+    }
+  },
+  {
+    id:"F",
+    icon:"📝",
+    labels:{
+      ar:"الشروط والانضمام إلى وكالتنا",
+      fr:"Conditions et adhésion à notre agence",
+      en:"Terms & joining our agency",
+      it:"Condizioni e adesione alla nostra agenzia"
+    }
+  },
+  {
+    id:"G",
+    icon:"🚀",
+    labels:{
+      ar:"استفادة المبدع من الانضمام إلى وكالتنا",
+      fr:"Avantages pour le créateur",
+      en:"Creator benefits",
+      it:"Vantaggi per il creator"
+    }
+  },
+  {
+    id:"H",
+    icon:"🛡️",
+    labels:{
+      ar:"فريق دعم وكالة Davenci C.O.S",
+      fr:"Équipe de support Davenci C.O.S",
+      en:"Davenci C.O.S support team",
+      it:"Team di supporto Davenci C.O.S"
+    }
+  }
 ];
+
 
 const contentA={
 A_1:{
@@ -118,7 +197,17 @@ it:{cause:"Non idoneo",steps:["Età","Follower","Nessuna violazione"]}
 }
 };
 
-const contentsMap={A:contentA,B:contentB};
+const contentsMap = {
+  A: contentA,   // قوانين الحظر والانتهاكات
+  B: contentB,   // البث المباشر والمشاهدات
+  C: {},         // أمان ومشاكل الحساب
+  D: {},         // الأرباح والسحب
+  E: {},         // تنظيف الحساب
+  F: {},         // الشروط والانضمام إلى وكالتنا
+  G: {},         // استفادة المبدع من الانضمام
+  H: {}          // فريق دعم Davenci C.O.S
+};
+
 
 function t(){return i18n[state.lang];}
 function setLang(l){
