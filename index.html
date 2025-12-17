@@ -715,15 +715,19 @@ function openSection(sectionId){
   const content=document.getElementById("content");
   content.innerHTML="";
 
-  if(sectionId!=="A"){
-    document.getElementById("desc").innerText = t().soon;
-    const back=document.createElement("button");
-    back.className="btn secondary";
-    back.textContent=t().back;
-    back.onclick=renderHome;
-    content.appendChild(back);
-    return;
-  }
+  const sectionContent = contentsMap[sectionId];
+
+if(!sectionContent || Object.keys(sectionContent).length === 0){
+  document.getElementById("desc").innerText = t().soon;
+
+  const back = document.createElement("button");
+  back.className = "btn secondary";
+  back.textContent = t().back;
+  back.onclick = renderHome;
+
+  content.appendChild(back);
+  return;
+}
 
   document.getElementById("desc").innerText =
     (state.lang==="ar") ? "اختر سؤالًا شائعًا، ثم اقرأ الحل. إذا لم تُحل المشكلة، افتح تذكرة."
