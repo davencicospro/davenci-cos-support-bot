@@ -162,22 +162,40 @@ const texts = {
   }
 };
 
-function setLang(l){
-  document.documentElement.dir = l==="ar"?"rtl":"ltr";
-  subtitle.innerText = texts[l].sub;
-  btnA.innerText = texts[l].A;
-  btnB.innerText = texts[l].B;
-  btnC.innerText = texts[l].C;
-  btnD.innerText = texts[l].D;
-  btnE.innerText = texts[l].E;
-  btnF.innerText = texts[l].F;
-  btnG.innerText = texts[l].G;
-  btnH.innerText = texts[l].H;
+const el = {
+  subtitle: document.getElementById("subtitle"),
+  btnA: document.getElementById("btnA"),
+  btnB: document.getElementById("btnB"),
+  btnC: document.getElementById("btnC"),
+  btnD: document.getElementById("btnD"),
+  btnE: document.getElementById("btnE"),
+  btnF: document.getElementById("btnF"),
+  btnG: document.getElementById("btnG"),
+  btnH: document.getElementById("btnH"),
+  lang: document.getElementById("lang")
+};
+
+function setLang(lang){
+  document.documentElement.lang = lang;
+  document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+
+  el.subtitle.textContent = texts[lang].sub;
+  el.btnA.textContent = texts[lang].A;
+  el.btnB.textContent = texts[lang].B;
+  el.btnC.textContent = texts[lang].C;
+  el.btnD.textContent = texts[lang].D;
+  el.btnE.textContent = texts[lang].E;
+  el.btnF.textContent = texts[lang].F;
+  el.btnG.textContent = texts[lang].G;
+  el.btnH.textContent = texts[lang].H;
 }
 
-lang.onchange = e => setLang(e.target.value);
+/* تغيير اللغة */
+el.lang.addEventListener("change", e => {
+  setLang(e.target.value);
+});
+
+/* 🔴 هذا السطر هو المفتاح */
+el.lang.value = "ar";
 setLang("ar");
 </script>
-
-</body>
-</html>
