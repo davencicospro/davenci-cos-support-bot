@@ -173,129 +173,327 @@ const sections = [
   }
 ];
 
-const contentA={
-A_1:{
-  labels:{ ar:"حظر مؤقت: ماذا أفعل؟", fr:"Blocage temporaire : que faire ?", en:"Temporary ban: what to do?", it:"Blocco temporaneo: cosa fare?" },
-  answer:{
-    ar:{ cause:"مخالفة بسيطة أو بلاغات متكررة.",
-      steps:["انتظر انتهاء المدة.","راجع الإشعارات.","احذف المحتوى المخالف.","خفّف النشر 48 ساعة."]
-    },
-    fr:{ cause:"Infraction légère ou signalements répétés.",
-      steps:["Attendez la fin.","Vérifiez les notifications.","Supprimez le contenu à risque.","Pause 48h."]
-    },
-    en:{ cause:"Minor policy issue or reports.",
-      steps:["Wait for it to end.","Check notifications.","Remove risky content.","Pause 48h."]
-    },
-    it:{ cause:"Violazione lieve o segnalazioni.",
-      steps:["Attendi la fine.","Controlla notifiche.","Rimuovi contenuti a rischio.","Pausa 48h."]
+const contentA = {
+  A_1: {
+    labels:{ ar:"حظر مؤقت: ماذا أفعل؟", fr:"Blocage temporaire : que faire ?", en:"Temporary ban: what to do?", it:"Blocco temporaneo: cosa fare?" },
+    answer:{
+      ar:{ cause:"غالبًا بسبب مخالفة بسيطة أو بلاغات متكرّرة خلال وقت قصير.",
+        steps:["انتظر انتهاء مدة الحظر كاملة.","راجع الإشعارات لمعرفة السبب.","احذف/أخفِ أي محتوى مخالف.","خفّف النشر ليومين ثم ارجع تدريجيًا."]
+      },
+      fr:{ cause:"Souvent dû à une infraction légère ou à plusieurs signalements en peu de temps.",
+        steps:["Attendez la fin du blocage.","Vérifiez les notifications.","Supprimez/masquez le contenu à risque.","Pause 48h puis reprise progressive."]
+      },
+      en:{ cause:"Often caused by minor policy issues or repeated reports in a short time.",
+        steps:["Wait until the ban ends.","Check notifications.","Remove/hide risky content.","Pause 48h then return gradually."]
+      },
+      it:{ cause:"Spesso dovuto a una violazione lieve o a segnalazioni ripetute.",
+        steps:["Attendi la fine del blocco.","Controlla le notifiche.","Rimuovi/nascondi contenuti a rischio.","Pausa 48h e riprendi gradualmente."]
+      }
     }
-  }
-},
+  },
 
   A_2:{
-  labels:{ ar:"حظر دائم: هل يوجد استئناف؟", fr:"Blocage permanent : recours ?", en:"Permanent ban: appeal?", it:"Blocco permanente: ricorso?" },
+  labels:{
+    ar:"حظر دائم: هل يمكن استرجاع الحساب؟",
+    fr:"Blocage permanent : récupérer le compte ?",
+    en:"Permanent ban: can I recover my account?",
+    it:"Blocco permanente: posso recuperare l’account?"
+  },
   answer:{
-    ar:{ cause:"مخالفات جسيمة أو متكررة.",
-      steps:["ابحث عن الاستئناف.","اكتب طلب مختصر ومحترم.","حضّر إثباتات ملكية.","إن لم يوجد، افتح تيكت."]
+    ar:{
+      cause:"الحظر الدائم يكون بسبب مخالفات خطيرة أو تكرار مخالفات سابقة.",
+      steps:[
+        "تحقق من وجود خيار استئناف داخل التطبيق.",
+        "اكتب استئناف محترم بدون تهديد أو سب.",
+        "قدّم إثبات ملكية الحساب (إيميل، رقم، اسم المستخدم).",
+        "إذا لا يوجد استئناف، افتح تيكت دعم مع الوكالة."
+      ]
     },
-    fr:{ cause:"Infractions graves ou répétées.",
-      steps:["Cherchez l’appel.","Message court.","Préparez preuves.","Sinon ticket."]
+    fr:{
+      cause:"Le blocage permanent est dû à des violations graves ou répétées.",
+      steps:[
+        "Vérifiez s’il existe une option de recours.",
+        "Rédigez un appel clair et respectueux.",
+        "Fournissez les preuves de propriété du compte.",
+        "Sinon, ouvrez un ticket de support."
+      ]
     },
-    en:{ cause:"Severe or repeated violations.",
-      steps:["Check appeal.","Write respectfully.","Prepare proof.","Otherwise ticket."]
+    en:{
+      cause:"Permanent bans are caused by serious or repeated violations.",
+      steps:[
+        "Check if an appeal option exists.",
+        "Write a polite and clear appeal.",
+        "Provide account ownership proof.",
+        "If unavailable, open a support ticket."
+      ]
     },
-    it:{ cause:"Violazioni gravi o ripetute.",
-      steps:["Verifica ricorso.","Messaggio breve.","Prepara prove.","Altrimenti ticket."]
+    it:{
+      cause:"Il blocco permanente è causato da violazioni gravi o ripetute.",
+      steps:[
+        "Controlla se è disponibile un ricorso.",
+        "Scrivi un appello educato.",
+        "Fornisci prove di proprietà.",
+        "In alternativa, apri un ticket."
+      ]
     }
   }
 },
 
-  A_3:{
-  labels:{ ar:"تم حذف فيديو أو تقييد النشر", fr:"Vidéo supprimée", en:"Video removed", it:"Video rimossa" },
+A_3:{
+  labels:{
+    ar:"كيف أتجنب الحظر والانتهاكات؟",
+    fr:"Comment éviter les violations ?",
+    en:"How to avoid bans and violations?",
+    it:"Come evitare violazioni?"
+  },
   answer:{
-    ar:{ cause:"محتوى مخالف أو سبام.",
-      steps:["اقرأ سبب الحذف.","قدّم استئناف إن أمكن.","لا تعِد الرفع فورًا.","خفف الهاشتاغات."]
+    ar:{
+      cause:"سلوك خاطئ أو محتوى مخالف لسياسات TikTok.",
+      steps:[
+        "تجنب المحتوى العنيف أو الجنسي أو التحريضي.",
+        "لا تعاود نشر فيديو تحذف قبل.",
+        "استعمل موسيقى بدون حقوق.",
+        "تجنب السبام (تعليقات/متابعات متكررة)."
+      ]
     },
-    fr:{ cause:"Contenu non conforme.",
-      steps:["Lire la raison.","Faire appel.","Ne pas republier مباشرة.","Limiter hashtags."]
+    fr:{
+      cause:"Mauvais comportement ou contenu non conforme.",
+      steps:[
+        "Évitez les contenus violents ou sensibles.",
+        "Ne republiez pas une vidéo supprimée.",
+        "Utilisez de la musique libre de droits.",
+        "Évitez le spam."
+      ]
     },
-    en:{ cause:"Non-compliant content.",
-      steps:["Read reason.","Appeal if possible.","Don’t reupload immediately.","Limit hashtags."]
+    en:{
+      cause:"Unsafe behavior or non-compliant content.",
+      steps:[
+        "Avoid violent or sensitive content.",
+        "Do not repost removed videos.",
+        "Use copyright-free music.",
+        "Avoid spam actions."
+      ]
     },
-    it:{ cause:"Contenuto non conforme.",
-      steps:["Controlla motivo.","Invia ricorso.","Non ricaricare subito.","Meno hashtag."]
+    it:{
+      cause:"Comportamento scorretto o contenuti vietati.",
+      steps:[
+        "Evita contenuti sensibili.",
+        "Non ripubblicare video rimossi.",
+        "Usa musica senza copyright.",
+        "Evita azioni di spam."
+      ]
     }
   }
 },
 
- A_4:{
-  labels:{ ar:"تقييد التعليقات أو الرسائل", fr:"Commentaires limités", en:"Comments restricted", it:"Commenti limitati" },
+A_4:{
+  labels:{
+    ar:"تم حذف فيديو أو تقييد النشر",
+    fr:"Vidéo supprimée ou publication limitée",
+    en:"Video removed or posting limited",
+    it:"Video rimossa o pubblicazione limitata"
+  },
   answer:{
-    ar:{ cause:"نشاط سبام.",
-      steps:["توقف 24–48 ساعة.","تجنب الروابط.","حدّث التطبيق.","ارجع تدريجيًا."]
+    ar:{
+      cause:"الفيديو خالف السياسات أو تم التبليغ عليه.",
+      steps:[
+        "راجع الإشعار لمعرفة السبب.",
+        "قدّم استئناف إن كان الحذف خطأ.",
+        "لا تعاود نشر نفس الفيديو فورًا.",
+        "انتظر 24–48 ساعة قبل النشر."
+      ]
     },
-    fr:{ cause:"Spam.",
-      steps:["Pause 24–48h.","Éviter liens.","Mettre à jour app.","Retour progressif."]
+    fr:{
+      cause:"Violation des règles ou signalements.",
+      steps:[
+        "Consultez la notification.",
+        "Faites un recours si nécessaire.",
+        "Ne republiez pas immédiatement.",
+        "Attendez 24–48 heures."
+      ]
     },
-    en:{ cause:"Spam activity.",
-      steps:["Pause 24–48h.","Avoid links.","Update app.","Return gradually."]
+    en:{
+      cause:"Policy violation or reports.",
+      steps:[
+        "Check the notification.",
+        "Appeal if incorrect.",
+        "Do not reupload immediately.",
+        "Wait 24–48 hours."
+      ]
     },
-    it:{ cause:"Spam.",
-      steps:["Pausa 24–48h.","Evita link.","Aggiorna app.","Ritorno graduale."]
+    it:{
+      cause:"Violazione delle regole o segnalazioni.",
+      steps:[
+        "Controlla la notifica.",
+        "Fai ricorso se necessario.",
+        "Non ripubblicare subito.",
+        "Attendi 24–48 ore."
+      ]
     }
   }
 },
 
-  A_5:{
-  labels:{ ar:"حظر LIVE بسبب مخالفة", fr:"LIVE bloqué", en:"LIVE banned", it:"LIVE bloccata" },
+A_5: {
+  labels:{
+    ar:"حظر البث المباشر (LIVE): ماذا أفعل؟",
+    fr:"LIVE bloqué : que faire ?",
+    en:"LIVE banned: what to do?",
+    it:"LIVE bloccata: cosa fare?"
+  },
   answer:{
-    ar:{ cause:"مخالفة سياسات البث.",
-      steps:["تحقق من مدة الحظر.","تجنب الموسيقى المحمية.","التزم بالقوانين.","افتح تيكت إن كان خطأ."]
+    ar:{
+      cause:"يكون عادة بسبب مخالفة سياسات البث المباشر مثل الموسيقى المحمية، محتوى غير مناسب، أو بلاغات أثناء البث.",
+      steps:[
+        "تحقق من مدة حظر LIVE داخل إعدادات الحساب.",
+        "عند عودة البث، تجنب الموسيقى المحمية بحقوق نشر.",
+        "التزم بسلوك هادئ وتجنب الجدل أو الألفاظ الحساسة.",
+        "إذا تعتقد أن الحظر خطأ، افتح تذكرة دعم لمراجعة الحالة."
+      ]
     },
-    fr:{ cause:"Violation LIVE.",
-      steps:["Vérifiez durée.","Éviter musique.","Respect règles.","Ticket si erreur."]
+    fr:{
+      cause:"Généralement dû à une violation des règles LIVE (musique protégée, contenu sensible, signalements).",
+      steps:[
+        "Vérifiez la durée du blocage LIVE dans le compte.",
+        "Évitez la musique protégée lors des prochains lives.",
+        "Gardez un comportement calme et conforme.",
+        "Si vous pensez à une erreur, ouvrez un ticket support."
+      ]
     },
-    en:{ cause:"LIVE policy violation.",
-      steps:["Check duration.","Avoid copyrighted music.","Follow rules.","Open ticket if mistake."]
+    en:{
+      cause:"Usually caused by LIVE policy violations (copyrighted music, sensitive content, or reports).",
+      steps:[
+        "Check the LIVE ban duration in your account settings.",
+        "Avoid copyrighted music in future lives.",
+        "Keep the live safe, calm, and policy-compliant.",
+        "If you believe it’s a mistake, open a support ticket."
+      ]
     },
-    it:{ cause:"Violazione LIVE.",
-      steps:["Controlla durata.","Evita musica.","Rispetta regole.","Ticket se errore."]
+    it:{
+      cause:"Di solito causato da violazioni delle regole LIVE (musica protetta, contenuti sensibili, segnalazioni).",
+      steps:[
+        "Controlla la durata del blocco LIVE nell’account.",
+        "Evita musica protetta nei prossimi live.",
+        "Mantieni un comportamento corretto e tranquillo.",
+        "Se pensi sia un errore, apri un ticket di supporto."
+      ]
     }
   }
 },
 
-  A_6:{
-  labels:{ ar:"قوانين الصور والفيديوهات (2025)", fr:"Règles images & vidéos", en:"Images & videos rules", it:"Regole immagini e video" },
+A_6: {
+  labels:{
+    ar:"قوانين TikTok وكيفية تجنب الحظر",
+    fr:"Règles TikTok et prévention des bans",
+    en:"TikTok rules & how to avoid bans",
+    it:"Regole TikTok e prevenzione blocchi"
+  },
   answer:{
-    ar:{ cause:"مخالفة حقوق أو محتوى حساس.",
-      steps:["تجنب صور العنف.","لا تستخدم محتوى مسروق.","احترم الخصوصية.","التزم بإرشادات 2025."]
+    ar:{
+      cause:"عدم احترام سياسات TikTok يعرض الحساب للحظر أو التقييد.",
+      steps:[
+        "تجنّب العنف، الكراهية، والمحتوى الجنسي.",
+        "لا تستعمل موسيقى أو فيديوهات محمية.",
+        "لا تشترِ متابعين أو تفاعل وهمي.",
+        "تجنّب السبام (تعليقات/رسائل متكررة).",
+        "التزم بقوانين LIVE بدقة.",
+        "انشر محتوى أصلي وبجودة محترمة."
+      ]
     },
-    fr:{ cause:"Contenu sensible ou droits.",
-      steps:["Éviter violence.","Pas de contenu volé.","Respect vie privée.","Suivre règles 2025."]
+    fr:{
+      cause:"Le non-respect des règles entraîne des sanctions.",
+      steps:[
+        "Évitez la violence, la haine et le contenu sexuel.",
+        "Pas de musique protégée sans autorisation.",
+        "N’achetez pas de faux abonnés.",
+        "Évitez le spam.",
+        "Respectez les règles LIVE.",
+        "Publiez du contenu original."
+      ]
     },
-    en:{ cause:"Sensitive or copyrighted content.",
-      steps:["Avoid violence.","No stolen content.","Respect privacy.","Follow 2025 rules."]
+    en:{
+      cause:"Violating TikTok rules leads to restrictions or bans.",
+      steps:[
+        "Avoid violence, hate, and sexual content.",
+        "Do not use copyrighted music.",
+        "Never buy fake followers.",
+        "Avoid spam behavior.",
+        "Follow LIVE policies.",
+        "Post original content only."
+      ]
     },
-    it:{ cause:"Contenuti sensibili.",
-      steps:["Evita violenza.","No contenuti rubati.","Rispetta privacy.","Segui regole 2025."]
+    it:{
+      cause:"La violazione delle regole causa blocchi.",
+      steps:[
+        "Evita violenza, odio e contenuti sessuali.",
+        "Non usare musica protetta.",
+        "Non comprare follower falsi.",
+        "Evita spam.",
+        "Rispetta le regole LIVE.",
+        "Pubblica contenuti originali."
+      ]
     }
   }
 },
 
-  A_7:{
-  labels:{ ar:"كيف أتجنب الحظر مستقبلًا؟", fr:"Éviter les bans", en:"Avoid future bans", it:"Evitare ban futuri" },
-  answer:{
-    ar:{ cause:"سلوك متكرر أو جهل بالقوانين.",
-      steps:["اقرأ السياسات.","أنشر باعتدال.","تجنب الجدل.","راقب الإشعارات."]
+A_7: {
+  labels: {
+    ar: "قوانين LIVE والفيديوهات (صور ثابتة) – تجنب الحظر",
+    fr: "Règles LIVE & vidéos (images fixes) – éviter le ban",
+    en: "LIVE & video rules (static images) – avoid bans",
+    it: "Regole LIVE e video (immagini statiche) – evitare ban"
+  },
+  answer: {
+    ar: {
+      cause: "كثير من الحسابات تُحظر بسبب استخدام صور ثابتة أو محتوى مكرر في LIVE أو الفيديوهات، أو بسبب مخالفة سياسات 2025.",
+      steps: [
+        "❌ لا تستخدم صورة ثابتة أكثر من دقائق قليلة في LIVE.",
+        "❌ لا تبث LIVE بصورة واحدة بدون حركة أو تفاعل.",
+        "✅ أظهر وجهك أو حركة حقيقية أثناء LIVE.",
+        "❌ لا تكرر نفس الفيديو أو نفس الصورة عدة مرات.",
+        "❌ لا تستخدم صور أشخاص آخرين أو محتوى مسروق.",
+        "✅ أضف حركة، كلام، أو تغيير مشهد كل فترة.",
+        "❌ تجنب المحتوى المضلل، العناوين الكاذبة، أو جذب المشاهدين بالخداع.",
+        "✅ التزم بسياسات TikTok 2025 الخاصة بالمحتوى الأصلي."
+      ]
     },
-    fr:{ cause:"Non-respect des règles.",
-      steps:["Lire règles.","Publier modérément.","Éviter polémiques.","Suivre notifications."]
+    fr: {
+      cause: "De nombreux comptes sont bannis à cause d’images fixes, de contenu répétitif ou du non-respect des règles 2025.",
+      steps: [
+        "❌ Ne diffusez pas une image fixe longtemps en LIVE.",
+        "❌ Pas de LIVE avec une seule image sans interaction.",
+        "✅ Montrez votre visage ou une vraie activité.",
+        "❌ Ne répétez pas la même vidéo ou image عدة fois.",
+        "❌ N’utilisez pas de contenu volé ou appartenant à d’autres.",
+        "✅ Ajoutez du mouvement ou une interaction régulière.",
+        "❌ Évitez les titres trompeurs.",
+        "✅ Respectez les règles TikTok 2025 sur le contenu original."
+      ]
     },
-    en:{ cause:"Policy ignorance.",
-      steps:["Read policies.","Post moderately.","Avoid controversy.","Monitor notifications."]
+    en: {
+      cause: "Many accounts get banned due to static images, repetitive content, or violating TikTok 2025 rules.",
+      steps: [
+        "❌ Do not run LIVE with a static image for long periods.",
+        "❌ Avoid LIVE streams with no real movement or interaction.",
+        "✅ Show your face or real activity.",
+        "❌ Do not repost the same video or image repeatedly.",
+        "❌ Avoid using stolen or third-party content.",
+        "✅ Add movement, voice, or scene changes regularly.",
+        "❌ Avoid misleading titles or fake engagement.",
+        "✅ Follow TikTok 2025 original content policies."
+      ]
     },
-    it:{ cause:"Mancata conoscenza regole.",
-      steps:["Leggi regole.","Pubblica moderato.","Evita polemiche.","Controlla notifiche."]
+    it: {
+      cause: "Molti account vengono bannati per immagini statiche, contenuti ripetitivi o violazioni delle regole 2025.",
+      steps: [
+        "❌ Non fare LIVE con immagini fisse per lungo tempo.",
+        "❌ Evita LIVE senza movimento o interazione.",
+        "✅ Mostra il volto o un’attività reale.",
+        "❌ Non ripubblicare la stessa immagine o video.",
+        "❌ Evita contenuti rubati o di altri.",
+        "✅ Aggiungi movimento o interazione regolare.",
+        "❌ Evita titoli ingannevoli.",
+        "✅ Rispetta le regole TikTok 2025 sui contenuti originali."
+      ]
     }
   }
 }
