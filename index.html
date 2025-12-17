@@ -175,14 +175,131 @@ const sections = [
 
 const contentA={
 A_1:{
-labels:{ar:"تم حظر الحساب",fr:"Compte banni",en:"Account banned",it:"Account bloccato"},
-answer:{
-ar:{cause:"مخالفة سياسات",steps:["راجع الإشعارات","انتظر المدة","تجنب التكرار"]},
-fr:{cause:"Violation des règles",steps:["Vérifier notifications","Attendre","Éviter récidive"]},
-en:{cause:"Policy violation",steps:["Check notifications","Wait","Avoid repeat"]},
-it:{cause:"Violazione regole",steps:["Controlla","Attendi","Evita errori"]}
+  labels:{ ar:"حظر مؤقت: ماذا أفعل؟", fr:"Blocage temporaire : que faire ?", en:"Temporary ban: what to do?", it:"Blocco temporaneo: cosa fare?" },
+  answer:{
+    ar:{ cause:"مخالفة بسيطة أو بلاغات متكررة.",
+      steps:["انتظر انتهاء المدة.","راجع الإشعارات.","احذف المحتوى المخالف.","خفّف النشر 48 ساعة."]
+    },
+    fr:{ cause:"Infraction légère ou signalements répétés.",
+      steps:["Attendez la fin.","Vérifiez les notifications.","Supprimez le contenu à risque.","Pause 48h."]
+    },
+    en:{ cause:"Minor policy issue or reports.",
+      steps:["Wait for it to end.","Check notifications.","Remove risky content.","Pause 48h."]
+    },
+    it:{ cause:"Violazione lieve o segnalazioni.",
+      steps:["Attendi la fine.","Controlla notifiche.","Rimuovi contenuti a rischio.","Pausa 48h."]
+    }
+  }
+},
+
+  A_2:{
+  labels:{ ar:"حظر دائم: هل يوجد استئناف؟", fr:"Blocage permanent : recours ?", en:"Permanent ban: appeal?", it:"Blocco permanente: ricorso?" },
+  answer:{
+    ar:{ cause:"مخالفات جسيمة أو متكررة.",
+      steps:["ابحث عن الاستئناف.","اكتب طلب مختصر ومحترم.","حضّر إثباتات ملكية.","إن لم يوجد، افتح تيكت."]
+    },
+    fr:{ cause:"Infractions graves ou répétées.",
+      steps:["Cherchez l’appel.","Message court.","Préparez preuves.","Sinon ticket."]
+    },
+    en:{ cause:"Severe or repeated violations.",
+      steps:["Check appeal.","Write respectfully.","Prepare proof.","Otherwise ticket."]
+    },
+    it:{ cause:"Violazioni gravi o ripetute.",
+      steps:["Verifica ricorso.","Messaggio breve.","Prepara prove.","Altrimenti ticket."]
+    }
+  }
+},
+
+  A_3:{
+  labels:{ ar:"تم حذف فيديو أو تقييد النشر", fr:"Vidéo supprimée", en:"Video removed", it:"Video rimossa" },
+  answer:{
+    ar:{ cause:"محتوى مخالف أو سبام.",
+      steps:["اقرأ سبب الحذف.","قدّم استئناف إن أمكن.","لا تعِد الرفع فورًا.","خفف الهاشتاغات."]
+    },
+    fr:{ cause:"Contenu non conforme.",
+      steps:["Lire la raison.","Faire appel.","Ne pas republier مباشرة.","Limiter hashtags."]
+    },
+    en:{ cause:"Non-compliant content.",
+      steps:["Read reason.","Appeal if possible.","Don’t reupload immediately.","Limit hashtags."]
+    },
+    it:{ cause:"Contenuto non conforme.",
+      steps:["Controlla motivo.","Invia ricorso.","Non ricaricare subito.","Meno hashtag."]
+    }
+  }
+},
+
+ A_4:{
+  labels:{ ar:"تقييد التعليقات أو الرسائل", fr:"Commentaires limités", en:"Comments restricted", it:"Commenti limitati" },
+  answer:{
+    ar:{ cause:"نشاط سبام.",
+      steps:["توقف 24–48 ساعة.","تجنب الروابط.","حدّث التطبيق.","ارجع تدريجيًا."]
+    },
+    fr:{ cause:"Spam.",
+      steps:["Pause 24–48h.","Éviter liens.","Mettre à jour app.","Retour progressif."]
+    },
+    en:{ cause:"Spam activity.",
+      steps:["Pause 24–48h.","Avoid links.","Update app.","Return gradually."]
+    },
+    it:{ cause:"Spam.",
+      steps:["Pausa 24–48h.","Evita link.","Aggiorna app.","Ritorno graduale."]
+    }
+  }
+},
+
+  A_5:{
+  labels:{ ar:"حظر LIVE بسبب مخالفة", fr:"LIVE bloqué", en:"LIVE banned", it:"LIVE bloccata" },
+  answer:{
+    ar:{ cause:"مخالفة سياسات البث.",
+      steps:["تحقق من مدة الحظر.","تجنب الموسيقى المحمية.","التزم بالقوانين.","افتح تيكت إن كان خطأ."]
+    },
+    fr:{ cause:"Violation LIVE.",
+      steps:["Vérifiez durée.","Éviter musique.","Respect règles.","Ticket si erreur."]
+    },
+    en:{ cause:"LIVE policy violation.",
+      steps:["Check duration.","Avoid copyrighted music.","Follow rules.","Open ticket if mistake."]
+    },
+    it:{ cause:"Violazione LIVE.",
+      steps:["Controlla durata.","Evita musica.","Rispetta regole.","Ticket se errore."]
+    }
+  }
+},
+
+  A_6:{
+  labels:{ ar:"قوانين الصور والفيديوهات (2025)", fr:"Règles images & vidéos", en:"Images & videos rules", it:"Regole immagini e video" },
+  answer:{
+    ar:{ cause:"مخالفة حقوق أو محتوى حساس.",
+      steps:["تجنب صور العنف.","لا تستخدم محتوى مسروق.","احترم الخصوصية.","التزم بإرشادات 2025."]
+    },
+    fr:{ cause:"Contenu sensible ou droits.",
+      steps:["Éviter violence.","Pas de contenu volé.","Respect vie privée.","Suivre règles 2025."]
+    },
+    en:{ cause:"Sensitive or copyrighted content.",
+      steps:["Avoid violence.","No stolen content.","Respect privacy.","Follow 2025 rules."]
+    },
+    it:{ cause:"Contenuti sensibili.",
+      steps:["Evita violenza.","No contenuti rubati.","Rispetta privacy.","Segui regole 2025."]
+    }
+  }
+},
+
+  A_7:{
+  labels:{ ar:"كيف أتجنب الحظر مستقبلًا؟", fr:"Éviter les bans", en:"Avoid future bans", it:"Evitare ban futuri" },
+  answer:{
+    ar:{ cause:"سلوك متكرر أو جهل بالقوانين.",
+      steps:["اقرأ السياسات.","أنشر باعتدال.","تجنب الجدل.","راقب الإشعارات."]
+    },
+    fr:{ cause:"Non-respect des règles.",
+      steps:["Lire règles.","Publier modérément.","Éviter polémiques.","Suivre notifications."]
+    },
+    en:{ cause:"Policy ignorance.",
+      steps:["Read policies.","Post moderately.","Avoid controversy.","Monitor notifications."]
+    },
+    it:{ cause:"Mancata conoscenza regole.",
+      steps:["Leggi regole.","Pubblica moderato.","Evita polemiche.","Controlla notifiche."]
+    }
+  }
 }
-}
+
 };
 
 const contentB={
