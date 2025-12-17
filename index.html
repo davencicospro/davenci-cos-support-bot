@@ -99,14 +99,15 @@ select{
 
     <!-- الأزرار -->
     <div class="list">
-      <button class="btn" id="btnA"></button>
-      <button class="btn" id="btnB"></button>
-      <button class="btn" id="btnC"></button>
-      <button class="btn" id="btnD"></button>
-      <button class="btn" id="btnE"></button>
-      <button class="btn" id="btnF"></button>
-      <button class="btn" id="btnG"></button>
-      <button class="btn" id="btnH"></button>
+     <button class="btn" id="btnA" onclick="openFAQ('A')"></button>
+     <button class="btn" id="btnB" onclick="openFAQ('B')"></button>
+     <button class="btn" id="btnC" onclick="openFAQ('C')"></button>
+     <button class="btn" id="btnD" onclick="openFAQ('D')"></button>
+     <button class="btn" id="btnE" onclick="openFAQ('E')"></button>
+     <button class="btn" id="btnF" onclick="openFAQ('F')"></button>
+     <button class="btn" id="btnG" onclick="openFAQ('G')"></button>
+     <button class="btn" id="btnH" onclick="openFAQ('H')"></button>
+
     </div>
 
   </div>
@@ -210,4 +211,238 @@ document.addEventListener("DOMContentLoaded", function(){
   langSelector.value = "ar";
 
 });
+</script>
+<script>
+
+/* ==========================================
+   شاشة عرض
+========================================== */
+
+function showScreen(name){
+  document.querySelector(".card").style.display = "none";
+  document.querySelector(".faq").style.display = "none";
+  document.querySelector(".answer").style.display = "none";
+  document.querySelector(name).style.display = "block";
+}
+
+/* ==========================================
+   قاعدة بيانات FAQ – قسم A فقط (4 لغات)
+========================================== */
+
+const DATA = {
+
+A:{ 
+    title:{
+      ar:"قوانين الحظر والانتهاكات 2025",
+      fr:"Règles de bannissement & violations 2025",
+      en:"Ban & violation rules 2025",
+      it:"Regole di ban & violazioni 2025"
+    },
+
+    faq:{
+      
+      ar:[
+        { id:"A1", q:"لماذا يتم حظر الحساب رغم عدم وجود مخالفات؟",
+          answer:`2025:
+تيك توك يطبق حظر بسبب نشاط غير طبيعي.
+
+الحل:
+✔ تجنب VPN و برامج زيادة المتابعين
+✔ اربط الهاتف والبريد
+✔ احذف التطبيقات المرتبطة بالحساب` },
+
+        { id:"A2", q:"سبب حظر محتوى حساس في 2025؟",
+          answer:`2025:
+صرامة ضد عري/عنف.
+
+✔ حذف المحتوى
+✔ استئناف داخل التطبيق` },
+
+        { id:"A3", q:"هل يرجع حساب محظور نهائيًا؟",
+          answer:`إذا ظلم نعم.
+
+✔ إعدادات > الإبلاغ > استرجاع
+✔ إرسال أدلة` },
+
+        { id:"A4", q:"Shadowban جديد 2025؟",
+          answer:`✔ نشر كثيف
+✔ تعليقات سبام
+
+حل:
+✔ توقف 48 ساعة` },
+
+        { id:"A5", q:"هل موسيقى محمية تسبب حظر؟",
+          answer:`نعم:
+استعمل مكتبة TikTok` },
+
+        { id:"A6", q:"لماذا يتم حذف فيديو مباشرة بعد نشره؟",
+          answer:`AI يحذف إيحاء/عنف.
+
+حل:
+✔ تعديل الفيديو` },
+
+        { id:"A7", q:"سبب حظر جغرافي؟",
+          answer:`VPN = BAN.
+
+حل:
+✔ حذف VPN` }
+      ],
+
+
+      fr:[
+        { id:"A1", q:"Pourquoi un bannissement sans violation?",
+          answer:`2025: activité suspecte.
+
+✔ Pas de VPN
+✔ Vérifier email` },
+
+        { id:"A2", q:"Contenu sensible interdit?",
+          answer:`TikTok strict nudité.
+
+✔ supprime vidéo` },
+
+        { id:"A3", q:"Récupérer compte banni?",
+          answer:`si erreur oui` },
+
+        { id:"A4", q:"Shadowban cause?",
+          answer:`Spam → pause 48h` },
+
+        { id:"A5", q:"Musique protégée?",
+          answer:`Ban assuré` },
+
+        { id:"A6", q:"Suppression auto vidéo?",
+          answer:`AI nudité/violence` },
+
+        { id:"A7", q:"Ban géographique?",
+          answer:`VPN interdit` }
+      ],
+
+
+      en:[
+        { id:"A1", q:"Why banned without breaking rules?",
+          answer:`2025:
+Suspicious behavior flag.
+
+Fix:
+✔ remove VPN` },
+
+        { id:"A2", q:"Sensitive content ban?",
+          answer:`Strict nudity 2025` },
+
+        { id:"A3", q:"Recover banned account?",
+          answer:`If system error yes` },
+
+        { id:"A4", q:"Shadowban reason?",
+          answer:`Spam / fast posting` },
+
+        { id:"A5", q:"Music copyright ban?",
+          answer:`Use TikTok library` },
+
+        { id:"A6", q:"Video auto deleted?",
+          answer:`AI detection` },
+
+        { id:"A7", q:"Geo ban?",
+          answer:`VPN problem` }
+      ],
+
+
+      it:[
+        { id:"A1", q:"Perché bannato senza violazioni?",
+          answer:`2025 attivitá sospetta` },
+
+        { id:"A2", q:"Contenuto sensibile?",
+          answer:`nudità vietata` },
+
+        { id:"A3", q:"Recupero account?",
+          answer:`si errore` },
+
+        { id:"A4", q:"Shadowban motivo?",
+          answer:`spam` },
+
+        { id:"A5", q:"Musica protetta?",
+          answer:`ban` },
+
+        { id:"A6", q:"Video rimosso subito?",
+          answer:`AI filtro` },
+
+        { id:"A7", q:"Ban geografico?",
+          answer:`no VPN` }
+      ]
+
+    }
+
+}
+
+};
+
+/* ==========================================
+   تشغيل FAQ حسب اللغة الحالية
+========================================== */
+
+function openFAQ(sectionKey){
+
+  const lang = document.documentElement.lang;
+
+  const section = DATA[sectionKey];
+
+  // عنوان FAQ
+  document.getElementById("faqTitle").textContent =
+         section.title[lang];
+
+  // مسح القائمة
+  document.getElementById("faqList").innerHTML ="";
+
+  // إضافة الأسئلة
+  DATA[sectionKey].faq[lang].forEach( f => {
+
+    let btn = document.createElement("button");
+    btn.className="btn";
+    btn.textContent = f.q;
+
+    btn.onclick = function(){
+      openAnswer(sectionKey, f.id);
+    };
+
+    document.getElementById("faqList").appendChild(btn);
+
+  });
+
+  showScreen(".faq");
+}
+
+
+/* ==========================================
+   فتح الحل النهائي
+========================================== */
+
+function openAnswer(sectionKey, faqID){
+
+  const lang = document.documentElement.lang;
+
+  let item = DATA[sectionKey].faq[lang].find(x => x.id === faqID);
+
+  document.getElementById("answerText").textContent =
+     item.answer;
+
+  showScreen(".answer");
+}
+
+
+/* ==========================================
+   رجوع
+========================================== */
+
+function goHome(){
+  showScreen(".card");
+}
+
+
+/* ==========================================
+   دعم
+========================================== */
+
+function openSupport(){
+  alert("📩 سيتم تحويلك إلى دعم Davenci C.O.S");
+}
+
 </script>
