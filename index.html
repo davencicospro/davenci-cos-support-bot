@@ -217,11 +217,14 @@
 /** غيّر الإيميل متاع الدعم هنا */
 const SUPPORT_EMAIL = "support@davenci-cos.com";
 
+/** (اختياري) Webhook متاع Lark Incoming Webhook (إذا ما عندكش خليه فارغ) */
+const LARK_WEBHOOK_URL = ""; // مثال: https://open.larksuite.com/open-apis/bot/v2/hook/XXXX
+
 /** حالة التنقل */
 let state = {
   view: "home",      // home | faq | answer | ticket
-  sectionId: null,   // مثل A
-  faqId: null,       // مثل A_1
+  sectionId: null,   // A / B / C...
+  faqId: null,       // A_1 / B_1 ...
   lang: "it"
 };
 
@@ -239,7 +242,7 @@ const i18n = {
     details: "وصف مختصر للمشكلة (مهم)",
     send: "📨 إرسال التذكرة",
     sentTip: "سيفتح تطبيق البريد لإرسال التذكرة. إن لم يفتح، انسخ النص وأرسله يدويًا.",
-    soon: "⏳ قريبًا سنضيف هذا القسم بالتفصيل.",
+    soon: "قريبًا سنضيف هذا القسم بالتفصيل.",
     footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
   },
   fr: {
@@ -255,7 +258,7 @@ const i18n = {
     details: "Description courte (important)",
     send: "📨 Envoyer le ticket",
     sentTip: "Votre application email s’ouvrira pour envoyer le ticket. Sinon, copiez le texte et envoyez-le manuellement.",
-    soon: "⏳ Nous ajouterons bientôt le détail de cette section.",
+    soon: "Nous ajouterons bientôt le détail de cette section.",
     footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
   },
   en: {
@@ -271,7 +274,7 @@ const i18n = {
     details: "Short description (required)",
     send: "📨 Send ticket",
     sentTip: "Your email app will open to send the ticket. If not, copy the text and send it manually.",
-    soon: "⏳ We’ll add full content for this section soon.",
+    soon: "We’ll add full content for this section soon.",
     footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
   },
   it: {
@@ -287,11 +290,12 @@ const i18n = {
     details: "Descrizione breve (obbligatorio)",
     send: "📨 Invia ticket",
     sentTip: "Si aprirà l’app email per inviare il ticket. Se non si apre, copia il testo e invialo manualmente.",
-    soon: "⏳ Aggiungeremo presto i dettagli di questa sezione.",
+    soon: "Aggiungeremo presto i dettagli di questa sezione.",
     footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
   }
 };
 
+/** الأقسام */
 const sections = [
   { id:"A", icon:"🚫", labels:{ ar:"قوانين الحظر والانتهاكات", fr:"Sanctions & violations", en:"Violations & bans", it:"Violazioni e blocchi" } },
   { id:"B", icon:"📡", labels:{ ar:"البث المباشر والمشاهدات", fr:"Live & vues", en:"Live & views", it:"Live e visualizzazioni" } },
@@ -680,6 +684,13 @@ A_7: {
  // ✅ بعد ما نثبتو الشكل، نكمّلولك A_2..A_5 وباقي الأقسام B..H قسم قسم
 };
 
+/** ✅ هذا هو المهم: خريطة الأقسام -> المحتوى */
+const contentsMap = {
+  A: contentA,
+  B: contentB,
+  C: {}, D: {}, E: {}, F: {}, G: {}, H: {}
+};
+
 function t(){ return i18n[state.lang]; }
 
 function setLang(lang){
@@ -717,17 +728,17 @@ function openSection(sectionId){
 
   const sectionContent = contentsMap[sectionId];
 
-if(!sectionContent || Object.keys(sectionContent).length === 0){
-  document.getElementById("desc").innerText = t().soon;
+  // إذا القسم فارغ -> "قريبًا"
+  if(!sectionContent || Object.keys(sectionContent).length === 0){
+    document.getElementById("desc").innerText = t().soon;
 
-  const back = document.createElement("button");
-  back.className = "btn secondary";
-  back.textContent = t().back;
-  back.onclick = renderHome;
-
-  content.appendChild(back);
-  return;
-}
+    const back = document.createElement("button");
+    back.className = "btn secondary";
+    back.textContent = t().back;
+    back.onclick = renderHome;
+    content.appendChild(back);
+    return;
+  }
 
   document.getElementById("desc").innerText =
     (state.lang==="ar") ? "اختر سؤالًا شائعًا، ثم اقرأ الحل. إذا لم تُحل المشكلة، افتح تذكرة."
@@ -735,10 +746,10 @@ if(!sectionContent || Object.keys(sectionContent).length === 0){
     : (state.lang==="it") ? "Scegli una domanda frequente, poi leggi la soluzione. Se non risolto, apri un ticket."
     : "Pick a common question, read the solution. If not solved, open a ticket.";
 
-  Object.keys(contentA).forEach(fid=>{
+  Object.keys(sectionContent).forEach(fid=>{
     const b=document.createElement("button");
     b.className="btn";
-    b.textContent=`❓ ${contentA[fid].labels[state.lang]}`;
+    b.textContent=`❓ ${sectionContent[fid].labels[state.lang]}`;
     b.onclick=()=>openAnswer(fid);
     content.appendChild(b);
   });
@@ -752,7 +763,24 @@ if(!sectionContent || Object.keys(sectionContent).length === 0){
 
 function openAnswer(faqId){
   state.view="answer"; state.faqId=faqId;
-  const item=contentA[faqId];
+
+  const sectionContent = contentsMap[state.sectionId] || {};
+  const item = sectionContent[faqId];
+
+  if(!item){
+    // حماية لو صار خطأ
+    document.getElementById("title").innerText = "⚠️";
+    document.getElementById("desc").innerText = t().soon;
+    const content=document.getElementById("content");
+    content.innerHTML="";
+    const back=document.createElement("button");
+    back.className="btn secondary";
+    back.textContent=t().back;
+    back.onclick=()=>openSection(state.sectionId);
+    content.appendChild(back);
+    return;
+  }
+
   const ans=item.answer[state.lang];
 
   document.getElementById("title").innerText = `✅ ${item.labels[state.lang]}`;
@@ -794,10 +822,27 @@ function openAnswer(faqId){
   content.appendChild(back);
 }
 
+async function sendToLark(text){
+  if(!LARK_WEBHOOK_URL) return;
+  try{
+    await fetch(LARK_WEBHOOK_URL, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({ msg_type:"text", content:{ text } })
+    });
+  } catch(e){
+    // ignore
+  }
+}
+
 function openTicket(){
   state.view="ticket";
   const sec=sections.find(x=>x.id===state.sectionId);
-  const question = state.faqId ? contentA[state.faqId].labels[state.lang] : "(direct)";
+
+  const sectionContent = contentsMap[state.sectionId] || {};
+  const question = state.faqId && sectionContent[state.faqId]
+    ? sectionContent[state.faqId].labels[state.lang]
+    : "(direct)";
 
   document.getElementById("title").innerText = t().ticketTitle;
   document.getElementById("desc").innerText = t().ticketDesc;
@@ -823,15 +868,16 @@ function openTicket(){
   const send=document.createElement("button");
   send.className="btn";
   send.textContent=t().send;
-  send.onclick=()=>{
+  send.onclick=async ()=>{
     const name=document.getElementById("tk_name").value || "-";
     const contact=document.getElementById("tk_contact").value || "-";
     const details=document.getElementById("tk_details").value || "-";
 
-    const subject=encodeURIComponent(`Davenci C.O.S Ticket | ${sec ? sec.labels[state.lang] : ""}`);
-    const body=encodeURIComponent(
+    const secLabel = sec ? sec.labels[state.lang] : "";
+    const subjectText = `Davenci C.O.S Ticket | ${secLabel}`;
+    const bodyText =
 `Language: ${state.lang}
-Section: ${sec ? sec.labels[state.lang] : ""}
+Section: ${secLabel}
 Question: ${question}
 
 Name: ${name}
@@ -841,9 +887,22 @@ Details:
 ${details}
 
 ---
-Sent from davenci-cos-support-bot.pages.dev`
+Sent from davenci-cos-support-bot.pages.dev`;
+
+    // (اختياري) ابعث للـ Lark
+    await sendToLark(
+`🎫 New Ticket
+Lang: ${state.lang}
+Section: ${secLabel}
+Question: ${question}
+Name: ${name}
+Contact: ${contact}
+Details: ${details}`
     );
 
+    // Email (mailto)
+    const subject=encodeURIComponent(subjectText);
+    const body=encodeURIComponent(bodyText);
     window.location.href=`mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
   };
   content.appendChild(send);
@@ -875,5 +934,3 @@ document.getElementById("lang").addEventListener("change",(e)=>{
   renderHome();
 })();
 </script>
-</body>
-</html>
