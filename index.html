@@ -1,566 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Davenci C.O.S – Support</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<title>Davenci C.O.S – Support</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    :root{
-      --navy:#0E1E3A;
-      --teal:#6FAFC2;
-      --bg1:#0b1c2d;
-      --bg2:#0f2f4a;
-      --card:rgba(255,255,255,0.09);
-      --border:rgba(255,255,255,0.16);
-      --text:#ffffff;
-      --muted:rgba(255,255,255,0.85);
-      --btn:#1dd3b0;
-      --btn2:#0bbcd6;
-    }
-
-    body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      color: var(--text);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
-    }
-
-    .wrap{
-      width:100%;
-      max-width: 520px;
-    }
-
-    .card{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.38);
-      backdrop-filter: blur(10px);
-    }
-
-    /* ===== Header داخل الكارت (اللوغو فوق) ===== */
-    .header{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      text-align:center;
-      gap:10px;
-      margin-bottom: 10px;
-    }
-
-    .logoTop{
-      width:64px;
-      height:64px;
-      border-radius:16px;
-      object-fit:contain;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.16);
-      padding: 10px;
-    }
-
-    .brandLine{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.88);
-    }
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background: var(--teal);
-      display:inline-block;
-    }
-
-    /* ===== Language selector ===== */
-    .langRow{
-      display:flex;
-      justify-content:center;
-      margin: 12px 0 14px 0;
-    }
-
-    select{
-      width: 220px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.10);
-      color: white;
-      font-size: 14px;
-      outline:none;
-    }
-    option{ color:#111; }
-
-    h1{
-      margin: 0 0 8px 0;
-      font-size: 18px;
-      color: #fff;
-    }
-    p{
-      margin: 0 0 14px 0;
-      font-size: 13.5px;
-      line-height: 1.5;
-      color: var(--muted);
-    }
-
-    .list{ margin-top: 10px; display:flex; flex-direction:column; gap:10px; }
-
-    .btn{
-      width:100%;
-      border: 0;
-      border-radius: 14px;
-      padding: 12px 12px;
-      cursor:pointer;
-      font-size: 14px;
-      font-weight: 700;
-      color: #05222a;
-      background: linear-gradient(135deg, var(--btn), var(--btn2));
-      text-align: start;
-    }
-
-    .btn.secondary{
-      background: transparent;
-      color: #fff;
-      border: 1px solid var(--border);
-      font-weight: 600;
-      text-align:center;
-    }
-
-    .mini{
-      font-size: 12px;
-      opacity: .92;
-      margin-top: 10px;
-    }
-
-    .divider{
-      height:1px;
-      background: rgba(255,255,255,0.16);
-      margin: 12px 0;
-    }
-
-    .k{ color: rgba(255,255,255,0.92); font-weight: 700; }
-    ul{ margin: 8px 0 0 0; padding: 0 18px; color: var(--muted); }
-    li{ margin: 6px 0; line-height: 1.5; font-size: 13.5px; }
-
-    .field{
-      display:flex; flex-direction:column; gap:6px;
-      margin-top: 10px;
-    }
-    .field label{
-      font-size: 12px; color: rgba(255,255,255,0.85);
-    }
-    .field input, .field textarea{
-      width:100%;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.10);
-      color: white;
-      padding: 10px 12px;
-      font-size: 14px;
-      outline:none;
-      box-sizing:border-box;
-    }
-    textarea{ min-height: 92px; resize: vertical; }
-
-    .footerNote{
-      margin-top: 12px;
-      font-size: 11.5px;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.5;
-      text-align:center;
-    }
-  </style>
+<style>
+:root{
+  --bg1:#0b1c2d; --bg2:#0f2f4a;
+  --card:rgba(255,255,255,0.09);
+  --border:rgba(255,255,255,0.16);
+  --text:#fff; --muted:rgba(255,255,255,0.85);
+  --btn:#1dd3b0; --btn2:#0bbcd6;
+}
+body{
+  margin:0; font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2));
+  color:var(--text); min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+}
+.wrap{ width:100%; max-width:520px; padding:18px; }
+.card{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:18px; padding:18px;
+}
+.header{ text-align:center; margin-bottom:10px; }
+.logoTop{
+  width:60px; height:60px; border-radius:14px;
+  background:rgba(255,255,255,.1); padding:10px;
+}
+.langRow{ text-align:center; margin:10px 0; }
+select{
+  padding:10px; border-radius:12px;
+  background:rgba(255,255,255,.1); color:#fff;
+}
+option{ color:#000; }
+h1{ font-size:18px; margin:8px 0; }
+p{ font-size:13.5px; color:var(--muted); }
+.list{ display:flex; flex-direction:column; gap:10px; }
+.btn{
+  padding:12px; border-radius:14px;
+  border:0; cursor:pointer; font-weight:700;
+  background:linear-gradient(135deg,var(--btn),var(--btn2));
+}
+.btn.secondary{
+  background:transparent; color:#fff;
+  border:1px solid var(--border);
+}
+.footerNote{ font-size:11px; text-align:center; margin-top:10px; }
+</style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="card">
+<div class="wrap">
+<div class="card">
 
-      <!-- ===== اللوغو فوق ===== -->
-      <div class="header">
-        <!-- IMPORTANT: اسم الملف لازم يكون نفسو بالضبط logo.png -->
-        <img src="logo.png" class="logoTop" alt="Davenci C.O.S" />
+<div class="header">
+  <img src="logo.png" class="logoTop" />
+  <div id="brandBadge">Davenci C.O.S Support</div>
+</div>
 
-        <div class="brandLine">
-          <span class="dot"></span>
-          <span id="brandBadge">Davenci C.O.S Support</span>
-        </div>
-      </div>
+<div class="langRow">
+<select id="lang">
+  <option value="it">🇮🇹 Italiano</option>
+  <option value="fr">🇫🇷 Français</option>
+  <option value="en">🇬🇧 English</option>
+  <option value="ar">🇹🇳 عربي</option>
+</select>
+</div>
 
-      <!-- ===== اختيار اللغة ===== -->
-      <div class="langRow">
-        <select id="lang">
-          <option value="it">🇮🇹 Italiano</option>
-          <option value="fr">🇫🇷 Français</option>
-          <option value="en">🇬🇧 English</option>
-          <option value="ar">🇹🇳 عربي</option>
-        </select>
-      </div>
+<h1 id="title"></h1>
+<p id="desc"></p>
+<div id="content" class="list"></div>
+<div class="footerNote" id="footerNote"></div>
 
-      <h1 id="title"></h1>
-      <p id="desc"></p>
-
-      <div id="content" class="list"></div>
-
-      <div class="footerNote" id="footerNote"></div>
-    </div>
-  </div>
+</div>
+</div>
 
 <script>
-/** غيّر الإيميل متاع الدعم هنا */
-const SUPPORT_EMAIL = "support@davenci-cos.com";
+const SUPPORT_EMAIL="support@davenci-cos.com";
 
-/** (اختياري) Webhook متاع Lark Incoming Webhook (إذا ما عندكش خليه فارغ) */
-const LARK_WEBHOOK_URL = ""; // مثال: https://open.larksuite.com/open-apis/bot/v2/hook/XXXX
+let state={ view:"home", sectionId:null, faqId:null, lang:"it" };
 
-/** حالة التنقل */
-let state = {
-  view: "home",      // home | faq | answer | ticket
-  sectionId: null,   // A / B / C...
-  faqId: null,       // A_1 / B_1 ...
-  lang: "it"
+const i18n={
+ar:{brand:"دعم Davenci C.O.S",homeTitle:"مرحبا بك",homeDesc:"اختر القسم ثم السؤال",back:"رجوع",openTicket:"فتح تذكرة",footer:"Davenci C.O.S – الحماية والدعم"},
+fr:{brand:"Support Davenci C.O.S",homeTitle:"Bienvenue",homeDesc:"Choisissez une section",back:"Retour",openTicket:"Ouvrir ticket",footer:"Davenci C.O.S – Support"},
+en:{brand:"Davenci C.O.S Support",homeTitle:"Welcome",homeDesc:"Choose a section",back:"Back",openTicket:"Open ticket",footer:"Davenci C.O.S Support"},
+it:{brand:"Supporto Davenci C.O.S",homeTitle:"Benvenuto",homeDesc:"Scegli una sezione",back:"Indietro",openTicket:"Apri ticket",footer:"Davenci C.O.S Support"}
 };
 
-const i18n = {
-  ar: {
-    brand: "دعم Davenci C.O.S",
-    homeTitle: "👋 مرحبًا بك في دعم Davenci C.O.S",
-    homeDesc: "اختر القسم، ثم اختر السؤال الشائع، وستحصل على حل مختصر وواضح. وإذا لم تُحل المشكلة، افتح تذكرة دعم.",
-    back: "🔙 رجوع",
-    openTicket: "❌ لم تُحل المشكلة – فتح تذكرة دعم",
-    ticketTitle: "🎫 فتح تذكرة دعم",
-    ticketDesc: "اكتب معلومات بسيطة لنفهم الحالة بسرعة. (التيكت آخر حل)",
-    name: "الاسم (اختياري)",
-    contact: "وسيلة تواصل (بريد/رقم) (اختياري)",
-    details: "وصف مختصر للمشكلة (مهم)",
-    send: "📨 إرسال التذكرة",
-    sentTip: "سيفتح تطبيق البريد لإرسال التذكرة. إن لم يفتح، انسخ النص وأرسله يدويًا.",
-    soon: "قريبًا سنضيف هذا القسم بالتفصيل.",
-    footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
-  },
-  fr: {
-    brand: "Support Davenci C.O.S",
-    homeTitle: "👋 Bienvenue sur le support Davenci C.O.S",
-    homeDesc: "Choisissez une section, puis une question fréquente. Vous recevez une solution courte et claire. Si ce n’est pas résolu, ouvrez un ticket.",
-    back: "🔙 Retour",
-    openTicket: "❌ Non résolu – Ouvrir un ticket",
-    ticketTitle: "🎫 Ouvrir un ticket",
-    ticketDesc: "Donnez quelques infos pour comprendre rapidement. (Ticket en dernier recours)",
-    name: "Nom (optionnel)",
-    contact: "Contact (email/téléphone) (optionnel)",
-    details: "Description courte (important)",
-    send: "📨 Envoyer le ticket",
-    sentTip: "Votre application email s’ouvrira pour envoyer le ticket. Sinon, copiez le texte et envoyez-le manuellement.",
-    soon: "Nous ajouterons bientôt le détail de cette section.",
-    footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
-  },
-  en: {
-    brand: "Davenci C.O.S Support",
-    homeTitle: "👋 Welcome to Davenci C.O.S Support",
-    homeDesc: "Pick a section, then a common question. You’ll get a short, clear solution. If it’s not solved, open a support ticket.",
-    back: "🔙 Back",
-    openTicket: "❌ Not solved – Open a ticket",
-    ticketTitle: "🎫 Open a support ticket",
-    ticketDesc: "Share a few details so we can help quickly. (Ticket is the last step)",
-    name: "Name (optional)",
-    contact: "Contact (email/phone) (optional)",
-    details: "Short description (required)",
-    send: "📨 Send ticket",
-    sentTip: "Your email app will open to send the ticket. If not, copy the text and send it manually.",
-    soon: "We’ll add full content for this section soon.",
-    footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
-  },
-  it: {
-    brand: "Supporto Davenci C.O.S",
-    homeTitle: "👋 Benvenuto nel supporto Davenci C.O.S",
-    homeDesc: "Scegli una sezione, poi una domanda frequente. Riceverai una soluzione breve e chiara. Se non è risolto, apri un ticket.",
-    back: "🔙 Indietro",
-    openTicket: "❌ Non risolto – Apri un ticket",
-    ticketTitle: "🎫 Apri un ticket",
-    ticketDesc: "Inserisci pochi dettagli per aiutarti più velocemente. (Ticket come ultimo passo)",
-    name: "Nome (opzionale)",
-    contact: "Contatto (email/telefono) (opzionale)",
-    details: "Descrizione breve (obbligatorio)",
-    send: "📨 Invia ticket",
-    sentTip: "Si aprirà l’app email per inviare il ticket. Se non si apre, copia il testo e invialo manualmente.",
-    soon: "Aggiungeremo presto i dettagli di questa sezione.",
-    footer: "✅ Davenci C.O.S – Conseils, Orientation & Sécurité"
-  }
-};
-
-/** الأقسام */
-const sections = [
-  { id:"A", icon:"🚫", labels:{ ar:"قوانين الحظر والانتهاكات", fr:"Sanctions & violations", en:"Violations & bans", it:"Violazioni e blocchi" } },
-  { id:"B", icon:"📡", labels:{ ar:"البث المباشر والمشاهدات", fr:"Live & vues", en:"Live & views", it:"Live e visualizzazioni" } },
-  { id:"C", icon:"🔐", labels:{ ar:"أمان ومشاكل الحساب", fr:"Sécurité & compte", en:"Security & account", it:"Sicurezza e account" } },
-  { id:"D", icon:"💰", labels:{ ar:"الأرباح والسحب", fr:"Gains & retraits", en:"Earnings & payouts", it:"Guadagni e prelievi" } },
-  { id:"E", icon:"🧹", labels:{ ar:"تنظيف الحساب", fr:"Nettoyage du compte", en:"Account cleanup", it:"Pulizia account" } },
-  { id:"F", icon:"📝", labels:{ ar:"الشروط والانضمام إلى وكالتنا", fr:"Conditions & adhésion", en:"Terms & joining", it:"Condizioni e iscrizione" } },
-  { id:"G", icon:"🚀", labels:{ ar:"استفادة المبدع من الانضمام إلى وكالتنا", fr:"Avantages pour le créateur", en:"Creator benefits", it:"Vantaggi per il creator" } },
-  { id:"H", icon:"🛡️", labels:{ ar:"فريق دعم وكالة Davenci C.O.S", fr:"Équipe support Davenci C.O.S", en:"Davenci C.O.S support team", it:"Team di supporto Davenci C.O.S" } },
+const sections=[
+{id:"A",icon:"🚫",labels:{ar:"الحظر",fr:"Sanctions",en:"Bans",it:"Blocchi"}},
+{id:"B",icon:"📡",labels:{ar:"البث",fr:"LIVE",en:"LIVE",it:"LIVE"}}
 ];
 
-const contentA = {
-
-  
- 
- // ✅ بعد ما نثبتو الشكل، نكمّلولك A_2..A_5 وباقي الأقسام B..H قسم قسم
+const contentA={
+A_1:{
+labels:{ar:"تم حظر الحساب",fr:"Compte banni",en:"Account banned",it:"Account bloccato"},
+answer:{
+ar:{cause:"مخالفة سياسات",steps:["راجع الإشعارات","انتظر المدة","تجنب التكرار"]},
+fr:{cause:"Violation des règles",steps:["Vérifier notifications","Attendre","Éviter récidive"]},
+en:{cause:"Policy violation",steps:["Check notifications","Wait","Avoid repeat"]},
+it:{cause:"Violazione regole",steps:["Controlla","Attendi","Evita errori"]}
+}
+}
 };
 
-/** ✅ هذا هو المهم: خريطة الأقسام -> المحتوى */
-const contentsMap = {
-  A: contentA,
-  B: contentB,
-  C: {}, D: {}, E: {}, F: {}, G: {}, H: {}
+const contentB={
+B_1:{
+labels:{ar:"البث لا يفتح",fr:"LIVE ne démarre pas",en:"LIVE not starting",it:"LIVE non parte"},
+answer:{
+ar:{cause:"عدم الأهلية",steps:["تأكد من العمر","عدد المتابعين","لا مخالفات"]},
+fr:{cause:"Non éligible",steps:["Âge","Abonnés","Aucune sanction"]},
+en:{cause:"Not eligible",steps:["Age","Followers","No bans"]},
+it:{cause:"Non idoneo",steps:["Età","Follower","Nessuna violazione"]}
+}
+}
 };
 
-function t(){ return i18n[state.lang]; }
+const contentsMap={A:contentA,B:contentB};
 
-function setLang(lang){
-  state.lang = lang;
-  document.documentElement.lang = lang;
-  document.body.dir = (lang === "ar") ? "rtl" : "ltr";
-  document.getElementById("brandBadge").innerText = t().brand;
-  document.getElementById("footerNote").innerText = t().footer;
+function t(){return i18n[state.lang];}
+function setLang(l){
+state.lang=l;
+document.documentElement.lang=l;
+document.body.dir=l==="ar"?"rtl":"ltr";
+brandBadge.innerText=t().brand;
+footerNote.innerText=t().footer;
 }
 
 function renderHome(){
-  state.view="home"; state.sectionId=null; state.faqId=null;
-  document.getElementById("title").innerText = t().homeTitle;
-  document.getElementById("desc").innerText = t().homeDesc;
-
-  const content=document.getElementById("content");
-  content.innerHTML="";
-  sections.forEach(s=>{
-    const b=document.createElement("button");
-    b.className="btn";
-    b.textContent=`${s.icon} ${s.labels[state.lang]}`;
-    b.onclick=()=>openSection(s.id);
-    content.appendChild(b);
-  });
-}
-
-function openSection(sectionId){
-  state.view="faq"; state.sectionId=sectionId; state.faqId=null;
-
-  const sec=sections.find(x=>x.id===sectionId);
-  document.getElementById("title").innerText = `${sec.icon} ${sec.labels[state.lang]}`;
-
-  const content=document.getElementById("content");
-  content.innerHTML="";
-
-  const sectionContent = contentsMap[sectionId];
-
-  // إذا القسم فارغ -> "قريبًا"
-  if(!sectionContent || Object.keys(sectionContent).length === 0){
-    document.getElementById("desc").innerText = t().soon;
-
-    const back = document.createElement("button");
-    back.className = "btn secondary";
-    back.textContent = t().back;
-    back.onclick = renderHome;
-    content.appendChild(back);
-    return;
-  }
-
-  document.getElementById("desc").innerText =
-    (state.lang==="ar") ? "اختر سؤالًا شائعًا، ثم اقرأ الحل. إذا لم تُحل المشكلة، افتح تذكرة."
-    : (state.lang==="fr") ? "Choisissez une question fréquente, puis lisez la solution. Si non résolu, ouvrez un ticket."
-    : (state.lang==="it") ? "Scegli una domanda frequente, poi leggi la soluzione. Se non risolto, apri un ticket."
-    : "Pick a common question, read the solution. If not solved, open a ticket.";
-
-  Object.keys(sectionContent).forEach(fid=>{
-    const b=document.createElement("button");
-    b.className="btn";
-    b.textContent=`❓ ${sectionContent[fid].labels[state.lang]}`;
-    b.onclick=()=>openAnswer(fid);
-    content.appendChild(b);
-  });
-
-  const back=document.createElement("button");
-  back.className="btn secondary";
-  back.textContent=t().back;
-  back.onclick=renderHome;
-  content.appendChild(back);
-}
-
-function openAnswer(faqId){
-  state.view="answer"; state.faqId=faqId;
-
-  const sectionContent = contentsMap[state.sectionId] || {};
-  const item = sectionContent[faqId];
-
-  if(!item){
-    // حماية لو صار خطأ
-    document.getElementById("title").innerText = "⚠️";
-    document.getElementById("desc").innerText = t().soon;
-    const content=document.getElementById("content");
-    content.innerHTML="";
-    const back=document.createElement("button");
-    back.className="btn secondary";
-    back.textContent=t().back;
-    back.onclick=()=>openSection(state.sectionId);
-    content.appendChild(back);
-    return;
-  }
-
-  const ans=item.answer[state.lang];
-
-  document.getElementById("title").innerText = `✅ ${item.labels[state.lang]}`;
-  document.getElementById("desc").innerText = "";
-
-  const content=document.getElementById("content");
-  content.innerHTML="";
-
-  const p1=document.createElement("p");
-  p1.innerHTML = `<span class="k">🔍 ${state.lang==="ar"?"السبب المحتمل":"Cause"}:</span> ${ans.cause}`;
-  content.appendChild(p1);
-
-  const p2=document.createElement("p");
-  p2.innerHTML = `<span class="k">✅ ${state.lang==="ar"?"الحل":"Steps"}:</span>`;
-  content.appendChild(p2);
-
-  const ul=document.createElement("ul");
-  ans.steps.forEach(s=>{
-    const li=document.createElement("li");
-    li.textContent=s;
-    ul.appendChild(li);
-  });
-  content.appendChild(ul);
-
-  const div=document.createElement("div");
-  div.className="divider";
-  content.appendChild(div);
-
-  const openT=document.createElement("button");
-  openT.className="btn";
-  openT.textContent=t().openTicket;
-  openT.onclick=()=>openTicket();
-  content.appendChild(openT);
-
-  const back=document.createElement("button");
-  back.className="btn secondary";
-  back.textContent=t().back;
-  back.onclick=()=>openSection(state.sectionId);
-  content.appendChild(back);
-}
-
-async function sendToLark(text){
-  if(!LARK_WEBHOOK_URL) return;
-  try{
-    await fetch(LARK_WEBHOOK_URL, {
-      method:"POST",
-      headers:{ "Content-Type":"application/json" },
-      body: JSON.stringify({ msg_type:"text", content:{ text } })
-    });
-  } catch(e){
-    // ignore
-  }
-}
-
-function openTicket(){
-  state.view="ticket";
-  const sec=sections.find(x=>x.id===state.sectionId);
-
-  const sectionContent = contentsMap[state.sectionId] || {};
-  const question = state.faqId && sectionContent[state.faqId]
-    ? sectionContent[state.faqId].labels[state.lang]
-    : "(direct)";
-
-  document.getElementById("title").innerText = t().ticketTitle;
-  document.getElementById("desc").innerText = t().ticketDesc;
-
-  const content=document.getElementById("content");
-  content.innerHTML="";
-
-  const f1=document.createElement("div");
-  f1.className="field";
-  f1.innerHTML=`<label>${t().name}</label><input id="tk_name" />`;
-  content.appendChild(f1);
-
-  const f2=document.createElement("div");
-  f2.className="field";
-  f2.innerHTML=`<label>${t().contact}</label><input id="tk_contact" />`;
-  content.appendChild(f2);
-
-  const f3=document.createElement("div");
-  f3.className="field";
-  f3.innerHTML=`<label>${t().details}</label><textarea id="tk_details"></textarea>`;
-  content.appendChild(f3);
-
-  const send=document.createElement("button");
-  send.className="btn";
-  send.textContent=t().send;
-  send.onclick=async ()=>{
-    const name=document.getElementById("tk_name").value || "-";
-    const contact=document.getElementById("tk_contact").value || "-";
-    const details=document.getElementById("tk_details").value || "-";
-
-    const secLabel = sec ? sec.labels[state.lang] : "";
-    const subjectText = `Davenci C.O.S Ticket | ${secLabel}`;
-    const bodyText =
-`Language: ${state.lang}
-Section: ${secLabel}
-Question: ${question}
-
-Name: ${name}
-Contact: ${contact}
-
-Details:
-${details}
-
----
-Sent from davenci-cos-support-bot.pages.dev`;
-
-    // (اختياري) ابعث للـ Lark
-    await sendToLark(
-`🎫 New Ticket
-Lang: ${state.lang}
-Section: ${secLabel}
-Question: ${question}
-Name: ${name}
-Contact: ${contact}
-Details: ${details}`
-    );
-
-    // Email (mailto)
-    const subject=encodeURIComponent(subjectText);
-    const body=encodeURIComponent(bodyText);
-    window.location.href=`mailto:${SUPPORT_EMAIL}?subject=${subject}&body=${body}`;
-  };
-  content.appendChild(send);
-
-  const tip=document.createElement("p");
-  tip.className="mini";
-  tip.textContent=t().sentTip;
-  content.appendChild(tip);
-
-  const back=document.createElement("button");
-  back.className="btn secondary";
-  back.textContent=t().back;
-  back.onclick=()=>{ if(state.faqId) openAnswer(state.faqId); else renderHome(); };
-  content.appendChild(back);
-}
-
-document.getElementById("lang").addEventListener("change",(e)=>{
-  setLang(e.target.value);
-  if(state.view==="home") renderHome();
-  else if(state.view==="faq") openSection(state.sectionId);
-  else if(state.view==="answer") openAnswer(state.faqId);
-  else if(state.view==="ticket") openTicket();
+title.innerText=t().homeTitle;
+desc.innerText=t().homeDesc;
+content.innerHTML="";
+sections.forEach(s=>{
+let b=document.createElement("button");
+b.className="btn";
+b.textContent=s.icon+" "+s.labels[state.lang];
+b.onclick=()=>openSection(s.id);
+content.appendChild(b);
 });
+}
 
-(function boot(){
-  const defaultLang="it";
-  document.getElementById("lang").value=defaultLang;
-  setLang(defaultLang);
-  renderHome();
-})();
+function openSection(id){
+state.sectionId=id;
+let sec=sections.find(s=>s.id===id);
+title.innerText=sec.labels[state.lang];
+desc.innerText="";
+content.innerHTML="";
+Object.entries(contentsMap[id]).forEach(([k,v])=>{
+let b=document.createElement("button");
+b.className="btn";
+b.textContent="❓ "+v.labels[state.lang];
+b.onclick=()=>openAnswer(k);
+content.appendChild(b);
+});
+let back=document.createElement("button");
+back.className="btn secondary";
+back.textContent=t().back;
+back.onclick=renderHome;
+content.appendChild(back);
+}
+
+function openAnswer(fid){
+let item=contentsMap[state.sectionId][fid];
+title.innerText=item.labels[state.lang];
+desc.innerText=item.answer[state.lang].cause;
+content.innerHTML="";
+item.answer[state.lang].steps.forEach(s=>{
+let p=document.createElement("p"); p.textContent="• "+s; content.appendChild(p);
+});
+let back=document.createElement("button");
+back.className="btn secondary";
+back.textContent=t().back;
+back.onclick=()=>openSection(state.sectionId);
+content.appendChild(back);
+}
+
+lang.onchange=e=>{setLang(e.target.value); renderHome();};
+setLang("it"); renderHome();
 </script>
+</body>
+</html>
