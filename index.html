@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <style>
-
 /* ===== خلفية رئيسية ==== */
 body{
   margin:0;
@@ -29,7 +28,6 @@ body::before{
 }
 
 /* ===== صندوق داخلي ==== */
-
 .wrap{ width:100%; max-width:520px; padding:18px; }
 
 .card, .faq, .answer{
@@ -43,7 +41,6 @@ body::before{
 .card{ display:block; }
 
 /* ==== Buttons ==== */
-
 .btn{
   padding:12px;
   border-radius:14px;
@@ -53,6 +50,7 @@ body::before{
   color:#fff;
   background:linear-gradient(135deg,#1F3C5B,#6FAFC2);
   margin-bottom:8px;
+  width:100%;
 }
 
 .backBtn{
@@ -72,8 +70,8 @@ body::before{
 h1{ color:#0E1E3A;margin:8px 0 6px; }
 p{ color:#2f3e4f;font-size:14px; }
 
-/* fix RTL LTR */
-.faq ul{ text-align:start; }
+/* FAQ */
+.faqListContainer{ display:flex; flex-direction:column; gap:8px; }
 
 </style>
 </head>
@@ -82,244 +80,116 @@ p{ color:#2f3e4f;font-size:14px; }
 
 <div class="wrap">
 
-<!-- =================== HOME ==================== -->
+  <!-- =================== HOME ==================== -->
+  <div class="card">
 
-<div class="card">
+    <img src="logo.png" class="logoTop" alt="Davenci C.O.S Logo">
+    <h1>Davenci C.O.S</h1>
+    <p id="subtitle">الدعم • التوجيه • الحماية</p>
 
-<img src="logo.png" class="logoTop">
-<h1>Davenci C.O.S</h1>
-<p id="subtitle">الدعم • التوجيه • الحماية</p>
+    <select id="lang" style="padding:8px 12px;border-radius:10px;margin:12px 0;">
+      <option value="ar">🇹🇳 عربي</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="it">🇮🇹 Italiano</option>
+      <option value="en">🇬🇧 English</option>
+    </select>
 
-<select id="lang" style="padding:8px 12px;border-radius:10px;margin:12px 0;">
-<option value="ar">🇹🇳 عربي</option>
-<option value="fr">🇫🇷 Français</option>
-<option value="it">🇮🇹 Italiano</option>
-<option value="en">🇬🇧 English</option>
-</select>
+    <!-- الأزرار الرئيسية (10 خدمات A → J) -->
+    <button class="btn" onclick="openFAQ('A')" id="btnA"></button>
+    <button class="btn" onclick="openFAQ('B')" id="btnB"></button>
+    <button class="btn" onclick="openFAQ('C')" id="btnC"></button>
+    <button class="btn" onclick="openFAQ('D')" id="btnD"></button>
+    <button class="btn" onclick="openFAQ('E')" id="btnE"></button>
+    <button class="btn" onclick="openFAQ('F')" id="btnF"></button>
+    <button class="btn" onclick="openFAQ('G')" id="btnG"></button>
+    <button class="btn" onclick="openFAQ('H')" id="btnH"></button>
+    <button class="btn" onclick="openFAQ('I')" id="btnI"></button>
+    <button class="btn" onclick="openFAQ('J')" id="btnJ"></button>
 
-<!-- القائمة الرئيسية -->
-<button class="btn" onclick="openFAQ('A')" id="btnA"></button>
-<button class="btn" onclick="openFAQ('B')" id="btnB"></button>
-<button class="btn" onclick="openFAQ('C')" id="btnC"></button>
-<button class="btn" onclick="openFAQ('D')" id="btnD"></button>
+  </div>
 
-</div>
+  <!-- =================== FAQ ==================== -->
+  <div class="faq">
+    <h2 id="faqTitle" style="color:#0E1E3A;margin-bottom:15px"></h2>
+    <div id="faqList" class="faqListContainer"></div>
+    <button class="btn backBtn" onclick="goHome()">⬅ رجوع للقائمة الرئيسية</button>
+  </div>
 
-
-<!-- =================== FAQ ==================== -->
-
-<div class="faq">
-
-<h2 id="faqTitle" style="color:#0E1E3A;margin-bottom:15px"></h2>
-
-<div id="faqList"></div>
-
-<button class="btn backBtn" onclick="goHome()">رجوع</button>
-
-</div>
-
-
-<!-- =================== ANSWER ==================== -->
-
-<div class="answer">
-
-<h2 id="answerTitle" style="color:#0E1E3A;margin-bottom:15px"></h2>
-
-<p id="answerText" style="white-space:pre-line;color:#1a2b3f;font-size:15px"></p>
-
-<button class="btn backBtn" onclick="goBackFAQ()">رجوع للأسئلة</button>
+  <!-- =================== ANSWER ==================== -->
+  <div class="answer">
+    <h2 id="answerTitle" style="color:#0E1E3A;margin-bottom:15px"></h2>
+    <p id="answerText" style="white-space:pre-line;color:#1a2b3f;font-size:15px"></p>
+    <button class="btn backBtn" onclick="goBackFAQ()">⬅ رجوع للأسئلة</button>
+  </div>
 
 </div>
-
-</div>
-
 
 <script>
-
 /* =============================
-   لغة واجهة
+   نصوص الواجهة الرئيسية (10 خدمات)
 ============================= */
-
 const LANG_DATA = {
-
-ar:{ subtitle:"الدعم • التوجيه • الحماية",
-
-A:"🚫 قوانين الحظر والانتهاكات",
-B:"📡 البث المباشر والمشاهدات",
-C:"🔐 أمان ومشاكل الحساب",
-D:"💰 الأرباح والسحب"
-},
-
-fr:{ subtitle:"Support • Orientation • Sécurité",
-
-A:"🚫 Bann & violations",
-B:"📡 LIVE et vues",
-C:"🔐 Sécurité du compte",
-D:"💰 Gains & retraits"
-},
-
-it:{ subtitle:"Supporto • Orientamento • Sicurezza",
-
-A:"🚫 Ban & violazioni",
-B:"📡 LIVE & visualizzazioni",
-C:"🔐 Sicurezza account",
-D:"💰 Guadagni e prelievi"
-},
-
-en:{ subtitle:"Support • Guidance • Security",
-
-A:"🚫 Ban & violations rules",
-B:"📡 LIVE & views",
-C:"🔐 Account security",
-D:"💰 Earnings & payout"
-}
-
+  ar:{
+    subtitle:"الدعم • التوجيه • الحماية",
+    A:"🚫 قوانين الحظر والانتهاكات",
+    B:"📡 البث المباشر والمشاهدات",
+    C:"🔐 أمان ومشاكل الحساب",
+    D:"💰 الأرباح والسحب",
+    E:"🧹 تنظيف الحساب والمحتوى",
+    F:"📝 شروط وسياسة TikTok 2025",
+    G:"🚀 تجهيز الحساب للانضمام للوكالة",
+    H:"🎁 الهدايا والعملات في البث المباشر",
+    I:"📲 مشاكل تسجيل الدخول والتحقق",
+    J:"🛠 أعطال التطبيق والتحديثات"
+  },
+  fr:{
+    subtitle:"Support • Orientation • Sécurité",
+    A:"🚫 Règles de bannissement & violations",
+    B:"📡 LIVE et vues",
+    C:"🔐 Sécurité du compte",
+    D:"💰 Gains & retraits",
+    E:"🧹 Nettoyage du compte & contenu",
+    F:"📝 Conditions & politique TikTok 2025",
+    G:"🚀 Préparer le compte pour l'agence",
+    H:"🎁 Cadeaux & pièces en LIVE",
+    I:"📲 Problèmes de connexion & codes",
+    J:"🛠 Bugs de l'app & mises à jour"
+  },
+  it:{
+    subtitle:"Supporto • Orientamento • Sicurezza",
+    A:"🚫 Regole di ban & violazioni",
+    B:"📡 LIVE & visualizzazioni",
+    C:"🔐 Sicurezza e problemi account",
+    D:"💰 Guadagni & prelievi",
+    E:"🧹 Pulizia account & contenuti",
+    F:"📝 Regole & policy TikTok 2025",
+    G:"🚀 Preparare l'account per l'agenzia",
+    H:"🎁 Regali & coins nel LIVE",
+    I:"📲 Problemi di accesso & codici",
+    J:"🛠 Errori app & aggiornamenti"
+  },
+  en:{
+    subtitle:"Support • Guidance • Security",
+    A:"🚫 Ban & violation rules",
+    B:"📡 LIVE & views",
+    C:"🔐 Account security & issues",
+    D:"💰 Earnings & payout",
+    E:"🧹 Account & content cleanup",
+    F:"📝 TikTok 2025 terms & policy",
+    G:"🚀 Preparing your account for agency",
+    H:"🎁 Gifts & coins in LIVE",
+    I:"📲 Login & verification issues",
+    J:"🛠 App bugs & updates"
+  }
 };
 
-
 /* =============================
- قاعدة بيانات FAQ (قسم A مثال)
+   قاعدة بيانات FAQ (10 أقسام)
 ============================= */
-
 const FAQ_DB = {
-
-A:{
-
-title:{
-ar:"قوانين الحظر والانتهاكات 2025",
-fr:"Règles de bannissement 2025",
-en:"Ban rules 2025",
-it:"Regole ban 2025"
-},
-
-qa:{
-
-ar:[
-{ q:"لماذا يتم حظر الحساب رغم عدم وجود مخالفات؟",
-  a:"2025 TikTok يحظر نشاط غير طبيعي\n\n✔ تجنب VPN\n✔ حذف تطبيقات سبام" },
-
-{ q:"Shadowban جديد؟",
-  a:"سببه نشر سريع\n✔ توقف 48 ساعة" }
-],
-
-fr:[
-{ q:"Bannissement sans violation?",
-  a:"activité suspecte 2025" }
-],
-
-en:[
-{ q:"Ban without reason?",
-  a:"Suspicious behaviour" }
-],
-
-it:[
-{ q:"Ban senza motivo?",
-  a:"attività sospetta" }
-]
-
-}
-
-}
-
-};
-
-
-/* =============================
-   تفعيل اللغة
-============================= */
-
-const langSelect = document.getElementById("lang");
-
-function applyLang(l){
-
-document.getElementById("subtitle").textContent = LANG_DATA[l].subtitle;
-
-document.getElementById("btnA").textContent = LANG_DATA[l].A;
-document.getElementById("btnB").textContent = LANG_DATA[l].B;
-document.getElementById("btnC").textContent = LANG_DATA[l].C;
-document.getElementById("btnD").textContent = LANG_DATA[l].D;
-
-document.documentElement.lang = l;
-document.documentElement.dir = (l==="ar")?"rtl":"ltr";
-
-}
-
-langSelect.addEventListener("change",()=>applyLang(langSelect.value));
-
-applyLang("ar");
-
-
-/* =============================
-   فتح FAQ
-============================= */
-
-function openFAQ(key){
-
-let lang=document.documentElement.lang;
-
-document.querySelector(".card").style.display="none";
-document.querySelector(".answer").style.display="none";
-document.querySelector(".faq").style.display="block";
-
-document.getElementById("faqTitle").textContent =
-FAQ_DB[key].title[lang];
-
-document.getElementById("faqList").innerHTML="";
-
-FAQ_DB[key].qa[lang].forEach((item,i)=>{
-
-let b=document.createElement("button");
-b.className="btn";
-b.textContent=item.q;
-
-b.onclick=()=>openAnswer(key,i);
-
-document.getElementById("faqList").appendChild(b);
-
-});
-
-}
-
-
-/* =============================
-   عرض الجواب
-============================= */
-
-function openAnswer(key,index){
-
-let lang=document.documentElement.lang;
-
-let data = FAQ_DB[key].qa[lang][index];
-
-document.querySelector(".faq").style.display="none";
-document.querySelector(".answer").style.display="block";
-
-document.getElementById("answerTitle").textContent = data.q;
-document.getElementById("answerText").textContent  = data.a;
-
-}
-
-
-/* =============================
-   رجوع
-============================= */
-
-function goHome(){
-
-document.querySelector(".faq").style.display="none";
-document.querySelector(".answer").style.display="none";
-document.querySelector(".card").style.display="block";
-
-}
-
-function goBackFAQ(){
-
-document.querySelector(".answer").style.display="none";
-document.querySelector(".faq").style.display="block";
-
-}
-
-</script>
-
-</body>
-</html>
+  /* ===== A – قوانين الحظر والانتهاكات ===== */
+  A:{
+    title:{
+      ar:"قوانين الحظر والانتهاكات 2025",
+      fr:"Règles de bannissement & violations 2025",
+      en:"Ban & viol
