@@ -507,7 +507,9 @@ function openFAQ(key){
   showScreen(".faq");
 
   // العنوان
-  document.getElementById("faqTitle").textContent = section.title;
+ document.getElementById("faqTitle").textContent =
+section.title[document.documentElement.lang];
+
 
   const box = document.getElementById("faqList");
   box.innerHTML = "";
@@ -524,7 +526,8 @@ function openFAQ(key){
 
       let b = document.createElement("button");
       b.className = "btn";
-      b.textContent = item.q;
+     b.textContent = item.q[document.documentElement.lang];
+
 
       b.onclick = ()=> openSecondLevel(key,index);
 
@@ -560,7 +563,8 @@ function openSecondLevel(key,index){
   item.sub.forEach(sub=>{
       let sb = document.createElement("button");
       sb.className="btn";
-      sb.textContent=sub.q;
+     sb.textContent = sub.q[document.documentElement.lang];
+
 
       sb.onclick = ()=> showAnswer(sub.q,sub.a);
 
@@ -574,8 +578,12 @@ function openSecondLevel(key,index){
 
 function showAnswer(q,a){
 
-  document.getElementById("answerTitle").textContent = q;
-  document.getElementById("answerText").textContent = a;
+document.getElementById("answerTitle").textContent =
+q[document.documentElement.lang];
+
+document.getElementById("answerText").textContent =
+a[document.documentElement.lang];
+
 
   showScreen(".answer");
 }
