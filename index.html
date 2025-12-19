@@ -246,114 +246,246 @@ function showScreen(name){
 const FAQ = {
 
 A:{
- title:"قوانين الحظر والانتهاكات 2025",
- data:[
-{ q:"Shadowban",
+
+title:{
+ ar:"قوانين الحظر والانتهاكات 2025",
+ fr:"Règles de bannissement & violations 2025",
+ en:"Ban & Violation Rules 2025",
+ it:"Regole di Ban & Violazioni 2025"
+},
+
+data:[
+
+/* ===================== 1 ===================== */
+{
+ q:{
+  ar:"Shadowban",
+  fr:"Shadowban",
+  en:"Shadowban",
+  it:"Shadowban"
+ },
  sub:[
-  {q:"ماهو الشادو بان؟", 
-   a:"الشادو بان هو تقليل توزيع حسابك وفيديوهاتك بدون إشعار رسمي."},
 
-  {q:"شنو سبب الشادو بان؟", 
-   a:"● نشر كثيف بسرعة كبيرة\n● تكرار هاشتاجات\n● تعليقات سبام\n● استعمال VPN"},
+  {
+   q:{ ar:"ماهو الشادو بان؟", fr:"C'est quoi Shadowban ?", en:"What is Shadowban?", it:"Cos'è Shadowban?" },
+   a:{
+    ar:"تقليل توزيع الحساب بدون رسالة رسمية.",
+    fr:"Réduction de visibilité sans message officiel.",
+    en:"Reduced visibility without official notice.",
+    it:"Riduzione della visibilità senza notifica ufficiale."
+   }
+  },
 
-  {q:"كيف نخرج من الشادو بان؟", 
-   a:"● توقف نشر 48 ساعة\n● امسح فيديوهات المخالفة\n● لا تستعمل VPN\n● خفّض كثافة التفاعل."}
+  {
+   q:{ ar:"السبب؟", fr:"Cause ?", en:"Reason?", it:"Motivo?" },
+   a:{
+    ar:"نشر كثيف – تكرار هاشتاج – استعمال VPN",
+    fr:"Spam de posts – hashtags répétitifs – VPN",
+    en:"Fast posting – repetitive hashtags – VPN",
+    it:"Pubblicazione veloce – Hashtag ripetitivi – VPN"
+   }
+  },
+
+  {
+   q:{ ar:"الحل؟", fr:"Solution ?", en:"Solution?", it:"Soluzione?" },
+   a:{
+    ar:"توقف نشر 48 ساعة ومسح فيديوهات مخالفة.",
+    fr:"Arrêter 48H + supprimer vidéos à risque.",
+    en:"Stop posting 48H and delete risky videos.",
+    it:"Stop 48H e cancella video rischiosi."
+   }
+  }
+
  ]
 },
 
+/* ===================== 2 ===================== */
 {
- q:"حظر محتوى حساس",
- sub:[
-  {q:"سبب الحظر؟",
-   a:"تيك توك صار صارم ضد: العري – العنف – التلميحات – الدم."},
-  
-  {q:"كيف نتجنب الحظر؟",
-   a:"● لا تظهر أجزاء حساسة\n● تجنب كلام جنسي\n● راجع الفيديو قبل نشره."},
+ q:{
+  ar:"حظر محتوى حساس",
+  fr:"Contenu sensible banni",
+  en:"Sensitive content ban",
+  it:"Ban contenuti sensibili"
+ },
 
-  {q:"إذا انحذف فيديو، نرجعو؟",
-   a:"ممكن عبر الاستئناف: الإعدادات → الإبلاغ → فيديو محذوف."}
+ sub:[
+
+  {
+   q:{ar:"سبب الحظر؟", fr:"Pourquoi ban ?", en:"Why banned?", it:"Perché bannato?"},
+   a:{
+    ar:"تيك توك صار صارم ضد العري والعنف.",
+    fr:"TikTok strict contre nudité & violence.",
+    en:"TikTok strict with nudity & violence.",
+    it:"TikTok severo contro nudità e violenza."
+   }
+  },
+
+  {
+   q:{ar:"كيف نتجنب؟", fr:"Éviter ?", en:"Avoid?", it:"Evitare?"},
+   a:{
+    ar:"راجع الفيديو قبل نشره وتجنب كلمات جنسية.",
+    fr:"Vérifier la vidéo & éviter mots sensibles.",
+    en:"Check video & avoid sexual wording.",
+    it:"Controllare video ed evitare parole sessuali."
+   }
+  }
+
  ]
 },
 
-{
- q:"حظر حساب بلا سبب",
- sub:[
-  {q:"ليش ينحظر الحساب؟",
-   a:"نشاط غير طبيعي – تسجيل دخول من أجهزة مختلفة – VPN – برامج مزيفة."},
+/* ===================== 3 ===================== */
 
-  {q:"شنو نعمل؟",
-   a:"● امسح VPN\n● أربط رقم الهاتف والبريد\n● سجّل خروج من الأجهزة الغريبة"},
-  
-  {q:"هل نقدر نرجعو؟",
-   a:"تقدر تعمل استئناف + تقديم هوية."}
+{
+ q:{
+  ar:"حظر حساب بدون سبب",
+  fr:"Compte banni sans raison",
+  en:"Account banned for no reason",
+  it:"Account bannato senza motivo"
+ },
+
+ sub:[
+
+  {
+   q:{ar:"لماذا؟", fr:"Pourquoi ?", en:"Why?", it:"Perché?"},
+   a:{
+    ar:"نشاط غير طبيعي أو VPN أو دخول متعدد",
+    fr:"Activité suspecte / VPN / multiple login",
+    en:"Suspicious activity / VPN / login alerts",
+    it:"Attività sospetta / VPN / accessi multipli"
+   }
+  },
+
+  {
+   q:{ar:"الحل؟", fr:"Solution ?", en:"Fix?", it:"Soluzione?"},
+   a:{
+    ar:"إزالة VPN و توثيق بريد ورقم الحساب.",
+    fr:"Retirer VPN & vérifier tel/mail.",
+    en:"Remove VPN & verify phone/email.",
+    it:"Rimuovere VPN & verificare numero/email."
+   }
+  }
+
  ]
 },
 
-{
- q:"سبب حذف فيديو مباشرة",
- sub:[
-  {q:"شنو السبب؟",
-   a:"ذكاء تيك توك يحذف تلقائي إذا شاف: إيحاء – دم – أطفال بحالات خطر – حقوق نشر."},
+/* ===================== 4 ===================== */
 
-  {q:"كيف نتجنب؟",
-   a:"● لا تستعمل موسيقى خارجية\n● تجنب كلمات ممنوعة في العنوان"},
-  
-  {q:"حل نهائي؟",
-   a:"غيّر مونتاج الفيديو وارجع نشره."}
+{
+ q:{
+  ar:"سبب حذف فيديو مباشر",
+  fr:"Suppression auto vidéo",
+  en:"Instant video removal",
+  it:"Rimozione immediata video"
+ },
+
+ sub:[
+
+  {
+   q:{ar:"السبب؟", fr:"Cause ?", en:"Reason?", it:"Motivo?"},
+   a:{
+    ar:"ذكاء اصطناعي يحذف محتوى إيحاء أو دم.",
+    fr:"AI détecte nudité & sang.",
+    en:"AI flags nudity/violence.",
+    it:"AI rileva nudità/violenza."
+   }
+  },
+
+  {
+   q:{ar:"الحل؟", fr:"Solution ?", en:"Fix?", it:"Soluzione?"},
+   a:{
+    ar:"غير المونتاج وارجع نشر.",
+    fr:"Changer montage et republier.",
+    en:"Edit and repost.",
+    it:"Modifica e ripubblica."
+   }
+  }
+
  ]
 },
 
+/* ===================== 5 ===================== */
+
 {
- q:"موسيقى حقوق نشر",
+ q:{
+  ar:"موسيقى بث حقوق نشر",
+  fr:"Musique protégée",
+  en:"Copyright music",
+  it:"Musica con copyright"
+ },
+
  sub:[
-  {q:"ليش الحظر؟",
-   a:"تيك توك يمنع موسيقى من خارج مكتبتو الرسميّة."},
 
-  {q:"شنو تستعمل؟",
-   a:"استعمل مكتبة الصوتيات داخل TikTok فقط."},
+  {
+   q:{ar:"السبب؟", fr:"Pourquoi ?", en:"Why?", it:"Perché?"},
+   a:{
+    ar:"استعمال موسيقى خارج مكتبة TikTok.",
+    fr:"Musique hors bibliothèque TikTok.",
+    en:"Music outside TikTok library.",
+    it:"Musica fuori libreria TikTok."
+   }
+  },
 
-  {q:"حل لو انحذف الفيديو؟",
-   a:"بدّل الموسيقى وارجع نشر."}
+  {
+   q:{ar:"الحل؟", fr:"Solution ?", en:"Fix?", it:"Soluzione?"},
+   a:{
+    ar:"استعمل مكتبة TikTok فقط.",
+    fr:"Utiliser seulement bibliothèque TikTok.",
+    en:"Use only TikTok library.",
+    it:"Usa solo libreria TikTok."
+   }
+  }
+
  ]
 },
 
-{
- q:"Ban Geo الحظر الجغرافي",
- sub:[
-  {q:"سبب؟",
-   a:"VPN – تغيير موقع فجأة – حساب بين دولتين."},
-
-  {q:"حل؟",
-   a:"● احذف VPN\n● ثبّت دولة SIM\n● ادخل من جهاز واحد."},
-  
-  {q:"مدة؟",
-   a:"بين 3 و7 أيام عادة."}
- ]
-},
+/* ===================== 6 ===================== */
 
 {
- q:"تعليقات سبام",
+ q:{
+  ar:"حظر جغرافي Geo Ban",
+  fr:"Ban géographique",
+  en:"Geo ban",
+  it:"Geo ban"
+ },
+
  sub:[
-  {q:"شنو السبب؟",
-   a:"الرد السريع بكثرة – نسخ/لصق – إعلانات – رموز متكررة."},
 
-  {q:"الحل؟",
-   a:"● خفّض تفاعل\n● لا ترد نسخ/لصق\n● لا تكتب عروض."},
+  {
+   q:{ar:"السبب؟", fr:"Cause ?", en:"Reason?", it:"Motivo?"},
+   a:{
+    ar:"VPN – تغيير دولة – IP مريب",
+    fr:"VPN – changement pays – IP suspect",
+    en:"VPN / country change / suspicious IP",
+    it:"VPN / cambio paese / IP sospetto"
+   }
+  },
 
-  {q:"مدة المشكلة؟",
-   a:"24 إلى 72 ساعة."}
+  {
+   q:{ar:"الحل؟", fr:"Solution ?", en:"Fix?", it:"Soluzione?"},
+   a:{
+    ar:"حذف VPN وتثبيت دولة SIM.",
+    fr:"Retirer VPN & SIM locale.",
+    en:"Remove VPN & use own SIM.",
+    it:"Rimuovere VPN & usare SIM locale."
+   }
+  }
+
  ]
 }
-]   
-},
 
-B:{ title:"البث المباشر والمشاهدات", data:[] },
-C:{ title:"أمان الحساب والدخول", data:[] },
-D:{ title:"الأرباح والسحب", data:[] },
-E:{ title:"تنظيف الحساب", data:[] },
-F:{ title:"الشروط والانضمام للوكالة", data:[] },
-G:{ title:"استفادة المبدع من الانضمام للوكالة", data:[] },
-H:{ title:"فريق الدعم", data:[] }
+] // نهاية data
+
+}, // نهاية A
+
+// باقي الأقسام فارغة
+
+B:{title:{ar:"البث المباشر",fr:"LIVE",en:"LIVE",it:"LIVE"},data:[]},
+C:{title:{ar:"الأمان",fr:"Sécurité",en:"Security",it:"Sicurezza"},data:[]},
+D:{title:{ar:"الأرباح",fr:"Gains",en:"Earnings",it:"Guadagni"},data:[]},
+E:{title:{ar:"تنظيف",fr:"Nettoyage",en:"Clean up",it:"Pulizia"},data:[]},
+F:{title:{ar:"الانضمام",fr:"Adhésion",en:"Join",it:"Entrare"},data:[]},
+G:{title:{ar:"الفائدة",fr:"Avantage",en:"Advantage",it:"Beneficio"},data:[]},
+H:{title:{ar:"الدعم",fr:"Support",en:"Support",it:"Supporto"},data:[]}
 
 };
 
