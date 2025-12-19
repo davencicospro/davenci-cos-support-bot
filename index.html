@@ -26,13 +26,16 @@ body::before{
   z-index:-1;
 }
 .wrap{ width:100%; max-width:520px; padding:18px; }
-.card{
+.card,
+.faq,
+.answer{
   background: rgba(255,255,255,0.9);
   border-radius:18px;
   padding:22px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   text-align:center;
 }
+.faq,.answer{display:none;}
 .logoTop{
   width:70px; height:70px; border-radius:50%;
   background:#fff; padding:10px;
@@ -63,6 +66,26 @@ select{
   background: linear-gradient(135deg,#1F3C5B,#6FAFC2);
 }
 
+.back-btn{
+  margin-top:15px;
+  background:white;
+  color:#1F3C5B;
+  border:2px solid #1F3C5B;
+}
+
+#faqList{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+#answerText{
+  white-space:pre-line;
+  color:#1F1F1F;
+  text-align:start;
+  font-size:14px;
+}
+
 .support-fab{
   position:fixed;
   right:16px;
@@ -81,15 +104,15 @@ select{
 <body>
 
 <div class="wrap">
+  <!-- شاشة الرئيسية -->
   <div class="card">
-
     <img src="logo.png" class="logoTop" alt="Davenci C.O.S">
     <h1>Davenci C.O.S</h1>
     <p id="subtitle">الدعم • التوجيه • الحماية</p>
 
     <!-- اختيار اللغة -->
     <div class="langRow">
-  <select id="lang" value="ar">
+      <select id="lang" value="ar">
         <option value="ar">🇹🇳 عربي</option>
         <option value="fr">🇫🇷 Français</option>
         <option value="it">🇮🇹 Italiano</option>
@@ -107,32 +130,28 @@ select{
      <button class="btn" id="btnF" onclick="openFAQ('F')"></button>
      <button class="btn" id="btnG" onclick="openFAQ('G')"></button>
      <button class="btn" id="btnH" onclick="openFAQ('H')"></button>
-
     </div>
-
   </div>
-</div>
-<!-- شاشة الأسئلة -->
-<div class="faq" style="display:none; background: rgba(255,255,255,0.92); padding:22px; border-radius:18px; text-align:center; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
-  <h2 id="faqTitle" style="color:#0E1E3A;margin-bottom:15px;"></h2>
-  <div id="faqList" style="display:flex; flex-direction:column; gap:10px;"></div>
 
-  <button class="btn" style="margin-top:15px;background:white;color:#1F3C5B;border:2px solid #1F3C5B"
-          onclick="goHome()">رجوع</button>
-</div>
+  <!-- شاشة الأسئلة -->
+  <div class="faq">
+    <h2 id="faqTitle" style="color:#0E1E3A;margin-bottom:15px;"></h2>
+    <div id="faqList"></div>
+    <button class="btn back-btn" onclick="goHome()">رجوع</button>
+  </div>
 
-<!-- شاشة الجواب -->
-<div class="answer" style="display:none; background: rgba(255,255,255,0.92); padding:22px; border-radius:18px; text-align:center; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
-  <h2 id="answerTitle" style="color:#0E1E3A;margin-bottom:15px;"></h2>
-  <p id="answerText" style="white-space:pre-line; color:#1F1F1F; text-align:start;"></p>
-
-  <button class="btn" style="margin-top:15px;background:white;color:#1F3C5B;border:2px solid #1F3C5B"
-          onclick="goBackFAQ()">رجوع</button>
+  <!-- شاشة الجواب -->
+  <div class="answer">
+    <h2 id="answerTitle" style="color:#0E1E3A;margin-bottom:15px;"></h2>
+    <p id="answerText"></p>
+    <button class="btn back-btn" onclick="goBackFAQ()">رجوع</button>
+  </div>
 </div>
 
 <button class="support-fab">💬</button>
 
 <script>
+// ==================== نصوص الواجهة الرئيسية (الأزرار) ====================
 document.addEventListener("DOMContentLoaded", function(){
 
   const BOT_LANG = {
@@ -182,7 +201,6 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   };
 
-  /* عناصر */
   const langSelector = document.getElementById("lang");
 
   const elements = {
@@ -197,16 +215,12 @@ document.addEventListener("DOMContentLoaded", function(){
     btnH: document.getElementById("btnH")
   };
 
-  /*  تفعيل اللغات */
   function setLang(lang){
-
     if(!BOT_LANG[lang]) return;
-
     document.documentElement.lang = lang;
     document.documentElement.dir  = (lang === "ar") ? "rtl" : "ltr";
 
     const dict = BOT_LANG[lang];
-
     elements.subtitle.textContent = dict.subtitle;
     elements.btnA.textContent = dict.A;
     elements.btnB.textContent = dict.B;
@@ -218,541 +232,268 @@ document.addEventListener("DOMContentLoaded", function(){
     elements.btnH.textContent = dict.H;
   }
 
-  /* عند تغيير select */
   langSelector.addEventListener("change", function(){
     setLang(this.value);
   });
 
-  /* لغة أولية عربية */
   setLang("ar");
   langSelector.value = "ar";
-
 });
-</script>
-<script>
 
-/* ======================= CONFIG ======================= */
-
-/* شاشة تحكم العرض */
+// ======================= شاشة تحكم العرض =======================
 function showScreen(name){
-  document.querySelector(".card").style.display = "none";
-  document.querySelector(".faq").style.display = "none";
-  document.querySelector(".answer").style.display = "none";
-  document.querySelector(name).style.display = "block";
+  document.querySelector(".card").style.display   = (name === ".card")   ? "block" : "none";
+  document.querySelector(".faq").style.display    = (name === ".faq")    ? "block" : "none";
+  document.querySelector(".answer").style.display = (name === ".answer") ? "block" : "none";
 }
 
-/* =========== قاعدة البيانات – فارغة لتعبئتها ================= */
+// ======================= قاعدة بيانات FAQ =======================
 
 const FAQ = {
 
 A:{
-
-title:{
- ar:"قوانين الحظر والانتهاكات 2025",
- fr:"Règles de bannissement & violations 2025",
- en:"Ban & Violation Rules 2025",
- it:"Regole di Ban & Violazioni 2025"
-},
-
-data:[
-
-/* ===================== 1 ===================== */
-{
- q:{
-  ar:"Shadowban",
-  fr:"Shadowban",
-  en:"Shadowban",
-  it:"Shadowban"
- },
- sub:[
-
-  {
-   q:{ ar:"ماهو الشادو بان؟", fr:"C'est quoi Shadowban ?", en:"What is Shadowban?", it:"Cos'è Shadowban?" },
-   a:{
-    ar:"تقليل توزيع الحساب بدون رسالة رسمية.",
-    fr:"Réduction de visibilité sans message officiel.",
-    en:"Reduced visibility without official notice.",
-    it:"Riduzione della visibilità senza notifica ufficiale."
-   }
+  title:{
+    ar:"قوانين الحظر والانتهاكات 2025",
+    fr:"Règles de bannissement & violations 2025",
+    en:"Ban & violation rules 2025",
+    it:"Regole di ban & violazioni 2025"
   },
-
-  {
-   q:{ ar:"السبب؟", fr:"Cause ?", en:"Reason?", it:"Motivo?" },
-   a:{
-    ar:"نشر كثيف – تكرار هاشتاج – استعمال VPN",
-    fr:"Spam de posts – hashtags répétitifs – VPN",
-    en:"Fast posting – repetitive hashtags – VPN",
-    it:"Pubblicazione veloce – Hashtag ripetitivi – VPN"
-   }
-  },
-
-  {
-   q:{ ar:"الحل؟", fr:"Solution ?", en:"Solution?", it:"Soluzione?" },
-   a:{
-    ar:"توقف نشر 48 ساعة ومسح فيديوهات مخالفة.",
-    fr:"Arrêter 48H + supprimer vidéos à risque.",
-    en:"Stop posting 48H and delete risky videos.",
-    it:"Stop 48H e cancella video rischiosi."
-   }
-  }
-
- ]
-},
-
-/* ===================== 2 ===================== */
-{
- q:{
-  ar:"حظر محتوى حساس",
-  fr:"Contenu sensible banni",
-  en:"Sensitive content ban",
-  it:"Ban contenuti sensibili"
- },
-
- sub:[
-
-  {
-   q:{ar:"سبب الحظر؟", fr:"Pourquoi ban ?", en:"Why banned?", it:"Perché bannato?"},
-   a:{
-    ar:"تيك توك صار صارم ضد العري والعنف.",
-    fr:"TikTok strict contre nudité & violence.",
-    en:"TikTok strict with nudity & violence.",
-    it:"TikTok severo contro nudità e violenza."
-   }
-  },
-
-  {
-   q:{ar:"كيف نتجنب؟", fr:"Éviter ?", en:"Avoid?", it:"Evitare?"},
-   a:{
-    ar:"راجع الفيديو قبل نشره وتجنب كلمات جنسية.",
-    fr:"Vérifier la vidéo & éviter mots sensibles.",
-    en:"Check video & avoid sexual wording.",
-    it:"Controllare video ed evitare parole sessuali."
-   }
-  }
-
- ]
-},
-
-/* ===================== 3 ===================== */
-
-{
- q:{
-  ar:"حظر حساب بدون سبب",
-  fr:"Compte banni sans raison",
-  en:"Account banned for no reason",
-  it:"Account bannato senza motivo"
- },
-
- sub:[
-
-  {
-   q:{ar:"لماذا؟", fr:"Pourquoi ?", en:"Why?", it:"Perché?"},
-   a:{
-    ar:"نشاط غير طبيعي أو VPN أو دخول متعدد",
-    fr:"Activité suspecte / VPN / multiple login",
-    en:"Suspicious activity / VPN / login alerts",
-    it:"Attività sospetta / VPN / accessi multipli"
-   }
-  },
-
-  {
-   q:{ar:"الحل؟", fr:"Solution ?", en:"Fix?", it:"Soluzione?"},
-   a:{
-    ar:"إزالة VPN و توثيق بريد ورقم الحساب.",
-    fr:"Retirer VPN & vérifier tel/mail.",
-    en:"Remove VPN & verify phone/email.",
-    it:"Rimuovere VPN & verificare numero/email."
-   }
-  }
-
- ]
-},
-
-/* ===================== 4 ===================== */
-
-{
- q:{
-  ar:"سبب حذف فيديو مباشر",
-  fr:"Suppression auto vidéo",
-  en:"Instant video removal",
-  it:"Rimozione immediata video"
- },
-
- sub:[
-
-  {
-   q:{ar:"السبب؟", fr:"Cause ?", en:"Reason?", it:"Motivo?"},
-   a:{
-    ar:"ذكاء اصطناعي يحذف محتوى إيحاء أو دم.",
-    fr:"AI détecte nudité & sang.",
-    en:"AI flags nudity/violence.",
-    it:"AI rileva nudità/violenza."
-   }
-  },
-
-  {
-   q:{ar:"الحل؟", fr:"Solution ?", en:"Fix?", it:"Soluzione?"},
-   a:{
-    ar:"غير المونتاج وارجع نشر.",
-    fr:"Changer montage et republier.",
-    en:"Edit and repost.",
-    it:"Modifica e ripubblica."
-   }
-  }
-
- ]
-},
-
-/* ===================== 5 ===================== */
-
-{
- q:{
-  ar:"موسيقى بث حقوق نشر",
-  fr:"Musique protégée",
-  en:"Copyright music",
-  it:"Musica con copyright"
- },
-
- sub:[
-
-  {
-   q:{ar:"السبب؟", fr:"Pourquoi ?", en:"Why?", it:"Perché?"},
-   a:{
-    ar:"استعمال موسيقى خارج مكتبة TikTok.",
-    fr:"Musique hors bibliothèque TikTok.",
-    en:"Music outside TikTok library.",
-    it:"Musica fuori libreria TikTok."
-   }
-  },
-
-  {
-   q:{ar:"الحل؟", fr:"Solution ?", en:"Fix?", it:"Soluzione?"},
-   a:{
-    ar:"استعمل مكتبة TikTok فقط.",
-    fr:"Utiliser seulement bibliothèque TikTok.",
-    en:"Use only TikTok library.",
-    it:"Usa solo libreria TikTok."
-   }
-  }
-
- ]
-},
-
-/* ===================== 6 ===================== */
-
-{
- q:{
-  ar:"حظر جغرافي Geo Ban",
-  fr:"Ban géographique",
-  en:"Geo ban",
-  it:"Geo ban"
- },
-
- sub:[
-
-  {
-   q:{ar:"السبب؟", fr:"Cause ?", en:"Reason?", it:"Motivo?"},
-   a:{
-    ar:"VPN – تغيير دولة – IP مريب",
-    fr:"VPN – changement pays – IP suspect",
-    en:"VPN / country change / suspicious IP",
-    it:"VPN / cambio paese / IP sospetto"
-   }
-  },
-
-  {
-   q:{ar:"الحل؟", fr:"Solution ?", en:"Fix?", it:"Soluzione?"},
-   a:{
-    ar:"حذف VPN وتثبيت دولة SIM.",
-    fr:"Retirer VPN & SIM locale.",
-    en:"Remove VPN & use own SIM.",
-    it:"Rimuovere VPN & usare SIM locale."
-   }
-  }
-
- ]
-}
-
-] // نهاية data
-
-}, // نهاية A
-
-// باقي الأقسام فارغة
-
-B:{title:{
-   ar:"البث المباشر والمشاهدات",
-   fr:"LIVE et vues",
-   en:"LIVE & views",
-   it:"LIVE e visualizzazioni"
- },
-
- data:[
-
-/*==================== 1 ====================*/
-{
- q:{
-   ar:"مشاكل بدء البث المباشر",
-   fr:"Problèmes de démarrage LIVE",
-   en:"LIVE starting issues",
-   it:"Problemi avvio LIVE"
- },
- sub:[
-   {
-    q:{ar:"ليش ما يتفعلش البث؟",fr:"Pourquoi LIVE indisponible ?",en:"Why LIVE locked?",it:"Perché LIVE bloccato?"},
-    a:{
-     ar:"تيك توك يطلب: 1000 متابع + عمر فوق 18 + حساب نظيف",
-     fr:"TikTok exige: 1000 abonnés + +18 + compte propre",
-     en:"Requires: 1000 followers + age 18+ + clean account",
-     it:"Richiede: 1000 follower + 18 anni + account pulito"
+  data:[
+    {
+      q:{
+        ar:"ماهو الشادو بان؟",
+        fr:"C'est quoi le Shadowban ?",
+        en:"What is shadowban?",
+        it:"Cos'è lo shadowban?"
+      },
+      a:{
+        ar:"الشادو بان هو تقليل وصول حسابك وفيديوهاتك بدون إشعار رسمي من تيك توك.",
+        fr:"Le shadowban est une baisse de visibilité sans notification officielle.",
+        en:"Shadowban means your reach is reduced without an official notice.",
+        it:"Lo shadowban è una riduzione della visibilità senza avviso ufficiale."
+      }
+    },
+    {
+      q:{
+        ar:"أسباب الشادو بان في 2025؟",
+        fr:"Causes du shadowban en 2025 ?",
+        en:"Causes of shadowban in 2025?",
+        it:"Cause dello shadowban nel 2025?"
+      },
+      a:{
+        ar:"• نشر كثيف في وقت قصير\n• استعمال VPN\n• تكرار نفس المحتوى أو نفس التعليق\n• بلاغات كثيرة على حسابك",
+        fr:"• Trop de posts en peu de temps\n• Utilisation de VPN\n• Contenu ou commentaires répétitifs\n• Trop de signalements sur ton compte",
+        en:"• Posting too much in short time\n• Using VPN\n• Repetitive content or comments\n• Many reports on your account",
+        it:"• Troppi post in poco tempo\n• Uso di VPN\n• Contenuti o commenti ripetitivi\n• Molte segnalazioni sul tuo account"
+      }
+    },
+    {
+      q:{
+        ar:"كيف نخرج من الشادو بان؟",
+        fr:"Comment sortir du shadowban ?",
+        en:"How to recover from shadowban?",
+        it:"Come uscire dallo shadowban?"
+      },
+      a:{
+        ar:"• توقف عن النشر 48 ساعة على الأقل\n• احذف الفيديوهات التي فيها مخاطرة\n• لا تستعمل VPN\n• ركّز على محتوى نظيف لفترة",
+        fr:"• Arrête de poster pendant 48h\n• Supprime les vidéos à risque\n• N'utilise pas de VPN\n• Publie du contenu propre pendant quelques jours",
+        en:"• Stop posting for at least 48h\n• Remove risky videos\n• Do not use VPN\n• Post clean content for a while",
+        it:"• Smetti di pubblicare per almeno 48h\n• Elimina i video rischiosi\n• Non usare VPN\n• Pubblica contenuti puliti per un po'"
+      }
+    },
+    {
+      q:{
+        ar:"لماذا يتم حذف الفيديو فورًا بعد النشر؟",
+        fr:"Pourquoi ma vidéo est supprimée directement ?",
+        en:"Why is my video removed instantly?",
+        it:"Perché il mio video viene rimosso subito?"
+      },
+      a:{
+        ar:"الذكاء الاصطناعي في تيك توك يكتشف:\n• عري أو إيحاء جنسي\n• دم وعنف شديد\n• أطفال في وضع حساس\n• موسيقى أو محتوى مخالف للسياسات",
+        fr:"L'IA de TikTok supprime si elle détecte :\n• Nudité ou contenu suggestif\n• Sang ou violence extrême\n• Enfants en situation sensible\n• Audio ou contenu contraire aux règles",
+        en:"TikTok AI removes videos that contain:\n• Nudity or sexual content\n• Strong violence or blood\n• Minors in risky situations\n• Audio or content against policies",
+        it:"L'IA di TikTok rimuove i video con:\n• Nudità o contenuti sessuali\n• Violenza forte o sangue\n• Minori in situazioni rischiose\n• Audio o contenuti contrari alle regole"
+      }
+    },
+    {
+      q:{
+        ar:"مشكلة موسيقى بحقوق نشر",
+        fr:"Problème de musique avec copyright",
+        en:"Copyright music issue",
+        it:"Problema di musica con copyright"
+      },
+      a:{
+        ar:"استعمل فقط الموسيقى الموجودة داخل مكتبة TikTok الرسمية لتجنب الحظر.",
+        fr:"Utilise seulement la musique de la bibliothèque officielle TikTok pour éviter les blocages.",
+        en:"Use only music from TikTok's official library to avoid copyright issues.",
+        it:"Usa solo la musica dalla libreria ufficiale di TikTok per evitare problemi di copyright."
+      }
+    },
+    {
+      q:{
+        ar:"الحظر الجغرافي (Ban Geo)",
+        fr:"Ban géographique (Geo Ban)",
+        en:"Geographical ban (Geo Ban)",
+        it:"Ban geografico (Geo Ban)"
+      },
+      a:{
+        ar:"يحدث غالبًا بسبب استعمال VPN أو تغيير الدولة كثيرًا.\nالحل: أوقف VPN واستعمل شريحة SIM من نفس البلد وثبّت الدخول من جهاز واحد.",
+        fr:"Ça arrive souvent à cause du VPN ou changement fréquent de pays.\nSolution : coupe le VPN, utilise une SIM du même pays et connecte-toi depuis un seul appareil.",
+        en:"Often happens due to VPN usage or frequent country changes.\nFix: disable VPN, use a SIM from one country and log in from one main device.",
+        it:"Succede spesso per via del VPN o cambi frequenti di paese.\nSoluzione: disattiva il VPN, usa una SIM dello stesso paese e accedi da un solo dispositivo."
+      }
+    },
+    {
+      q:{
+        ar:"تعليقات سبام تسبب حظر",
+        fr:"Commentaires spam qui provoquent un blocage",
+        en:"Spam comments causing restrictions",
+        it:"Commenti spam che causano blocchi"
+      },
+      a:{
+        ar:"• تكرار نفس التعليق في حسابات كثيرة\n• نشر روابط وإعلانات مزعجة\n• سرعة عالية في إرسال التعليقات\n\nالحل: خفّف التعليقات، لا تعلّق كوبي/بيست، وتجنب الروابط.",
+        fr:"• Même commentaire copié sur plusieurs comptes\n• Liens ou pubs agressives\n• Trop de commentaires en peu de temps\n\nSolution : ralentis, évite le copier/coller et les liens.",
+        en:"• Copy-paste same comment on many accounts\n• Posting links or aggressive ads\n• Commenting too fast\n\nFix: slow down, avoid copy/paste and external links.",
+        it:"• Stesso commento copiato su tanti account\n• Link o pubblicità aggressive\n• Troppi commenti in poco tempo\n\nSoluzione: rallenta, evita copia/incolla e link esterni."
+      }
     }
-   },
+  ]
+},
 
-   {
-    q:{ar:"سبب رفض البث المباشر؟",fr:"Refus du LIVE ?",en:"LIVE rejected?",it:"LIVE rifiutato?"},
-    a:{
-     ar:"تستعمل VPN أو موسيقى خارجية → حظر مباشر",
-     fr:"VPN + musique externe = blocage",
-     en:"VPN or external music = block",
-     it:"VPN o musica esterna = blocco"
+B:{
+  title:{
+    ar:"البث المباشر والمشاهدات",
+    fr:"LIVE et vues",
+    en:"LIVE & views",
+    it:"LIVE e visualizzazioni"
+  },
+  data:[
+    {
+      q:{
+        ar:"لا أستطيع فتح بث رغم أن عندي 1000 متابع",
+        fr:"Je ne peux pas lancer un LIVE avec 1000 abonnés",
+        en:"I can't start LIVE with 1000 followers",
+        it:"Non posso fare LIVE con 1000 follower"
+      },
+      a:{
+        ar:"الأسباب الممكنة:\n• الحساب جديد جدًا\n• وجود مخالفات سابقة\n• استعمال VPN\n\nالحل: أوقف VPN، حدّث التطبيق، وانتظر 24–72 ساعة بعد الوصول لـ 1000 متابع.",
+        fr:"Causes possibles :\n• Compte trop récent\n• Anciennes violations\n• VPN actif\n\nSolution : couper le VPN, mettre l'app à jour et attendre 24–72h après les 1000 abonnés.",
+        en:"Possible causes:\n• Very new account\n• Previous violations\n• VPN enabled\n\nFix: disable VPN, update the app and wait 24–72h after reaching 1000 followers.",
+        it:"Possibili cause:\n• Account troppo nuovo\n• Vecchie violazioni\n• VPN attivo\n\nSoluzione: disattiva VPN, aggiorna l'app e attendi 24–72h dopo i 1000 follower."
+      }
+    },
+    {
+      q:{
+        ar:"المشاهدات ضعيفة في البث المباشر",
+        fr:"Peu de vues en LIVE",
+        en:"Low LIVE views",
+        it:"Poche visualizzazioni in LIVE"
+      },
+      a:{
+        ar:"لرفع المشاهدات:\n• افتح البث في أوقات الذروة لجمهورك\n• استعمل عنوان واضح وجذاب\n• تفاعل مع التعليقات باستمرار\n• استعمل إضاءة وصوت جيدين\n• اربط اللايف مع فيديوهاتك الأخيرة.",
+        fr:"Pour augmenter les vues :\n• Lancer le LIVE aux heures de pointe\n• Titre clair et attractif\n• Interagir avec le chat\n• Bonne lumière et bon son\n• Relier le LIVE à tes dernières vidéos.",
+        en:"To increase views:\n• Go live at peak hours\n• Use a clear, attractive title\n• Engage constantly with chat\n• Use good lighting and audio\n• Connect the LIVE to your recent videos.",
+        it:"Per aumentare le views:\n• Vai in LIVE nelle ore di punta\n• Usa un titolo chiaro e accattivante\n• Interagisci con la chat\n• Usa buona luce e audio\n• Collega la LIVE ai tuoi ultimi video."
+      }
+    },
+    {
+      q:{
+        ar:"البث يقطع أو يسقط فجأة",
+        fr:"Le LIVE coupe ou s'arrête",
+        en:"LIVE keeps disconnecting",
+        it:"La LIVE si interrompe spesso"
+      },
+      a:{
+        ar:"غالبًا بسبب:\n• إنترنت ضعيف أو متذبذب\n• حرارة عالية في الجهاز\n\nالحل: استعمل إنترنت ثابت (4G أو ألياف)، أغلق التطبيقات الأخرى وأعد تشغيل الجهاز قبل البث.",
+        fr:"Souvent à cause de :\n• Connexion instable\n• Téléphone qui chauffe\n\nSolution : utiliser une connexion stable (4G/fibre), fermer les autres apps et redémarrer l'appareil avant le LIVE.",
+        en:"Often caused by:\n• Unstable connection\n• Overheating phone\n\nFix: use stable internet (4G/fiber), close background apps and restart the device before going live.",
+        it:"Spesso dovuto a:\n• Connessione instabile\n• Telefono che si surriscalda\n\nSoluzione: usa connessione stabile (4G/fibra), chiudi le altre app e riavvia il dispositivo prima della LIVE."
+      }
     }
-   },
-
-   {
-    q:{ar:"حل فوري؟",fr:"Solution rapide ?",en:"Fast fix?",it:"Soluzione rapida?"},
-    a:{
-     ar:"أعد تشغيل التطبيق + أغلق VPN + حاول بعد 24 ساعة",
-     fr:"Redémarrer app + pas VPN + réessayer après 24h",
-     en:"Restart app + no VPN + retry after 24h",
-     it:"Riavvia app + no VPN + riprova dopo 24h"
-    }
-   }
- ]
+  ]
 },
 
-
-/*==================== 2 ====================*/
-{
- q:{
-  ar:"المشاهدات ضعيفة في البث",
-  fr:"Vues LIVE faibles",
-  en:"Weak LIVE views",
-  it:"Poche visualizzazioni LIVE"
- },
- sub:[
-  {
-   q:{ar:"السبب؟",fr:"Cause ?",en:"Reason?",it:"Perché?"},
-   a:{
-    ar:"ضعف تفاعل + وقت نشر غلط + محتوى غير ممتع",
-    fr:"Faible engagement + mauvais horaire",
-    en:"Low engagement + wrong timing",
-    it:"Basso engagement + orario sbagliato"
-   }
-  },
-  {
-   q:{ar:"حل زيادة مشاهدات؟",fr:"Solution vues ?",en:"Grow views?",it:"Aumentare views?"},
-   a:{
-    ar:"استعمل هاشتاج لايف + موسيقى ترند",
-    fr:"Hashtags LIVE + musiques tendance",
-    en:"LIVE hashtags + trending sounds",
-    it:"Hashtag LIVE + musica trend"
-   }
-  },
-  {
-   q:{ar:"وقت مناسب للبث؟",fr:"Quand LIVE ?",en:"Best LIVE time?",it:"Quando LIVE?"},
-   a:{
-    ar:"بين 21:00 و 01:00",
-    fr:"Entre 21h et 01h",
-    en:"Between 21:00 & 01:00",
-    it:"Tra 21:00 e 01:00"
-   }
-  }
- ]
-},
-
-
-/*==================== 3 ====================*/
-{
- q:{
-   ar:"مشاكل إنقطاع البث",
-   fr:"LIVE coupé",
-   en:"LIVE disconnecting",
-   it:"LIVE si interrompe"
- },
- sub:[
-  {
-   q:{ar:"السبب؟",fr:"Cause ?",en:"Reason?",it:"Perché?"},
-   a:{
-    ar:"نت ضعيف + سيرفر زحمة",
-    fr:"Connexion faible",
-    en:"Weak internet",
-    it:"Internet debole"
-   }
-  },
-  {
-   q:{ar:"حل نهائي؟",fr:"Solution ?",en:"Fix?",it:"Soluzione?"},
-   a:{
-    ar:"شغل 4G فقط أثناء البث",
-    fr:"Utilise 4G uniquement",
-    en:"Use mobile data only",
-    it:"Usa solo 4G"
-   }
-  }
- ]
-},
-
-
-/*==================== 4 ====================*/
-{
- q:{
-   ar:"كيف تزيد دخل البث المباشر؟",
-   fr:"Augmenter revenus LIVE",
-   en:"Increase LIVE earnings",
-   it:"Aumentare guadagni LIVE"
- },
- sub:[
-  {
-   q:{ar:"طريقة؟",fr:"Méthode ?",en:"Method?",it:"Metodo?"},
-   a:{
-    ar:"حوار مباشر مع الجمهور = هدايا أكثر",
-    fr:"Interaction public = plus de cadeaux",
-    en:"Interact with viewers → more gifts",
-    it:"Parla con pubblico = più regali"
-   }
-  },
-
-  {
-   q:{ar:"كم من الوقت؟",fr:"Durée ?",en:"How long?",it:"Quanto tempo?"},
-   a:{
-    ar:"60 دقيقة على الأقل",
-    fr:"60 min minimum",
-    en:"60 min minimum",
-    it:"60 min minimo"
-   }
-  }
- ]
-}
-
-]
-
-},
-
-C:{title:{ar:"الأمان",fr:"Sécurité",en:"Security",it:"Sicurezza"},data:[]},
-D:{title:{ar:"الأرباح",fr:"Gains",en:"Earnings",it:"Guadagni"},data:[]},
-E:{title:{ar:"تنظيف",fr:"Nettoyage",en:"Clean up",it:"Pulizia"},data:[]},
-F:{title:{ar:"الانضمام",fr:"Adhésion",en:"Join",it:"Entrare"},data:[]},
-G:{title:{ar:"الفائدة",fr:"Avantage",en:"Advantage",it:"Beneficio"},data:[]},
-H:{title:{ar:"الدعم",fr:"Support",en:"Support",it:"Supporto"},data:[]}
+C:{ title:{ar:"أمان الحساب والدخول",fr:"Sécurité du compte",en:"Account security",it:"Sicurezza account"}, data:[] },
+D:{ title:{ar:"الأرباح والسحب",fr:"Gains & retraits",en:"Earnings & payout",it:"Guadagni & prelievi"}, data:[] },
+E:{ title:{ar:"تنظيف الحساب",fr:"Nettoyage du compte",en:"Account cleanup",it:"Pulizia account"}, data:[] },
+F:{ title:{ar:"الشروط والانضمام للوكالة",fr:"Conditions & adhésion",en:"Agency terms & joining",it:"Condizioni & adesione"}, data:[] },
+G:{ title:{ar:"استفادة المبدع من الانضمام",fr:"Avantages pour le créateur",en:"Creator benefits",it:"Vantaggi per il creator"}, data:[] },
+H:{ title:{ar:"فريق دعم Davenci C.O.S",fr:"Équipe support Davenci C.O.S",en:"Davenci C.O.S support team",it:"Team support Davenci C.O.S"}, data:[] }
 
 };
 
-
-/* =================== فتح قسم خدمات ===================== */
+// =================== فتح قسم خدمات =====================
 
 function openFAQ(key){
-
-  const lang = document.documentElement.lang;
+  const lang = document.documentElement.lang || "ar";
   const section = FAQ[key];
 
-  // إذا القسم غير موجود
   if(!section){
     alert("⚠ القسم غير موجود");
     return;
   }
 
-  // إظهار شاشة FAQ
-  showScreen(".faq");
-
-  // العنوان
- document.getElementById("faqTitle").textContent =
-section.title[document.documentElement.lang];
-
-
-  const box = document.getElementById("faqList");
-  box.innerHTML = "";
-
-  // لو القسم فارغ
-  if(section.data.length === 0){
-      box.innerHTML = `<p style="padding:15px;font-weight:bold;color:#0E1E3A">
-      ❗ هذا القسم فارغ – أضف أسئلة بداخله من كود FAQ</p>`;
-      return;
-  }
-
-  // إضافة الأسئلة الرئيسية
-  section.data.forEach((item,index)=>{
-
-      let b = document.createElement("button");
-      b.className = "btn";
-     b.textContent = item.q[document.documentElement.lang];
-
-
-      b.onclick = ()=> openSecondLevel(key,index);
-
-      box.appendChild(b);
-  });
-
-}
-
-
-/* =================== المستوى الثاني ===================== */
-
-function openSecondLevel(key,index){
-
-  const section = FAQ[key];
-  const item = section.data[index];
-
-  const box = document.getElementById("faqList");
+  const box   = document.getElementById("faqList");
   const title = document.getElementById("faqTitle");
 
-  // لو لا يوجد sub → نعرض الحل مباشرة
-  if(!item.sub){
-      showAnswer(item.q,item.a);
-      return;
-  }
-
-  // تحديث عنوان جديد
-  title.textContent = item.q;
-
-  // تفريغ القائمة
+  title.textContent = section.title[lang] || section.title["ar"];
   box.innerHTML = "";
 
-  // عرض الاسئلة الفرعية
-  item.sub.forEach(sub=>{
-      let sb = document.createElement("button");
-      sb.className="btn";
-     sb.textContent = sub.q[document.documentElement.lang];
+  if(!section.data || section.data.length === 0){
+    box.innerHTML = '<p style="padding:15px;font-weight:bold;color:#0E1E3A">❗ هذا القسم فارغ حاليًا – يمكنك إضافة أسئلة من الكود.</p>';
+  }else{
+    section.data.forEach((item,index)=>{
+      const b = document.createElement("button");
+      b.className   = "btn";
+      b.textContent = item.q[lang] || item.q["ar"];
+      b.onclick = ()=> openSecondLevel(key,index);
+      box.appendChild(b);
+    });
+  }
 
-
-      sb.onclick = ()=> showAnswer(sub.q,sub.a);
-
-      box.appendChild(sb);
-  });
-
+  showScreen(".faq");
 }
 
+// =================== المستوى الثاني (لو حبيت sub) =====================
 
-/* =================== عرض الجواب النهائي ===================== */
+function openSecondLevel(key,index){
+  const lang    = document.documentElement.lang || "ar";
+  const section = FAQ[key];
+  const item    = section.data[index];
 
-function showAnswer(q,a){
+  // لو ما عندوش sub نعرض الجواب مباشرة
+  if(!item.sub || item.sub.length === 0){
+    showAnswer(item.q[lang] || item.q["ar"], item.a[lang] || item.a["ar"]);
+    return;
+  }
 
-document.getElementById("answerTitle").textContent =
-q[document.documentElement.lang];
+  const box   = document.getElementById("faqList");
+  const title = document.getElementById("faqTitle");
 
-document.getElementById("answerText").textContent =
-a[document.documentElement.lang];
+  title.textContent = item.q[lang] || item.q["ar"];
+  box.innerHTML = "";
 
+  item.sub.forEach(sub=>{
+    const sb = document.createElement("button");
+    sb.className   = "btn";
+    sb.textContent = sub.q[lang] || sub.q["ar"];
+    sb.onclick = ()=> showAnswer(sub.q[lang] || sub.q["ar"], sub.a[lang] || sub.a["ar"]);
+    box.appendChild(sb);
+  });
+}
 
+// =================== عرض الجواب النهائي =====================
+
+function showAnswer(qText,aText){
+  document.getElementById("answerTitle").textContent = qText;
+  document.getElementById("answerText").textContent  = aText;
   showScreen(".answer");
 }
 
-
-/* =================== رجوع ===================== */
-
-function goHome(){
-  showScreen(".card");
-}
-
-function goBackFAQ(){
-  showScreen(".faq");
-}
+// =================== رجوع =====================
+function goHome(){    showScreen(".card");  }
+function goBackFAQ(){ showScreen(".faq");   }
 
 </script>
+</body>
+</html>
