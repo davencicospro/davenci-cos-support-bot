@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
 <meta charset="UTF-8" />
 <title>Davenci C.O.S – Support</title>
@@ -16,7 +16,7 @@ body{
   background-image: url("logo.png");
   background-size: contain;
   background-position: center;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
 }
 body::before{
   content:"";
@@ -26,31 +26,33 @@ body::before{
   z-index:-1;
 }
 .wrap{ width:100%; max-width:520px; padding:18px; }
-
-/* screens */
-.card, .faq, .answer{
+.card{
   background: rgba(255,255,255,0.9);
   border-radius:18px;
   padding:22px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.33);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   text-align:center;
-  display:none;
 }
-.card{ display:block; }
-
 .logoTop{
-  width:70px;height:70px;border-radius:50%;
-  background:#fff;padding:10px;
+  width:70px; height:70px; border-radius:50%;
+  background:#fff; padding:10px;
   box-shadow:0 0 18px rgba(31,60,91,0.4);
 }
+h1{ color:#0E1E3A; margin:8px 0 6px; }
+p{ color:#2f3e4f; font-size:14px; }
 
-h1{ color:#0E1E3A;margin:8px 0 6px; }
-p{ color:#2f3e4f;font-size:14px; }
+.langRow{ margin:10px 0; }
+select{
+  padding:8px 12px;
+  border-radius:10px;
+}
 
-select{ padding:8px 12px;border-radius:10px; }
-
-.list{ display:flex;flex-direction:column;gap:10px;margin-top:10px; }
-
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:12px;
+}
 .btn{
   padding:12px;
   border-radius:14px;
@@ -61,345 +63,304 @@ select{ padding:8px 12px;border-radius:10px; }
   background: linear-gradient(135deg,#1F3C5B,#6FAFC2);
 }
 
-.backBtn{
-  background:#fff;
-  border:2px solid #1F3C5B;
-  color:#1F3C5B;
-  margin-top:10px;
-  font-weight:600;
+.support-fab{
+  position:fixed;
+  right:16px;
+  bottom:18px;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:0;
+  font-size:22px;
+  background:linear-gradient(135deg,#1F3C5B,#6FAFC2);
+  color:#fff;
 }
-
-#faqList{ display:flex;flex-direction:column;gap:8px;margin-top:10px; }
-#answerText{white-space:pre-line;text-align:start;color:#0E1E3A;font-size:15px;}
 </style>
 </head>
 
 <body>
 
 <div class="wrap">
+  <div class="card">
 
-<!-- ================= HOME ================= -->
-<div class="card">
+    <img src="logo.png" class="logoTop" alt="Davenci C.O.S">
+    <h1>Davenci C.O.S</h1>
+    <p id="subtitle">الدعم • التوجيه • الحماية</p>
 
-<img src="logo.png" class="logoTop">
-<h1>Davenci C.O.S</h1>
-<p id="subtitle">الدعم • التوجيه • الحماية</p>
+    <!-- اختيار اللغة -->
+    <div class="langRow">
+  <select id="lang" value="ar">
+        <option value="ar">🇹🇳 عربي</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="it">🇮🇹 Italiano</option>
+        <option value="en">🇬🇧 English</option>
+      </select>
+    </div>
 
-<select id="lang">
-<option value="ar">🇹🇳 عربي</option>
-<option value="fr">🇫🇷 Français</option>
-<option value="it">🇮🇹 Italiano</option>
-<option value="en">🇬🇧 English</option>
-</select>
+    <!-- الأزرار -->
+    <div class="list">
+     <button class="btn" id="btnA" onclick="openFAQ('A')"></button>
+     <button class="btn" id="btnB" onclick="openFAQ('B')"></button>
+     <button class="btn" id="btnC" onclick="openFAQ('C')"></button>
+     <button class="btn" id="btnD" onclick="openFAQ('D')"></button>
+     <button class="btn" id="btnE" onclick="openFAQ('E')"></button>
+     <button class="btn" id="btnF" onclick="openFAQ('F')"></button>
+     <button class="btn" id="btnG" onclick="openFAQ('G')"></button>
+     <button class="btn" id="btnH" onclick="openFAQ('H')"></button>
 
-<div class="list">
- <button class="btn" onclick="openFAQ('A')" id="btnA"></button>
- <button class="btn" onclick="openFAQ('B')" id="btnB"></button>
- <button class="btn" onclick="openFAQ('C')" id="btnC"></button>
- <button class="btn" onclick="openFAQ('D')" id="btnD"></button>
- <button class="btn" onclick="openFAQ('E')" id="btnE"></button>
- <button class="btn" onclick="openFAQ('F')" id="btnF"></button>
- <button class="btn" onclick="openFAQ('G')" id="btnG"></button>
- <button class="btn" onclick="openFAQ('H')" id="btnH"></button>
-</div>
+    </div>
 
+  </div>
 </div>
 
 <button class="support-fab">💬</button>
-  
-<!-- ================= FAQ ================= -->
-<div class="faq">
-  <h2 id="faqTitle"></h2>
-  <div id="faqList"></div>
-  <button class="btn backBtn" onclick="goHome()">⬅ رجوع</button>
-</div>
-
-<!-- ================= ANSWER ================= -->
-<div class="answer">
-  <h2 id="answerTitle"></h2>
-  <p id="answerText"></p>
-  <button class="btn backBtn" onclick="goBackFAQ()">⬅ رجوع</button>
-</div>
-
-</div>
 
 <script>
+document.addEventListener("DOMContentLoaded", function(){
 
-/* ================= LANG ================= */
-const LANG_TEXT = {
-ar:{
- subtitle:"الدعم • التوجيه • الحماية",
- A:"🚫 قوانين الحظر والانتهاكات",
- B:"📡 البث المباشر والمشاهدات",
- C:"🔐 مشاكل الحساب والأمان",
- D:"💰 الأرباح والسحب",
- E:"🧹 تنظيف الحساب",
- F:"📝 شروط الانضمام للوكالة",
- G:"🚀 فوائد الانضمام للوكالة",
- H:"🛡️ فريق دعم Davenci C.O.S"
-}
-};
+  const BOT_LANG = {
+    ar:{
+      subtitle:"الدعم • التوجيه • الحماية",
+      A:"🚫 قوانين الحظر والانتهاكات",
+      B:"📡 البث المباشر والمشاهدات",
+      C:"🔐 أمان ومشاكل الحساب",
+      D:"💰 الأرباح والسحب",
+      E:"🧹 تنظيف الحساب",
+      F:"📝 الشروط والانضمام إلى وكالتنا",
+      G:"🚀 استفادة المبدع من الانضمام إلى وكالتنا",
+      H:"🛡️ فريق دعم وكالة Davenci C.O.S"
+    },
+    fr:{
+      subtitle:"Support • Orientation • Sécurité",
+      A:"🚫 Règles de sanctions et violations",
+      B:"📡 LIVE et vues",
+      C:"🔐 Sécurité et problèmes de compte",
+      D:"💰 Gains et retraits",
+      E:"🧹 Nettoyage du compte",
+      F:"📝 Conditions et adhésion à notre agence",
+      G:"🚀 Avantages pour le créateur",
+      H:"🛡️ Équipe de support Davenci C.O.S"
+    },
+    it:{
+      subtitle:"Supporto • Orientamento • Sicurezza",
+      A:"🚫 Regole di blocchi e violazioni",
+      B:"📡 LIVE e visualizzazioni",
+      C:"🔐 Sicurezza e problemi account",
+      D:"💰 Guadagni e prelievi",
+      E:"🧹 Pulizia account",
+      F:"📝 Condizioni e adesione alla nostra agenzia",
+      G:"🚀 Vantaggi per il creator",
+      H:"🛡️ Team di supporto Davenci C.O.S"
+    },
+    en:{
+      subtitle:"Support • Guidance • Security",
+      A:"🚫 Bans and violations rules",
+      B:"📡 LIVE and views",
+      C:"🔐 Account security and issues",
+      D:"💰 Earnings and withdrawals",
+      E:"🧹 Account cleanup",
+      F:"📝 Terms and joining our agency",
+      G:"🚀 Creator benefits",
+      H:"🛡️ Davenci C.O.S support team"
+    }
+  };
 
-/* set language text */
-function setLang(l){
-document.getElementById("subtitle").textContent = LANG_TEXT[l].subtitle;
-document.getElementById("btnA").textContent = LANG_TEXT[l].A;
-document.getElementById("btnB").textContent = LANG_TEXT[l].B;
-document.getElementById("btnC").textContent = LANG_TEXT[l].C;
-document.getElementById("btnD").textContent = LANG_TEXT[l].D;
-document.getElementById("btnE").textContent = LANG_TEXT[l].E;
-document.getElementById("btnF").textContent = LANG_TEXT[l].F;
-document.getElementById("btnG").textContent = LANG_TEXT[l].G;
-document.getElementById("btnH").textContent = LANG_TEXT[l].H;
-}
+  /* عناصر */
+  const langSelector = document.getElementById("lang");
 
-document.getElementById("lang").addEventListener("change", function(){
- setLang(this.value);
+  const elements = {
+    subtitle: document.getElementById("subtitle"),
+    btnA: document.getElementById("btnA"),
+    btnB: document.getElementById("btnB"),
+    btnC: document.getElementById("btnC"),
+    btnD: document.getElementById("btnD"),
+    btnE: document.getElementById("btnE"),
+    btnF: document.getElementById("btnF"),
+    btnG: document.getElementById("btnG"),
+    btnH: document.getElementById("btnH")
+  };
+
+  /*  تفعيل اللغات */
+  function setLang(lang){
+
+    if(!BOT_LANG[lang]) return;
+
+    document.documentElement.lang = lang;
+    document.documentElement.dir  = (lang === "ar") ? "rtl" : "ltr";
+
+    const dict = BOT_LANG[lang];
+
+    elements.subtitle.textContent = dict.subtitle;
+    elements.btnA.textContent = dict.A;
+    elements.btnB.textContent = dict.B;
+    elements.btnC.textContent = dict.C;
+    elements.btnD.textContent = dict.D;
+    elements.btnE.textContent = dict.E;
+    elements.btnF.textContent = dict.F;
+    elements.btnG.textContent = dict.G;
+    elements.btnH.textContent = dict.H;
+  }
+
+  /* عند تغيير select */
+  langSelector.addEventListener("change", function(){
+    setLang(this.value);
+  });
+
+  /* لغة أولية عربية */
+  setLang("ar");
+  langSelector.value = "ar";
+
 });
-setLang("ar");
+</script>
+<script>
 
+/* ======================= CONFIG ======================= */
 
-/* ================= DATABASE ================= */
+/* شاشة تحكم العرض */
+function showScreen(name){
+  document.querySelector(".card").style.display = "none";
+  document.querySelector(".faq").style.display = "none";
+  document.querySelector(".answer").style.display = "none";
+  document.querySelector(name).style.display = "block";
+}
+
+/* =========== قاعدة البيانات – فارغة لتعبئتها ================= */
 
 const FAQ = {
 
 A:{
  title:"قوانين الحظر والانتهاكات 2025",
  data:[
-   {q:"لماذا يتم حظر الحساب رغم عدم وجود مخالفات؟",
-    a:`2025:
-TikTok يحظر بسبب نشاط غير طبيعي.
+   /*
+   مثال للتركيب داخل A:
 
-✔ لا VPN
-✔ حذف التطبيقات المرتبطة
-✔ اربط الرقم والبريد`},
+   {
+     q:"Shadowban",
+     sub:[
+        {q:"ماهو؟", a:"..."}, 
+        {q:"سببه؟", a:"..."}, 
+        {q:"كيف نصلحه؟", a:"..."}
+     ]
+   },
 
-   /*👇 الجديد بالكامل تحت هذا السطر */
-
-   {q:"ما سبب حظر الحساب بسبب الموسيقى؟",
-    a:`TikTok صار صارم بخصوص حقوق الملكية في 2025:
-
-✔ استعمل فقط موسيقى من مكتبة TikTok
-✔ لا تستعمل موسيقى من يوتيوب أو سبوتيفاي
-✔ تجنب ريمكسات غير مرخصة`},
-
-   {q:"كيف أعرف أن حسابي تحت Shadowban؟",
-    a:`علامات Shadowban في 2025:
-
-✔ عدم وصول الفيديوهات للـ For You
-✔ تفاعل منخفض فجأة
-✔ اختفاء الإحصائيات
-
-الحل:
-✔ توقف عن النشر 48 ساعة
-✔ احذف فيديوهات المخالفة
-✔ لا تستعمل هاشتاج سبام`},
-
-   {q:"لماذا يتم حذف فيديو مباشرة بعد نشره؟",
-    a:`الذكاء الاصطناعي في TikTok 2025 يفحص المحتوى فوراً:
-
-✔ محتوى عنف/إيحاء/حقوق نشر = حذف آلي  
-✔ تجنب كلمات ممنوعة في العنوان  
-✔ راجع محتوى الفيديو قبل النشر`},
-
-   {q:"سبب الحظر الجغرافي أو الإقليمي؟",
-    a:`يحدث عندما:
-
-✔ الحساب يتنقل بين دول عبر VPN
-✔ اختلاف الدولة بين الهاتف وشريحة SIM
-
-الحل:
-✔ احذف VPN
-✔ استعمل نفس الدولة على الهاتف والتيك توك`},
-
-   {q:"ما سبب حظر الحساب بسبب التعليقات؟",
-    a:`سلوك التعليقات مهم في 2025:
-
-✔ تجنب نسخ/لصق تعليقات متكررة
-✔ تجنب الإعلانات في التعليقات
-✔ لا تعلق بسرعة كبيرة بكميات كبيرة`},
-
-   {q:"هل يرجع حساب محظور نهائياً؟",
-    a:`الرجوع ممكن في حالات الظلم فقط:
-
-✔ قدم استئناف داخل التطبيق
-✔ أرسل إثبات الهوية
-✔ احذف كل التطبيقات الخارجية
-
-إذا تحتاج استرجاع محترف:
-تفتح تذكرة مع وكالة Davenci C.O.S`}
+   {
+     q:"مشكل حذف فيديو",
+     a:"حل مباشر بدون اسئلة فرعية"
+   }
+   */
  ]
 },
 
-B:{
- title:"البث المباشر والمشاهدات 📡",
- data:[
-
-   {q:"لا أستطيع فتح بث رغم إني وصلت 1000 متابع!",
-    a:`الأسباب الشائعة في 2025 لعدم تفعيل البث:
-
-✔ التطبيق غير مُحدث
-✔ حساب جديد جداً
-✔ وجود مخالفات نشطة
-✔ استعمال VPN
-
-الحل:
-✔ حدّث التطبيق
-✔ غيّر لغة التطبيق ثم أعد تشغيله
-✔ انتظر بين 24 و72 ساعة بعد الوصول للشرط`},
-
-   {q:"كيف نزيد عدد مشاهدين البث؟",
-    a:`طرق فعّالة في 2025:
-
-✔ عنوان بث جذاب وواضح
-✔ افتح بث في وقت ذروة جمهورك
-✔ تفاعل مباشر مع التعليقات
-✔ استعمل إضاءة وصوت قوي
-✔ استعمل وسوم TikTok Live`},
-
-   {q:"لماذا يسقط البث بعد دقيقة أو دقيقتين؟",
-    a:`أسباب سقوط البث:
-
-✔ سرعة إنترنت ضعيفة
-✔ حظر موقت من TikTok
-✔ جهاز يشتغل بذاكرة ضعيفة
-
-الحل:
-✔ استعمل إنترنت ثابت
-✔ أغلق التطبيقات الخلفية
-✔ جرّب هاتف آخر`},
-
-   {q:"المشاهدات ضعيفة جداً في البث المباشر!",
-    a:`أسباب الانخفاض:
-
-✔ محتوى غير واضح
-✔ عنوان لا يجذب الناس
-✔ وقت بث غير مناسب
-✔ حساب لا ينشر فيديوهات قوية
-
-الحل:
-✔ اربط البث مع فيديوهاتك
-✔ حدّد موضوع للبث
-✔ استهدف بلد جمهورك`},
-
-   {q:"لماذا يتوقف توزيع البث فجأة؟",
-    a:`يحدث بسبب:
-
-✔ ارتفاع حرارة الجهاز
-✔ مشاكل سيرفر TikTok
-✔ استعمال VPN
-✔ تجاوز مدة زمنية
-
-الحل:
-✔ أعد تشغيل التطبيق
-✔ أعد تشغيل الجهاز
-✔ تجنب VPN والراوتر المنزلي الضعيف`},
-
-   {q:"هل يوجد Shadowban في البث المباشر؟",
-    a:`نعم:
-
-✔ إذا خالفت القواعد في بث سابق
-✔ إذا حصلت سلوك غير طبيعي
-✔ إذا استعملت موسيقى غير مرخّصة
-
-الحل:
-✔ توقف 48 ساعة
-✔ بث محتوى نظيف
-✔ أعد معدل التفاعل تدريجياً`},
-
-   {q:"كيف نحصل على دعم TikTok لمشكلة بث؟",
-    a:`من داخل التطبيق:
-
-✔ الإعدادات والخصوصية
-✔ الإبلاغ عن مشكلة
-✔ اختر LIVE
-✔ أرفق صور للمشكلة
-
-أو تواصل مع وكالتنا Davenci C.O.S لمساعدة كاملة`.}
-
- ]
-},
-
-
-C:{ title:"مشاكل الحساب 🔐", data:[] },
-
-D:{ title:"الأرباح 💰", data:[] },
-
-E:{ title:"تنظيف الحساب 🧹", data:[] },
-
-F:{ title:"شروط الوكالة 📝", data:[] },
-
-G:{ title:"استفادة المبدع 🚀", data:[] },
-
-H:{ title:"فريق الدعم 🛡️", data:[] }
+B:{ title:"البث المباشر والمشاهدات", data:[] },
+C:{ title:"أمان الحساب والدخول", data:[] },
+D:{ title:"الأرباح والسحب", data:[] },
+E:{ title:"تنظيف الحساب", data:[] },
+F:{ title:"الشروط والانضمام للوكالة", data:[] },
+G:{ title:"استفادة المبدع من الانضمام للوكالة", data:[] },
+H:{ title:"فريق الدعم", data:[] }
 
 };
 
 
-/* ================= FAQ OPEN ================= */
-
-let currentSection= null;
+/* =================== فتح قسم خدمات ===================== */
 
 function openFAQ(key){
-currentSection = key;
-document.querySelector(".card").style.display="none";
-document.querySelector(".answer").style.display="none";
-document.querySelector(".faq").style.display="block";
 
-document.getElementById("faqTitle").textContent = FAQ[key].title;
+  const lang = document.documentElement.lang;
+  const section = FAQ[key];
 
-const box = document.getElementById("faqList");
-box.innerHTML = "";
-
-if(!FAQ[key] || !FAQ[key].data || FAQ[key].data.length === 0){
-    
-    const msg = document.createElement("div");
-    msg.style.color = "#0E1E3A";
-    msg.style.fontWeight = "bold";
-    msg.style.padding = "15px";
-    msg.textContent = "القسم هذا مازال فارغ ❗ سيتم إضافة معلومات لاحقًا";
-    
-    box.appendChild(msg);
+  // إذا القسم غير موجود
+  if(!section){
+    alert("⚠ القسم غير موجود");
     return;
+  }
+
+  // إظهار شاشة FAQ
+  showScreen(".faq");
+
+  // العنوان
+  document.getElementById("faqTitle").textContent = section.title;
+
+  const box = document.getElementById("faqList");
+  box.innerHTML = "";
+
+  // لو القسم فارغ
+  if(section.data.length === 0){
+      box.innerHTML = `<p style="padding:15px;font-weight:bold;color:#0E1E3A">
+      ❗ هذا القسم فارغ – أضف أسئلة بداخله من كود FAQ</p>`;
+      return;
+  }
+
+  // إضافة الأسئلة الرئيسية
+  section.data.forEach((item,index)=>{
+
+      let b = document.createElement("button");
+      b.className = "btn";
+      b.textContent = item.q;
+
+      b.onclick = ()=> openSecondLevel(key,index);
+
+      box.appendChild(b);
+  });
+
 }
 
-FAQ[key].data.forEach((item,i)=>{
-    let b = document.createElement("button");
-    b.className="btn";
-    b.textContent = item.q;
-    b.onclick = ()=> openAnswer(i);
-    box.appendChild(b);
-});
 
+/* =================== المستوى الثاني ===================== */
+
+function openSecondLevel(key,index){
+
+  const section = FAQ[key];
+  const item = section.data[index];
+
+  const box = document.getElementById("faqList");
+  const title = document.getElementById("faqTitle");
+
+  // لو لا يوجد sub → نعرض الحل مباشرة
+  if(!item.sub){
+      showAnswer(item.q,item.a);
+      return;
+  }
+
+  // تحديث عنوان جديد
+  title.textContent = item.q;
+
+  // تفريغ القائمة
+  box.innerHTML = "";
+
+  // عرض الاسئلة الفرعية
+  item.sub.forEach(sub=>{
+      let sb = document.createElement("button");
+      sb.className="btn";
+      sb.textContent=sub.q;
+
+      sb.onclick = ()=> showAnswer(sub.q,sub.a);
+
+      box.appendChild(sb);
+  });
 
 }
 
-/* ================= ANSWER OPEN ================= */
 
-function openAnswer(index){
-document.querySelector(".faq").style.display="none";
-document.querySelector(".answer").style.display="block";
+/* =================== عرض الجواب النهائي ===================== */
 
-let item = FAQ[currentSection].data[index];
+function showAnswer(q,a){
 
-document.getElementById("answerTitle").textContent = item.q;
-document.getElementById("answerText").textContent = item.a;
+  document.getElementById("answerTitle").textContent = q;
+  document.getElementById("answerText").textContent = a;
+
+  showScreen(".answer");
 }
 
-/* ================= BACK CONTROL ================= */
+
+/* =================== رجوع ===================== */
 
 function goHome(){
-document.querySelector(".answer").style.display="none";
-document.querySelector(".faq").style.display="none";
-document.querySelector(".card").style.display="block";
+  showScreen(".card");
 }
 
 function goBackFAQ(){
-document.querySelector(".answer").style.display="none";
-document.querySelector(".faq").style.display="block";
+  showScreen(".faq");
 }
 
 </script>
-
-</body>
-</html>
