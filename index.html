@@ -185,7 +185,8 @@ document.addEventListener("DOMContentLoaded", function(){
       E:"🧹 تنظيف الحساب",
       F:"📝 الشروط والانضمام إلى وكالتنا",
       G:"🚀 استفادة المبدع من الانضمام إلى وكالتنا",
-      H:"🛡️ فريق دعم وكالة Davenci C.O.S"
+      H:"🛡️ فريق دعم وكالة Davenci C.O.S",
+      answerBack:"◀ رجوع"
     },
     fr:{
       subtitle:"Support • Orientation • Sécurité",
@@ -196,7 +197,8 @@ document.addEventListener("DOMContentLoaded", function(){
       E:"🧹 Nettoyage du compte",
       F:"📝 Conditions et adhésion à notre agence",
       G:"🚀 Avantages pour le créateur",
-      H:"🛡️ Équipe de support Davenci C.O.S"
+      H:"🛡️ Équipe de support Davenci C.O.S",
+       answerBack:"◀ Retour"
     },
     it:{
       subtitle:"Supporto • Orientamento • Sicurezza",
@@ -207,7 +209,8 @@ document.addEventListener("DOMContentLoaded", function(){
       E:"🧹 Pulizia account",
       F:"📝 Condizioni e adesione alla nostra agenzia",
       G:"🚀 Vantaggi per il creator",
-      H:"🛡️ Team di supporto Davenci C.O.S"
+      H:"🛡️ Team di supporto Davenci C.O.S",
+      answerBack:"◀ Indietro"
     },
     en:{
       subtitle:"Support • Guidance • Security",
@@ -218,7 +221,8 @@ document.addEventListener("DOMContentLoaded", function(){
       E:"🧹 Account cleanup",
       F:"📝 Terms and joining our agency",
       G:"🚀 Creator benefits",
-      H:"🛡️ Davenci C.O.S support team"
+      H:"🛡️ Davenci C.O.S support team",
+      answerBack:"◀ Back"
     }
   };
 
@@ -240,6 +244,7 @@ document.addEventListener("DOMContentLoaded", function(){
     if(!BOT_LANG[lang]) return;
     document.documentElement.lang = lang;
     document.documentElement.dir  = (lang === "ar") ? "rtl" : "ltr";
+    document.getElementById("answerBackBtn").textContent = BOT_LANG[lang].answerBack;
 
     const dict = BOT_LANG[lang];
     elements.subtitle.textContent = dict.subtitle;
