@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function(){
     if(!BOT_LANG[lang]) return;
     document.documentElement.lang = lang;
     document.documentElement.dir  = (lang === "ar") ? "rtl" : "ltr";
-    document.getElementById("answerBackBtn").textContent = BOT_LANG[lang].answerBack;
+    
 
     const dict = BOT_LANG[lang];
     elements.subtitle.textContent = dict.subtitle;
@@ -256,7 +256,9 @@ document.addEventListener("DOMContentLoaded", function(){
     elements.btnF.textContent = dict.F;
     elements.btnG.textContent = dict.G;
     elements.btnH.textContent = dict.H;
-  }
+
+    document.getElementById("answerBackBtn").textContent = BOT_LANG[lang].answerBack;
+ }
 
   langSelector.addEventListener("change", function(){
     setLang(this.value);
