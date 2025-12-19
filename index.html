@@ -112,6 +112,23 @@ select{
 
   </div>
 </div>
+<!-- شاشة الأسئلة -->
+<div class="faq" style="display:none; background: rgba(255,255,255,0.92); padding:22px; border-radius:18px; text-align:center; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
+  <h2 id="faqTitle" style="color:#0E1E3A;margin-bottom:15px;"></h2>
+  <div id="faqList" style="display:flex; flex-direction:column; gap:10px;"></div>
+
+  <button class="btn" style="margin-top:15px;background:white;color:#1F3C5B;border:2px solid #1F3C5B"
+          onclick="goHome()">رجوع</button>
+</div>
+
+<!-- شاشة الجواب -->
+<div class="answer" style="display:none; background: rgba(255,255,255,0.92); padding:22px; border-radius:18px; text-align:center; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
+  <h2 id="answerTitle" style="color:#0E1E3A;margin-bottom:15px;"></h2>
+  <p id="answerText" style="white-space:pre-line; color:#1F1F1F; text-align:start;"></p>
+
+  <button class="btn" style="margin-top:15px;background:white;color:#1F3C5B;border:2px solid #1F3C5B"
+          onclick="goBackFAQ()">رجوع</button>
+</div>
 
 <button class="support-fab">💬</button>
 
