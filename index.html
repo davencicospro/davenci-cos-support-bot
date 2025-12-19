@@ -348,16 +348,29 @@ document.querySelector(".faq").style.display="block";
 
 document.getElementById("faqTitle").textContent = FAQ[key].title;
 
-const box=document.getElementById("faqList");
-box.innerHTML="";
+const box = document.getElementById("faqList");
+box.innerHTML = "";
+
+if(!FAQ[key] || !FAQ[key].data || FAQ[key].data.length === 0){
+    
+    const msg = document.createElement("div");
+    msg.style.color = "#0E1E3A";
+    msg.style.fontWeight = "bold";
+    msg.style.padding = "15px";
+    msg.textContent = "القسم هذا مازال فارغ ❗ سيتم إضافة معلومات لاحقًا";
+    
+    box.appendChild(msg);
+    return;
+}
 
 FAQ[key].data.forEach((item,i)=>{
- let b=document.createElement("button");
- b.className="btn";
- b.textContent=item.q;
- b.onclick=()=> openAnswer(i);
- box.appendChild(b);
+    let b = document.createElement("button");
+    b.className="btn";
+    b.textContent = item.q;
+    b.onclick = ()=> openAnswer(i);
+    box.appendChild(b);
 });
+
 
 }
 
