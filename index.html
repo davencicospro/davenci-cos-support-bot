@@ -258,8 +258,10 @@ document.addEventListener("DOMContentLoaded", function(){
     elements.btnG.textContent = dict.G;
     elements.btnH.textContent = dict.H;
 
-    document.getElementById("answerBackBtn").textContent = BOT_LANG[lang].answerBack;
- }
+   const backBtn = document.getElementById("answerBackBtn");
+if (backBtn) {
+  backBtn.textContent = BOT_LANG[lang];
+}
 
   langSelector.addEventListener("change", function(){
     setLang(this.value);
