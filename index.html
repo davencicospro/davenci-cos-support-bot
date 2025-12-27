@@ -1,87 +1,102 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8" />
-<title>Davenci C.O.S – Support</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+< !DOCTYPE html >
+    <
+    html lang = "ar" >
+    <
+    head >
+    <
+    meta charset = "UTF-8" / >
+    <
+    title > Davenci C.O.S– Support < /title> <
+meta name = "viewport"
+content = "width=device-width, initial-scale=1.0" / >
 
-<style>
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background-image: url("logo.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background: rgba(14,30,58,0.65);
-  z-index:-1;
-}
-.wrap{ width:100%; max-width:520px; padding:18px; }
-.card,
-.faq,
-.answer{
-  background: rgba(255,255,255,0.9);
-  border-radius:18px;
-  padding:22px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  text-align:center;
-}
-.faq,.answer{display:none;}
-.logoTop{
-  width:70px; height:70px; border-radius:50%;
-  background:#fff; padding:10px;
-  box-shadow:0 0 18px rgba(31,60,91,0.4);
-}
-h1{ color:#0E1E3A; margin:8px 0 6px; }
-p{ color:#2f3e4f; font-size:14px; }
-
-.langRow{ margin:10px 0; }
-select{
-  padding:8px 12px;
-  border-radius:10px;
-}
-
-.list{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-top:12px;
-}
-.btn{
-  padding:12px;
-  border-radius:14px;
-  border:0;
-  cursor:pointer;
-  font-weight:700;
-  color:#fff;
-  background: linear-gradient(135deg,#1F3C5B,#6FAFC2);
+    <
+    style >
+    body {
+        margin: 0;
+        font - family: Arial,
+        sans - serif;
+        min - height: 100 vh;
+        display: flex;
+        align - items: center;
+        justify - content: center;
+        background - image: url("logo.png");
+        background - size: contain;
+        background - position: center;
+        background - repeat: no - repeat;
+    }
+body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(14, 30, 58, 0.65);
+        z - index: -1;
+    }
+    .wrap {
+        width: 100 % ;max - width: 520 px;padding: 18 px;
+    }
+    .card,
+    .faq,
+    .answer {
+        background: rgba(255, 255, 255, 0.9);
+        border - radius: 18 px;
+        padding: 22 px;
+        box - shadow: 0 20 px 40 px rgba(0, 0, 0, 0.3);
+        text - align: center;
+    }
+    .faq, .answer {
+        display: none;
+    }
+    .logoTop {
+        width: 70 px;height: 70 px;border - radius: 50 % ;
+        background: #fff;padding: 10 px;
+        box - shadow: 0 0 18 px rgba(31, 60, 91, 0.4);
+    }
+h1 {
+    color: #0E1E3A; margin:8px 0 6px; }
+p{ color:# 2 f3e4f;font - size: 14 px;
 }
 
-.back-btn{
-  margin-top:15px;
-  background:white;
-  color:#1F3C5B;
-  border:2px solid #1F3C5B;
+.langRow {
+    margin: 10 px 0;
+}
+select {
+    padding: 8 px 12 px;
+    border - radius: 10 px;
 }
 
-#faqList{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+.list {
+    display: flex;
+    flex - direction: column;
+    gap: 10 px;
+    margin - top: 12 px;
+}
+.btn {
+    padding: 12 px;
+    border - radius: 14 px;
+    border: 0;
+    cursor: pointer;
+    font - weight: 700;
+    color: #fff;
+    background: linear - gradient(135 deg, #1F3C5B,# 6 FAFC2);
 }
 
-#answerText{
-  white-space:pre-line;
-  color:#1F1F1F;
+.back - btn {
+    margin - top: 15 px;
+    background: white;
+    color: #1F3C5B;
+  border:2px solid # 1 F3C5B;
+}
+
+#faqList {
+    display: flex;
+    flex - direction: column;
+    gap: 10 px;
+}
+
+#answerText {
+    white - space: pre - line;
+    color: #1F1F1F;
   text-align:start;
   font-size:14px;
 }
@@ -95,1670 +110,1724 @@ select{
   border-radius:50%;
   border:0;
   font-size:22px;
-  background:linear-gradient(135deg,#1F3C5B,#6FAFC2);
-  color:#fff;
-}
-</style>
-</head>
-
-<body>
-
-<div class="wrap">
-  <!-- شاشة الرئيسية -->
-  <div class="card">
-    <img src="logo.png" class="logoTop" alt="Davenci C.O.S">
-    <h1>Davenci C.O.S</h1>
-    <p id="subtitle">الدعم • التوجيه • الحماية</p>
-
-    <!-- اختيار اللغة -->
-    <div class="langRow">
-      <select id="lang" value="ar">
-        <option value="ar">🇹🇳 عربي</option>
-        <option value="fr">🇫🇷 Français</option>
-        <option value="it">🇮🇹 Italiano</option>
-        <option value="en">🇬🇧 English</option>
-      </select>
-    </div>
-
-    <!-- الأزرار -->
-    <div class="list">
-     <button class="btn" id="btnA" onclick="openFAQ('A')"></button>
-     <button class="btn" id="btnB" onclick="openFAQ('B')"></button>
-     <button class="btn" id="btnC" onclick="openFAQ('C')"></button>
-     <button class="btn" id="btnD" onclick="openFAQ('D')"></button>
-     <button class="btn" id="btnE" onclick="openFAQ('E')"></button>
-     <button class="btn" id="btnF" onclick="openFAQ('F')"></button>
-     <button class="btn" id="btnG" onclick="openFAQ('G')"></button>
-     <button class="btn" id="btnH" onclick="openFAQ('H')"></button>
-     <button class="btn" onclick="openCreatorTicket()" > 🎫 دعم تيكت للمبدعين</button>
-
-    </div>
-  </div>
-
-  <!-- شاشة الأسئلة -->
-  <div class="faq">
-    <h2 id="faqTitle" style="color:#0E1E3A;margin-bottom:15px;"></h2>
-    <div id="faqList"></div>
-    <button class="btn back-btn" onclick="goHome()">رجوع</button>
-  </div>
-
-  <!-- شاشة الجواب -->
-  <div class="answer">
-    <h2 id="answerTitle" style="color:#0E1E3A;margin-bottom:15px;"></h2>
-    <p id="answerText"></p>
-    <button class="btn back-btn" onclick="goBackFAQ()">رجوع</button>
-
-    <div class="creatorTicket" style="display:none; background:rgba(255,255,255,0.92); padding:22px; border-radius:18px; text-align:center;">
-
-    <h2 style="color:#0E1E3A; margin-bottom:10px;">🎫اتصل بفريق الدعم </h2>
-
-    <p style="color:#1E1E1E;">      
-ارسل مشكلتك وسيتم الرد عليك من فريق وكالة Davenci C.O.S    
-   </p>
-
-    <textarea id="ticketText"
-    style="width:100%;height:120px; margin-top:10px; border-radius:12px; padding:10px;">
-    </textarea>
-
-    <button class="btn" style="margin-top:15px;"
-    onclick="sendTicket()">إرسال التيكت</button>
-
-    <button class="btn" style="margin-top:15px;background:white;color:#1F3C5B;border:2px solid #1F3C5B"
-    onclick="goHome()">رجوع</button>
-
-  </div>
-</div>
-
-<button class="support-fab">🎧</button>
-
-
-<script>
-// ==================== نصوص الواجهة الرئيسية (الأزرار) ====================
-document.addEventListener("DOMContentLoaded", function(){
-
-  const BOT_LANG = {
-    ar:{
-      subtitle:"الدعم • التوجيه • الحماية",
-      A:"🚫 قوانين الحظر والانتهاكات",
-      B:"📡 البث المباشر والمشاهدات",
-      C:"🔐 أمان ومشاكل الحساب",
-      D:"💰 الأرباح والسحب",
-      E:"🧹 تنظيف الحساب",
-      F:"📝 الشروط والانضمام إلى وكالتنا",
-      G:"🚀 استفادة المبدع من الانضمام إلى وكالتنا",
-      H:"🛡️ فريق دعم وكالة Davenci C.O.S",
-      answerBack:"◀ رجوع"
-    },
-    fr:{
-      subtitle:"Support • Orientation • Sécurité",
-      A:"🚫 Règles de sanctions et violations",
-      B:"📡 LIVE et vues",
-      C:"🔐 Sécurité et problèmes de compte",
-      D:"💰 Gains et retraits",
-      E:"🧹 Nettoyage du compte",
-      F:"📝 Conditions et adhésion à notre agence",
-      G:"🚀 Avantages pour le créateur",
-      H:"🛡️ Équipe de support Davenci C.O.S",
-       answerBack:"◀ Retour"
-    },
-    it:{
-      subtitle:"Supporto • Orientamento • Sicurezza",
-      A:"🚫 Regole di blocchi e violazioni",
-      B:"📡 LIVE e visualizzazioni",
-      C:"🔐 Sicurezza e problemi account",
-      D:"💰 Guadagni e prelievi",
-      E:"🧹 Pulizia account",
-      F:"📝 Condizioni e adesione alla nostra agenzia",
-      G:"🚀 Vantaggi per il creator",
-      H:"🛡️ Team di supporto Davenci C.O.S",
-      answerBack:"◀ Indietro"
-    },
-    en:{
-      subtitle:"Support • Guidance • Security",
-      A:"🚫 Bans and violations rules",
-      B:"📡 LIVE and views",
-      C:"🔐 Account security and issues",
-      D:"💰 Earnings and withdrawals",
-      E:"🧹 Account cleanup",
-      F:"📝 Terms and joining our agency",
-      G:"🚀 Creator benefits",
-      H:"🛡️ Davenci C.O.S support team",
-      answerBack:"◀ Back"
-    }
-  };
-
-  const langSelector = document.getElementById("lang");
-
-  const elements = {
-    subtitle: document.getElementById("subtitle"),
-    btnA: document.getElementById("btnA"),
-    btnB: document.getElementById("btnB"),
-    btnC: document.getElementById("btnC"),
-    btnD: document.getElementById("btnD"),
-    btnE: document.getElementById("btnE"),
-    btnF: document.getElementById("btnF"),
-    btnG: document.getElementById("btnG"),
-    btnH: document.getElementById("btnH")
-  };
-
-  function setLang(lang){
-    if(!BOT_LANG[lang]) return;
-    document.documentElement.lang = lang;
-    document.documentElement.dir  = (lang === "ar") ? "rtl" : "ltr";
-    
-
-    const dict = BOT_LANG[lang];
-    elements.subtitle.textContent = dict.subtitle;
-    elements.btnA.textContent = dict.A;
-    elements.btnB.textContent = dict.B;
-    elements.btnC.textContent = dict.C;
-    elements.btnD.textContent = dict.D;
-    elements.btnE.textContent = dict.E;
-    elements.btnF.textContent = dict.F;
-    elements.btnG.textContent = dict.G;
-    elements.btnH.textContent = dict.H;
-
-   const backBtn = document.getElementById("answerBackBtn");
-if (backBtn) {
-  backBtn.textContent = BOT_LANG[lang];
-}
-
-  langSelector.addEventListener("change", function(){
-    setLang(this.value);
-  });
-
-  setLang("ar");
-  langSelector.value = "ar";
-
-
-// ======================= شاشة تحكم العرض =======================
-function showScreen(name){
-  document.querySelector(".card").style.display   = (name === ".card")   ? "block" : "none";
-  document.querySelector(".faq").style.display    = (name === ".faq")    ? "block" : "none";
-  document.querySelector(".answer").style.display = (name === ".answer") ? "block" : "none";
-}
-
-// ======================= قاعدة بيانات FAQ =======================
-
-const FAQ = {
-
-A:{
-  title:{
-    ar:"قوانين الحظر والانتهاكات 2025",
-    fr:"Règles de bannissement & violations 2025",
-    en:"Ban & violation rules 2025",
-    it:"Regole di ban & violazioni 2025"
-  },
-  data:[
-    {
-      q:{
-        ar:"ماهو الشادو بان؟",
-        fr:"C'est quoi le Shadowban ?",
-        en:"What is shadowban?",
-        it:"Cos'è lo shadowban?"
-      },
-      a:{
-        ar:"الشادو بان هو تقليل وصول حسابك وفيديوهاتك بدون إشعار رسمي من تيك توك.",
-        fr:"Le shadowban est une baisse de visibilité sans notification officielle.",
-        en:"Shadowban means your reach is reduced without an official notice.",
-        it:"Lo shadowban è una riduzione della visibilità senza avviso ufficiale."
-      }
-    },
-    {
-      q:{
-        ar:"أسباب الشادو بان في 2025؟",
-        fr:"Causes du shadowban en 2025 ?",
-        en:"Causes of shadowban in 2025?",
-        it:"Cause dello shadowban nel 2025?"
-      },
-      a:{
-        ar:"• نشر كثيف في وقت قصير\n• استعمال VPN\n• تكرار نفس المحتوى أو نفس التعليق\n• بلاغات كثيرة على حسابك",
-        fr:"• Trop de posts en peu de temps\n• Utilisation de VPN\n• Contenu ou commentaires répétitifs\n• Trop de signalements sur ton compte",
-        en:"• Posting too much in short time\n• Using VPN\n• Repetitive content or comments\n• Many reports on your account",
-        it:"• Troppi post in poco tempo\n• Uso di VPN\n• Contenuti o commenti ripetitivi\n• Molte segnalazioni sul tuo account"
-      }
-    },
-    {
-      q:{
-        ar:"كيف نخرج من الشادو بان؟",
-        fr:"Comment sortir du shadowban ?",
-        en:"How to recover from shadowban?",
-        it:"Come uscire dallo shadowban?"
-      },
-      a:{
-        ar:"• توقف عن النشر 48 ساعة على الأقل\n• احذف الفيديوهات التي فيها مخاطرة\n• لا تستعمل VPN\n• ركّز على محتوى نظيف لفترة",
-        fr:"• Arrête de poster pendant 48h\n• Supprime les vidéos à risque\n• N'utilise pas de VPN\n• Publie du contenu propre pendant quelques jours",
-        en:"• Stop posting for at least 48h\n• Remove risky videos\n• Do not use VPN\n• Post clean content for a while",
-        it:"• Smetti di pubblicare per almeno 48h\n• Elimina i video rischiosi\n• Non usare VPN\n• Pubblica contenuti puliti per un po'"
-      }
-    },
-    {
-      q:{
-        ar:"لماذا يتم حذف الفيديو فورًا بعد النشر؟",
-        fr:"Pourquoi ma vidéo est supprimée directement ?",
-        en:"Why is my video removed instantly?",
-        it:"Perché il mio video viene rimosso subito?"
-      },
-      a:{
-        ar:"الذكاء الاصطناعي في تيك توك يكتشف:\n• عري أو إيحاء جنسي\n• دم وعنف شديد\n• أطفال في وضع حساس\n• موسيقى أو محتوى مخالف للسياسات",
-        fr:"L'IA de TikTok supprime si elle détecte :\n• Nudité ou contenu suggestif\n• Sang ou violence extrême\n• Enfants en situation sensible\n• Audio ou contenu contraire aux règles",
-        en:"TikTok AI removes videos that contain:\n• Nudity or sexual content\n• Strong violence or blood\n• Minors in risky situations\n• Audio or content against policies",
-        it:"L'IA di TikTok rimuove i video con:\n• Nudità o contenuti sessuali\n• Violenza forte o sangue\n• Minori in situazioni rischiose\n• Audio o contenuti contrari alle regole"
-      }
-    },
-    {
-      q:{
-        ar:"مشكلة موسيقى بحقوق نشر",
-        fr:"Problème de musique avec copyright",
-        en:"Copyright music issue",
-        it:"Problema di musica con copyright"
-      },
-      a:{
-        ar:"استعمل فقط الموسيقى الموجودة داخل مكتبة TikTok الرسمية لتجنب الحظر.",
-        fr:"Utilise seulement la musique de la bibliothèque officielle TikTok pour éviter les blocages.",
-        en:"Use only music from TikTok's official library to avoid copyright issues.",
-        it:"Usa solo la musica dalla libreria ufficiale di TikTok per evitare problemi di copyright."
-      }
-    },
-    {
-      q:{
-        ar:"الحظر الجغرافي (Ban Geo)",
-        fr:"Ban géographique (Geo Ban)",
-        en:"Geographical ban (Geo Ban)",
-        it:"Ban geografico (Geo Ban)"
-      },
-      a:{
-        ar:"يحدث غالبًا بسبب استعمال VPN أو تغيير الدولة كثيرًا.\nالحل: أوقف VPN واستعمل شريحة SIM من نفس البلد وثبّت الدخول من جهاز واحد.",
-        fr:"Ça arrive souvent à cause du VPN ou changement fréquent de pays.\nSolution : coupe le VPN, utilise une SIM du même pays et connecte-toi depuis un seul appareil.",
-        en:"Often happens due to VPN usage or frequent country changes.\nFix: disable VPN, use a SIM from one country and log in from one main device.",
-        it:"Succede spesso per via del VPN o cambi frequenti di paese.\nSoluzione: disattiva il VPN, usa una SIM dello stesso paese e accedi da un solo dispositivo."
-      }
-    },
-    {
-      q:{
-        ar:"تعليقات سبام تسبب حظر",
-        fr:"Commentaires spam qui provoquent un blocage",
-        en:"Spam comments causing restrictions",
-        it:"Commenti spam che causano blocchi"
-      },
-      a:{
-        ar:"• تكرار نفس التعليق في حسابات كثيرة\n• نشر روابط وإعلانات مزعجة\n• سرعة عالية في إرسال التعليقات\n\nالحل: خفّف التعليقات، لا تعلّق كوبي/بيست، وتجنب الروابط.",
-        fr:"• Même commentaire copié sur plusieurs comptes\n• Liens ou pubs agressives\n• Trop de commentaires en peu de temps\n\nSolution : ralentis, évite le copier/coller et les liens.",
-        en:"• Copy-paste same comment on many accounts\n• Posting links or aggressive ads\n• Commenting too fast\n\nFix: slow down, avoid copy/paste and external links.",
-        it:"• Stesso commento copiato su tanti account\n• Link o pubblicità aggressive\n• Troppi commenti in poco tempo\n\nSoluzione: rallenta, evita copia/incolla e link esterni."
-      }
-    }
-  ]
-},
-
-B:{
-  title:{
-    ar:"البث المباشر والمشاهدات",
-    fr:"LIVE et vues",
-    en:"LIVE & views",
-    it:"LIVE e visualizzazioni"
-  },
-  data:[
-    {
-      q:{
-        ar:"لا أستطيع فتح بث رغم أن عندي 1000 متابع",
-        fr:"Je ne peux pas lancer un LIVE avec 1000 abonnés",
-        en:"I can't start LIVE with 1000 followers",
-        it:"Non posso fare LIVE con 1000 follower"
-      },
-      a:{
-        ar:"الأسباب الممكنة:\n• الحساب جديد جدًا\n• وجود مخالفات سابقة\n• استعمال VPN\n\nالحل: أوقف VPN، حدّث التطبيق، وانتظر 24–72 ساعة بعد الوصول لـ 1000 متابع.",
-        fr:"Causes possibles :\n• Compte trop récent\n• Anciennes violations\n• VPN actif\n\nSolution : couper le VPN, mettre l'app à jour et attendre 24–72h après les 1000 abonnés.",
-        en:"Possible causes:\n• Very new account\n• Previous violations\n• VPN enabled\n\nFix: disable VPN, update the app and wait 24–72h after reaching 1000 followers.",
-        it:"Possibili cause:\n• Account troppo nuovo\n• Vecchie violazioni\n• VPN attivo\n\nSoluzione: disattiva VPN, aggiorna l'app e attendi 24–72h dopo i 1000 follower."
-      }
-    },
-    {
-      q:{
-        ar:"المشاهدات ضعيفة في البث المباشر",
-        fr:"Peu de vues en LIVE",
-        en:"Low LIVE views",
-        it:"Poche visualizzazioni in LIVE"
-      },
-      a:{
-        ar:"لرفع المشاهدات:\n• افتح البث في أوقات الذروة لجمهورك\n• استعمل عنوان واضح وجذاب\n• تفاعل مع التعليقات باستمرار\n• استعمل إضاءة وصوت جيدين\n• اربط اللايف مع فيديوهاتك الأخيرة.",
-        fr:"Pour augmenter les vues :\n• Lancer le LIVE aux heures de pointe\n• Titre clair et attractif\n• Interagir avec le chat\n• Bonne lumière et bon son\n• Relier le LIVE à tes dernières vidéos.",
-        en:"To increase views:\n• Go live at peak hours\n• Use a clear, attractive title\n• Engage constantly with chat\n• Use good lighting and audio\n• Connect the LIVE to your recent videos.",
-        it:"Per aumentare le views:\n• Vai in LIVE nelle ore di punta\n• Usa un titolo chiaro e accattivante\n• Interagisci con la chat\n• Usa buona luce e audio\n• Collega la LIVE ai tuoi ultimi video."
-      }
-    },
-    {
-      q:{
-        ar:"البث يقطع أو يسقط فجأة",
-        fr:"Le LIVE coupe ou s'arrête",
-        en:"LIVE keeps disconnecting",
-        it:"La LIVE si interrompe spesso"
-      },
-      a:{
-        ar:"غالبًا بسبب:\n• إنترنت ضعيف أو متذبذب\n• حرارة عالية في الجهاز\n\nالحل: استعمل إنترنت ثابت (4G أو ألياف)، أغلق التطبيقات الأخرى وأعد تشغيل الجهاز قبل البث.",
-        fr:"Souvent à cause de :\n• Connexion instable\n• Téléphone qui chauffe\n\nSolution : utiliser une connexion stable (4G/fibre), fermer les autres apps et redémarrer l'appareil avant le LIVE.",
-        en:"Often caused by:\n• Unstable connection\n• Overheating phone\n\nFix: use stable internet (4G/fiber), close background apps and restart the device before going live.",
-        it:"Spesso dovuto a:\n• Connessione instabile\n• Telefono che si surriscalda\n\nSoluzione: usa connessione stabile (4G/fibra), chiudi le altre app e riavvia il dispositivo prima della LIVE."
-      }
-    }
-  ]
-},
-
-C:{
- title:{
-  ar:"أمان الحساب والدخول",
-  fr:"Sécurité du compte & connexion",
-  en:"Account security & login",
-  it:"Sicurezza e accesso account"
- },
-
- data:[
-
-  {
-   q:{
-    ar:"حسابي تهكّر",
-    fr:"Mon compte est piraté",
-    en:"My account is hacked",
-    it:"Il mio account è stato hackerato"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"شنو العلامات؟",
-      fr:"Signes de piratage ?",
-      en:"Signs of hack?",
-      it:"Segni di hack?"
-     },
-     a:{
-      ar:"تغيّر كلمة السر – تسجيل دخول من جهاز موش متاعك – رسائل حذف فيديوهات بدون إذنك.",
-      fr:"Mot de passe changé, connexion inconnue, suppression vidéo non voulue.",
-      en:"Password changed, unknown login, videos deleted without permission.",
-      it:"Password cambiata, accessi sconosciuti, video cancellati."
-     }
-    },
-
-    {
-     q:{
-      ar:"شنو الحل الأولي؟",
-      fr:"Première solution ?",
-      en:"First step?",
-      it:"Primo passo?"
-     },
-     a:{
-      ar:"بدّل كلمة السر فورًا – سجّل خروج من كل الأجهزة – حذف أي تطبيق خارجي مربوط.",
-      fr:"Changer mot de passe, déconnexion de tous appareils.",
-      en:"Change password, logout all devices.",
-      it:"Cambia password, disconnetti tutti i dispositivi."
-     }
-    },
-
-    {
-     q:{
-      ar:"هل نجم نرجّع التحكم؟",
-      fr:"Récupération possible ?",
-      en:"Can I recover access?",
-      it:"Posso recuperarlo?"
-     },
-     a:{
-      ar:"نعم عبر: الإعدادات → الأمان → مراجعة الأجهزة → حذف الغرباء.",
-      fr:"Oui via sécurité → appareils.",
-      en:"Yes via security → manage devices.",
-      it:"Si tramite sicurezza dispositivi."
-     }
-    }
-
-   ]
-  },
-
-  {
-   q:{
-    ar:"ما يوصلنيش رمز SMS",
-    fr:"Code SMS non reçu",
-    en:"SMS code not received",
-    it:"Codice SMS non ricevuto"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"شنو الأسباب؟",
-      fr:"Pourquoi ?",
-      en:"Why?",
-      it:"Perché?"
-     },
-     a:{
-      ar:"ضعف الشبكة – رقم خطأ – sim مزدحمة – block من المشغل.",
-      fr:"Réseau faible, mauvais numéro.",
-      en:"Weak network, wrong phone.",
-      it:"Rete debole o numero errato."
-     }
-    },
-
-    {
-     q:{
-      ar:"شنو نعمل؟",
-      fr:"Que faire ?",
-      en:"Fix?",
-      it:"Soluzione?"
-     },
-     a:{
-      ar:"أعد محاولة بعد 5 دقائق – بدّل لرمز البريد بدل SMS – أطفئ VPN.",
-      fr:"Réessayer 5 minutes plus tard.",
-      en:"Retry after 5 min – try email – disable VPN.",
-      it:"Riprovare dopo 5 minuti – email – togli VPN."
-     }
-    }
-
-   ]
-
-  },
-
-
-  {
-   q:{
-    ar:"تفعيل المصادقة الثنائية",
-    fr:"Activer double authentification",
-    en:"Enable 2FA",
-    it:"Attiva verifica in due passaggi"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"علاش مهمة؟",
-      fr:"Pourquoi ?",
-      en:"Why?",
-      it:"Perché?"
-     },
-     a:{
-      ar:"تحمي الحساب من السرقة بنسبة 90٪.",
-      fr:"Sécurité forte contre piratage.",
-      en:"Strong hack protection.",
-      it:"Protezione forte contro hack."
-     }
-    },
-
-    {
-     q:{
-      ar:"كيف نفعلها؟",
-      fr:"Comment ?",
-      en:"How?",
-      it:"Come?"
-     },
-     a:{
-      ar:"الإعدادات → الأمان → المصادقة الثنائية → تفعيل.",
-      fr:"Paramètres → sécurité → double auth.",
-      en:"Settings → security → 2FA.",
-      it:"Impostazioni → sicurezza → 2FA."
-     }
-    }
-
-   ]
-
-  }
-
- ]
-
-},
-
-D:{
- title:{
-  ar:"الأرباح والسحب",
-  fr:"Gains & retraits",
-  en:"Earnings & withdrawals",
-  it:"Guadagni & Prelievi"
- },
-
- data:[
-
-  {
-   q:{
-    ar:"شنو شروط الربح من TikTok؟",
-    fr:"Conditions pour gagner sur TikTok ?",
-    en:"Requirements to earn money on TikTok?",
-    it:"Requisiti per guadagnare su TikTok?"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"كم العمر المطلوب؟",
-      fr:"Quel âge minimum ?",
-      en:"Minimum age?",
-      it:"Età minima?"
-     },
-     a:{
-      ar:"لازم عمرك 18 سنة فما فوق.",
-      fr:"18 ans minimum.",
-      en:"18 years old minimum.",
-      it:"Minimo 18 anni."
-     }
-    },
-
-    {
-     q:{
-      ar:"هل لازم عدد متابعين؟",
-      fr:"Followers requis ?",
-      en:"Followers required?",
-      it:"Followers richiesti?"
-     },
-     a:{
-      ar:"لازم نشاط جيد + مجتمع متفاعل، عادة من 10k فما فوق.",
-      fr:"En général 10k ou plus.",
-      en:"Usually 10k+ audience.",
-      it:"Solitamente oltre 10k."
-     }
-    },
-
-    {
-     q:{
-      ar:"هل الربح مضمون؟",
-      fr:"Gains garantis ?",
-      en:"Guaranteed earnings?",
-      it:"Guadagni garantiti?"
-     },
-     a:{
-      ar:"لا، الربح يعتمد على المحتوى والبث والمتابعين.",
-      fr:"Non, dépend du contenu.",
-      en:"No, depends on your content.",
-      it:"No, dipende dal contenuto."
-     }
-    }
-
-   ]
-  },
-
-
-  {
-   q:{
-    ar:"تأخر السحب من TikTok",
-    fr:"Retrait TikTok en retard",
-    en:"TikTok payout delay",
-    it:"Ritardo nel pagamento TikTok"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"شنو الأسباب؟",
-      fr:"Pourquoi ?",
-      en:"Why?",
-      it:"Perché?"
-     },
-     a:{
-      ar:"البنك يتأخر – عطلة – خطأ في بيانات السحب – مراجعة أمان.",
-      fr:"Banque lente, erreur info, sécurité.",
-      en:"Bank slow, info error, security check.",
-      it:"Banca lenta, errore info, controllo sicurezza."
-     }
-    },
-
-    {
-     q:{
-      ar:"كيف نحل؟",
-      fr:"Solution ?",
-      en:"Fix?",
-      it:"Soluzione?"
-     },
-     a:{
-      ar:"راجع بياناتك المالية – تأكد من الحساب – انتظر 3–7 أيام عمل.",
-      fr:"Vérifier infos bancaires – 3 à 7 jours.",
-      en:"Verify bank info – wait 3–7 days.",
-      it:"Controlla info – 3–7 giorni."
-     }
-    }
-
-   ]
-
-  },
-
-
-  {
-   q:{
-    ar:"هل يمكن سحب الأرباح من غير بنك؟",
-    fr:"Retrait sans banque ?",
-    en:"Withdraw without bank?",
-    it:"Prelievo senza banca?"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"شنو البدائل؟",
-      fr:"Alternatives ?",
-      en:"Alternatives?",
-      it:"Alternative?"
-     },
-     a:{
-      ar:"PayPal – Revolut – طرق محلية حسب الدولة.",
-      fr:"PayPal – Revolut – méthodes locales.",
-      en:"PayPal – Revolut – local options.",
-      it:"PayPal – Revolut – opzioni locali."
-     }
-    },
-
-    {
-     q:{
-      ar:"هل آمن؟",
-      fr:"Sécurisé ?",
-      en:"Safe?",
-      it:"Sicuro?"
-     },
-     a:{
-      ar:"نعم إذا كنت تربط حساب رسمي وتفعل حماية البريد.",
-      fr:"Oui si compte officiel.",
-      en:"Yes if using official accounts.",
-      it:"Sì se account ufficiale."
-     }
-    }
-
-   ]
-
-  },
-
-
-  {
-   q:{
-    ar:"الأرباح ناقصة",
-    fr:"Gains diminués",
-    en:"Low earnings",
-    it:"Guadagni bassi"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"علاش؟",
-      fr:"Pourquoi ?",
-      en:"Why?",
-      it:"Perché?"
-     },
-     a:{
-      ar:"لانخفاض مشاهدات – تراجع نشاط – مخالفة محتوى.",
-      fr:"Baisse vues + activité.",
-      en:"Low views + activity drop.",
-      it:"Basse visualizzazioni + attività."
-     }
-    },
-
-    {
-     q:{
-      ar:"حل؟",
-      fr:"Solution ?",
-      en:"Solution?",
-      it:"Soluzione?"
-     },
-     a:{
-      ar:"إعمل محتوى ثابت – بث مباشر – تفاعل قوي.",
-      fr:"Contenu régulier + live.",
-      en:"Regular content + lives.",
-      it:"Contenuti regolari + live."
-     }
-    }
-
-   ]
-
-  }
-
- ]
-
-},
-
-E:{
- title:{
-  ar:"تنظيف الحساب",
-  fr:"Nettoyage du compte",
-  en:"Account cleanup",
-  it:"Pulizia account"
- },
-
- data:[
-
-  {
-   q:{
-    ar:"الحساب ضعيف الوصول",
-    fr:"Faible portée",
-    en:"Low reach",
-    it:"Bassa reach"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"شنو الأسباب؟",
-      fr:"Pourquoi ?",
-      en:"Why?",
-      it:"Perché?"
-     },
-     a:{
-      ar:"Shadowban – محتوى متكرر – متابعين وهميين – مخالفات قديمة.",
-      fr:"Shadowban – contenu répété – faux abonnés.",
-      en:"Shadowban – repeated content – fake followers.",
-      it:"Shadowban – contenuti ripetuti – follower falsi."
-     }
-    },
-
-    {
-     q:{
-      ar:"كيف نرجّع الوصول؟",
-      fr:"Solution ?",
-      en:"Fix?",
-      it:"Soluzione?"
-     },
-     a:{
-      ar:"حذف فيديوهات ضعيفة – تغيير مجال – نشر تدريجي.",
-      fr:"Supprimer vieux contenus – changer niche.",
-      en:"Remove weak videos – change niche.",
-      it:"Rimuovere video deboli – cambiare nicchia."
-     }
-    }
-
-   ]
-  },
-
-
-  {
-   q:{
-    ar:"نجم ننظف الحساب بلا ضرر؟",
-    fr:"Nettoyage sans perte ?",
-    en:"Cleanup without loss?",
-    it:"Pulizia senza perdita?"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"شنو نعمل؟",
-      fr:"Comment ?",
-      en:"How?",
-      it:"Come?"
-     },
-     a:{
-      ar:"احذف فيديوهات أقل من 200 مشاهدة – نظف التعليقات القديمة.",
-      fr:"Supprimer vidéos -200 vues.",
-      en:"Delete videos under 200 views.",
-      it:"Cancella video sotto 200 views."
-     }
-    },
-
-    {
-     q:{
-      ar:"هل يؤثر على الحساب؟",
-      fr:"Impact ?",
-      en:"Impact?",
-      it:"Impatto?"
-     },
-     a:{
-      ar:"إذا تنظف بالتدريج ما يصير حتى ضرر.",
-      fr:"Si progressif = aucun risque.",
-      en:"If gradual = no risk.",
-      it:"Se graduale = nessun rischio."
-     }
-    }
-
-   ]
-
-  },
-
-
-  {
-   q:{
-    ar:"خروج من Shadowban عبر تنظيف",
-    fr:"Sortir du shadowban",
-    en:"Removing shadowban",
-    it:"Uscire dallo shadowban"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"شنو الطريقة؟",
-      fr:"Méthode ?",
-      en:"Method?",
-      it:"Metodo?"
-     },
-     a:{
-      ar:"توقف نشر 48 ساعة – تنظيف هاشتاجات – تعديل الوصف.",
-      fr:"Pause 48h + nettoyer hashtags.",
-      en:"48h pause + clean hashtags.",
-      it:"Pausa 48h + pulizia hashtag."
-     }
-    },
-
-    {
-     q:{
-      ar:"هل تمشي؟",
-      fr:"Ça marche ?",
-      en:"Works?",
-      it:"Funziona?"
-     },
-     a:{
-      ar:"في أغلب الحسابات نعم.",
-      fr:"Oui pour la majorité.",
-      en:"Yes for most accounts.",
-      it:"Sì per la maggior parte."
-     }
-    }
-
-   ]
-
-  },
-
-
-  {
-   q:{
-    ar:"تنظيف المتابعين الوهميين",
-    fr:"Followers faux",
-    en:"Fake followers cleanup",
-    it:"Follower falsi"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"علاش مهم؟",
-      fr:"Pourquoi ?",
-      en:"Why?",
-      it:"Perché?"
-     },
-     a:{
-      ar:"فولو وهمي يقلل الثقة والتوزيع ويضرب الحساب.",
-      fr:"Faux abonnés réduisent portée.",
-      en:"Fake followers kill reach.",
-      it:"Follower falsi riducono il reach."
-     }
-    },
-
-    {
-     q:{
-      ar:"طريقة التنظيف؟",
-      fr:"Nettoyage ?",
-      en:"How to delete?",
-      it:"Come eliminarli?"
-     },
-     a:{
-      ar:"استعمال أدوات داخل تيك توك + فحص يدوي يومي.",
-      fr:"Outils + suppression manuelle.",
-      en:"Tools + manual removal.",
-      it:"Strumenti + rimozione manuale."
-     }
-    }
-
-   ]
-
-  }
-
-
- ]
-
-},
-
-F:{
- title:{
-  ar:"الشروط والانضمام للوكالة",
-  fr:"Conditions & adhésion à l’agence",
-  en:"Agency requirements & joining",
-  it:"Requisiti per unirsi all’agenzia"
- },
-
- data:[
-
-  {
-   q:{
-    ar:"شنو شروط الإنضمام؟",
-    fr:"Conditions pour rejoindre l’agence ?",
-    en:"Requirements to join the agency?",
-    it:"Requisiti per entrare nell’agenzia?"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"عمر المبدع؟",
-      fr:"Âge requis ?",
-      en:"Age requirement?",
-      it:"Età richiesta?"
-     },
-     a:{
-      ar:"لازم يكون عمرك 18 سنة فما فوق.",
-      fr:"18 ans minimum.",
-      en:"Must be 18+.",
-      it:"Minimo 18 anni."
-     }
-    },
-
-    {
-     q:{
-      ar:"متابعين؟",
-      fr:"Followers requis ?",
-      en:"Followers needed?",
-      it:"Followers richiesti?"
-     },
-     a:{
-      ar:"عمومًا يلزم على الأقل 1000 متابع + محتوى نشيط.",
-      fr:"Au moins 1000 abonnés + contenu actif.",
-      en:"Usually 1000 followers + active content.",
-      it:"Di solito 1000 follower + contenuti attivi."
-     }
-    },
-
-    {
-     q:{
-      ar:"نوع المحتوى؟",
-      fr:"Type de contenu ?",
-      en:"Content type?",
-      it:"Tipo di contenuto?"
-     },
-     a:{
-      ar:"محتوى شرعي، غير مخالف، ومناسب للجمهور.",
-      fr:"Contenu légal & correct.",
-      en:"Legal and safe content.",
-      it:"Contenuti legali e sicuri."
-     }
-    }
-
-   ]
-  },
-
-
-  {
-   q:{
-    ar:"شنو فائدة الانضمام؟",
-    fr:"Quel avantage ?",
-    en:"What are the benefits?",
-    it:"Quali vantaggi?"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"زيادة مشاهدات؟",
-      fr:"Plus de vues ?",
-      en:"More views?",
-      it:"Più visualizzazioni?"
-     },
-     a:{
-      ar:"الوكالة تعاون ترفع توزيع المحتوى وتفتح فرص.",
-      fr:"Oui, meilleur référencement et accompagnement.",
-      en:"Better content reach and support.",
-      it:"Miglior reach e supporto."
-     }
-    },
-
-    {
-     q:{
-      ar:"هل تزيد أرباحي؟",
-      fr:"Plus de gains ?",
-      en:"More earnings?",
-      it:"Più guadagni?"
-     },
-     a:{
-      ar:"نعم لأنك تتحصل على استشارات احترافية + فرص عروض.",
-      fr:"Plus d’offres + conseils.",
-      en:"More offers + strategy.",
-      it:"Più offerte + strategia."
-     }
-    }
-
-   ]
-
-  },
-
-
-  {
-   q:{
-    ar:"هل الإنضمام مجاني؟",
-    fr:"Gratuit ?",
-    en:"Is joining free?",
-    it:"Unirsi è gratuito?"
-   },
-
-   sub:[
-
-    {
-     q:{
-      ar:"مصاريف الانضمام؟",
-      fr:"Coût ?",
-      en:"Cost?",
-      it:"Costo?"
-     },
-     a:{
-      ar:"الانضمام مجاني 100% بدون دفع.",
-      fr:"Totalement gratuit.",
-      en:"Completely free.",
-      it:"Totalmente gratuito."
-     }
-    },
-
-    {
-     q:{
-      ar:"وكيف تربحون؟",
-      fr:"Comment gagnez-vous ?",
-      en:"How do you earn?",
-      it:"Come guadagnate?"
-     },
-     a:{
-  ar:"نسبة الأرباح تأتي من TikTok فقط، ولا يوجد أي خصم أو علاقة بالأرباح الخاصة بالمبدعين نهائيًا.",
-  fr:"Le pourcentage des gains provient uniquement de TikTok, sans aucun impact ni retenue sur les revenus des créateurs.",
-  en:"The revenue share comes directly from TikTok and has no involvement or deduction from creators’ earnings at all.",
-  it:"La percentuale dei guadagni proviene esclusivamente da TikTok, senza alcun coinvolgimento o detrazione dai guadagni dei creator."
-
-     }
-    }
-
-   ]
-
-  }
-
-
- ]
-
-},
-
-G:{
- title:{
-   ar:"استفادة المبدع من الانضمام للوكالة",
-   fr:"Avantages pour le créateur en rejoignant l’agence",
-   en:"Creator benefits of joining the agency",
-   it:"Vantaggi per il creator nell’agenzia"
- },
- data:[
-
-/* ـــــــــــــــــــــــــــــــ 1 ـــــــــــــــــــــــــــــــ */
-{
- q:{
-   ar:"ضمان حماية الحساب",
-   fr:"Sécurité du compte assurée",
-   en:"Account security guarantee",
-   it:"Garanzia di sicurezza dell’account"
- },
- sub:[
-  {
-   q:{
-     ar:"كيف نضمن حماية حسابي؟",
-     fr:"Comment garantissez-vous la sécurité de mon compte ?",
-     en:"How do you guarantee my account security?",
-     it:"Come garantite la sicurezza del mio account?"
-   },
-   a:{
-     ar:"الوكالة تراقب تنبيهات TikTok وتحذّرك قبل وقوع أي مشكلة.",
-     fr:"L’agence surveille les alertes TikTok et vous avertit avant les problèmes.",
-     en:"The agency monitors TikTok alerts and warns you before issues.",
-     it:"L’agenzia monitora gli avvisi TikTok e ti avvisa prima dei problemi."
-   }
-  },
-
-  {
-   q:{
-     ar:"هل يتم مراقبة الحساب؟",
-     fr:"Surveillez-vous mon compte ?",
-     en:"Do you monitor my account?",
-     it:"Monitorate il mio account?"
-   },
-   a:{
-     ar:"لا، الحساب يبقى ملكك فقط. نحن نتابع الإشعارات لا غير.",
-     fr:"Non, le compte reste à vous. Nous suivons uniquement les notifications.",
-     en:"No, the account remains yours. We only check alerts.",
-     it:"No, l’account resta tuo. Controlliamo solo gli avvisi."
-   }
-  },
-
-  {
-   q:{
-     ar:"هل أحتاج كلمة السر؟",
-     fr:"Faut-il partager le mot de passe ?",
-     en:"Do I need to share my password?",
-     it:"Serve condividere la password?"
-   },
-   a:{
-     ar:"لا إطلاقًا! لا نطلب كلمة سر ولا دخول للحساب.",
-     fr:"Jamais ! Aucun mot de passe n’est demandé.",
-     en:"Never! We never ask for your password.",
-     it:"Mai! Non chiediamo la tua password."
-   }
-  }
- ]
-},
-
-
-/* ـــــــــــــــــــــــــــــــ 2 ـــــــــــــــــــــــــــــــ */
-{
- q:{
-   ar:"مساعدات TikTok Live",
-   fr:"Aide pour TikTok Live",
-   en:"TikTok Live assistance",
-   it:"Assistenza per TikTok Live"
- },
- sub:[
-  {
-   q:{
-     ar:"هل تساعدون في البث؟",
-     fr:"Aidez-vous au LIVE ?",
-     en:"Do you help with LIVE?",
-     it:"Aiutate con le LIVE?"
-   },
-   a:{
-     ar:"نقدّم تدريب + نصائح + خطة للبث.",
-     fr:"Nous fournissons coaching + conseils + plan LIVE.",
-     en:"We offer coaching + guidance + LIVE planning.",
-     it:"Offriamo coaching + guida + pianificazione LIVE."
-   }
-  },
-
-  {
-   q:{
-     ar:"هل ترتفع المشاهدات؟",
-     fr:"Les vues augmentent-elles ?",
-     en:"Will views increase?",
-     it:"Le visualizzazioni aumentano?"
-   },
-   a:{
-     ar:"تزيد حسب نشاطك وجودة البث بدون طرق وهمية.",
-     fr:"Elles augmentent selon l’activité, jamais par fraude.",
-     en:"They rise based on performance, not fake methods.",
-     it:"Aumentano secondo l’attività, non metodi falsi."
-   }
-  },
-
-  {
-   q:{
-     ar:"هل هناك محتوى لايف جاهز؟",
-     fr:"Contenu LIVE disponible ?",
-     en:"LIVE content available?",
-     it:"Contenuti LIVE disponibili?"
-   },
-   a:{
-     ar:"نوفر لك أفكار + نصائح + مراجعة بث.",
-     fr:"Idées + conseils + révision du LIVE.",
-     en:"Ideas + guidance + LIVE feedback.",
-     it:"Idee + guida + revisione LIVE."
-   }
-  }
- ]
-},
-
-
-/* ـــــــــــــــــــــــــــــــ 3 ـــــــــــــــــــــــــــــــ */
-{
- q:{
-   ar:"فرص الربح السريع",
-   fr:"Opportunités de gains rapides",
-   en:"Fast earning opportunities",
-   it:"Opportunità di guadagno veloce"
- },
- sub:[
-  {
-   q:{
-     ar:"كيف نربح أسرع؟",
-     fr:"Comment gagner plus vite ?",
-     en:"How to earn faster?",
-     it:"Come guadagnare più velocemente?"
-   },
-   a:{
-     ar:"تحليل محتوى + خطة نشر + متابعة يومية.",
-     fr:"Analyse du contenu + plan + suivi quotidien.",
-     en:"Content analysis + posting plan + daily follow-up.",
-     it:"Analisi dei contenuti + piano + controllo quotidiano."
-   }
-  },
-
-  {
-   q:{
-     ar:"هل الأرباح مؤكدة؟",
-     fr:"Les gains sont-ils garantis ?",
-     en:"Are profits guaranteed?",
-     it:"I guadagni sono garantiti?"
-   },
-   a:{
-     ar:"الأرباح تعتمد على عملك ونشاطك فقط.",
-     fr:"Les gains dépendent de votre activité.",
-     en:"Earnings depend on your activity.",
-     it:"I guadagni dipendono dalla tua attività."
-   }
-  }
- ]
-},
-
-
-/* ـــــــــــــــــــــــــــــــ 4 ـــــــــــــــــــــــــــــــ */
-{
- q:{
-   ar:"حل مشاكل الحساب",
-   fr:"Résolution des problèmes du compte",
-   en:"Account problem fixing",
-   it:"Risoluzione problemi account"
- },
- sub:[
-  {
-   q:{
-     ar:"هل تصلحون مشاكل الحظر؟",
-     fr:"Résolvez-vous les bannissements ?",
-     en:"Do you fix bans?",
-     it:"Risolvete i ban?"
-   },
-   a:{
-     ar:"نقدم توجيه كامل وخطوات استرجاع حسب الحالة.",
-     fr:"Nous guidons la récupération selon le cas.",
-     en:"We guide recovery depending on case.",
-     it:"Guidiamo il recupero secondo il caso."
-   }
-  },
-
-  {
-   q:{
-     ar:"مشاكل Shadowban؟",
-     fr:"Shadowban ?",
-     en:"Shadowban issues?",
-     it:"Shadowban?"
-   },
-   a:{
-     ar:"نقدّم علاج shadowban بخطوات واقعية.",
-     fr:"Traitement shadowban réaliste.",
-     en:"Practical shadowban fixing.",
-     it:"Soluzione shadowban realistica."
-   }
-  }
- ]
-}
-
-]
-},
-
-H:{
- title:{
-   ar:"فريق الدعم",
-   fr:"Équipe de support",
-   en:"Support team",
-   it:"Team di supporto"
- },
-
- data:[
-
-/* ـــــــــــــــــــــــــــــــ 1 ـــــــــــــــــــــــــــــــ */
-{
- q:{
-   ar:"كيف يعمل فريق الدعم؟",
-   fr:"Comment fonctionne l’équipe de support ?",
-   en:"How does the support team work?",
-   it:"Come lavora il team di supporto?"
- },
- sub:[
-  {
-   q:{
-     ar:"هل الفريق متواجد دائمًا؟",
-     fr:"L’équipe est-elle toujours disponible ?",
-     en:"Is the team always available?",
-     it:"Il team è sempre disponibile?"
-   },
-   a:{
-     ar:"نعم، فريق الدعم متواجد يوميًا لمتابعة الحالات والرد على المشاكل.",
-     fr:"Oui, l’équipe est disponible chaque jour pour suivre les cas.",
-     en:"Yes, the support team is available daily to follow up on issues.",
-     it:"Sì, il team è disponibile ogni giorno per seguire i casi."
-   }
-  },
-
-  {
-   q:{
-     ar:"هل فريقكم محترف؟",
-     fr:"Votre équipe est-elle professionnelle ?",
-     en:"Is your team professional?",
-     it:"Il vostro team è professionale?"
-   },
-   a:{
-     ar:"نعم، الفريق يضم خبراء TikTok و متخصصين في حل المشكلات التقنية.",
-     fr:"Oui, l’équipe comprend des experts TikTok et techniques.",
-     en:"Yes, our team includes TikTok and tech specialists.",
-     it:"Sì, il team include specialisti TikTok e tecnici."
-   }
-  }
- ]
-},
-
-
-/* ـــــــــــــــــــــــــــــــ 2 ـــــــــــــــــــــــــــــــ */
-{
- q:{
-   ar:"ما نوع الدعم المقدم؟",
-   fr:"Quel type de support offrez-vous ?",
-   en:"What kind of support do you offer?",
-   it:"Che tipo di supporto offrite?"
- },
- sub:[
-  {
-   q:{
-     ar:"مشاكل الحساب؟",
-     fr:"Problèmes de compte ?",
-     en:"Account issues?",
-     it:"Problemi di account?"
-   },
-   a:{
-     ar:"نعالج مشكلات الدخول – الحظر – shadowban – المخالفات.",
-     fr:"Nous traitons connexion – ban – shadowban – violations.",
-     en:"We handle login – ban – shadowban – violations.",
-     it:"Gestiamo accesso – ban – shadowban – violazioni."
-   }
-  },
-
-  {
-   q:{
-     ar:"مشاكل الأرباح؟",
-     fr:"Problèmes de gains ?",
-     en:"Earnings issues?",
-     it:"Problemi di guadagni?"
-   },
-   a:{
-     ar:"نقدّم خطوات استرجاع الأرباح و حل رفض السحب.",
-     fr:"Nous aidons à débloquer les gains et retraits.",
-     en:"We help unlock earnings and withdrawal issues.",
-     it:"Aiutiamo a sbloccare guadagni e prelievi."
-   }
-  }
- ]
-},
-
-
-/* ـــــــــــــــــــــــــــــــ 3 ـــــــــــــــــــــــــــــــ */
-{
- q:{
-   ar:"هل التواصل مع الفريق مجاني؟",
-   fr:"Le contact avec l’équipe est-il gratuit ?",
-   en:"Is contacting the team free?",
-   it:"Il contatto con il team è gratuito?"
- },
- sub:[
-  {
-   q:{
-     ar:"هل توجد رسوم؟",
-     fr:"Frais à payer ?",
-     en:"Any fees?",
-     it:"Ci sono costi?"
-   },
-   a:{
-     ar:"التواصل مجاني بالكامل، والخدمات المدفوعة اختيارية وليست إجبارية.",
-     fr:"Contact gratuit, services payants optionnels.",
-     en:"Contact is free, paid services optional.",
-     it:"Contatto gratuito, servizi a pagamento opzionali."
-   }
-  },
-
-  {
-   q:{
-     ar:"هل يمكنني طلب دعم خاص؟",
-     fr:"Support privatisé possible ?",
-     en:"Can I request private support?",
-     it:"Supporto privato disponibile?"
-   },
-   a:{
-     ar:"نعم، نوفر دعم خاص حسب الحاجة والمشكلة.",
-     fr:"Oui, support privatisé disponible selon besoin.",
-     en:"Yes, private support available if needed.",
-     it:"Sì, supporto privato disponibile se necessario."
-   }
-  }
- ]
-},
-
-{
- q:{
-   ar:"استفسارات إضافية حول فريق الدعم",
-   fr:"Questions supplémentaires sur l’équipe de support",
-   en:"Additional support team inquiries",
-   it:"Domande aggiuntive sul team di supporto"
- },
- sub:[
-
-  {
-   q:{
-     ar:"هل يتم الرد بسرعة؟",
-     fr:"Répondez-vous rapidement ?",
-     en:"Do you reply quickly?",
-     it:"Rispondete rapidamente?"
-   },
-   a:{
-     ar:"نعم، متوسط سرعة الرد بين 5 دقائق و3 ساعات حسب ضغط الرسائل.",
-     fr:"Oui, temps de réponse moyen entre 5 minutes et 3 heures.",
-     en:"Yes, average response time is between 5 minutes and 3 hours.",
-     it:"Sì, tempo medio di risposta tra 5 minuti e 3 ore."
-   }
-  },
-
-  {
-   q:{
-     ar:"كيف يتم التواصل مع الفريق؟",
-     fr:"Comment contacter l’équipe ?",
-     en:"How can I contact the team?",
-     it:"Come contattare il team?"
-   },
-   a:{
-     ar:"عبر TikTok – WhatsApp – أو داخل المنصة مباشرة.",
-     fr:"Via TikTok – WhatsApp – ou directement sur la plateforme.",
-     en:"Via TikTok – WhatsApp – or directly through the platform.",
-     it:"Tramite TikTok – WhatsApp – o direttamente sulla piattaforma."
-   }
-  },
-
-  {
-   q:{
-     ar:"هل فريقكم رسمي؟",
-     fr:"Votre équipe est-elle officielle ?",
-     en:"Is your team official?",
-     it:"Il vostro team è ufficiale?"
-   },
-   a:{
-     ar:"نعم، فريق Davenci C.O.S معتمد ويعمل تحت نظام وكالة حقيقية.",
-     fr:"Oui, l’équipe Davenci C.O.S est certifiée et officielle.",
-     en:"Yes, the Davenci C.O.S team is official and certified.",
-     it:"Sì, il team Davenci C.O.S è ufficiale e certificato."
-   }
-  },
-
-  {
-   q:{
-     ar:"هل البيانات سرية؟",
-     fr:"Les données sont-elles protégées ?",
-     en:"Is data confidential?",
-     it:"I dati sono riservati?"
-   },
-   a:{
-     ar:"نعم، كل المعلومات تبقى سرية ولا تتم مشاركتها مع أي جهة خارجية.",
-     fr:"Oui, toutes les données restent confidentielles.",
-     en:"Yes, all information stays confidential.",
-     it:"Sì, tutte le informazioni restano riservate."
-   }
-  },
-
-  {
-   q:{
-     ar:"هل يمكن رفض طلب؟",
-     fr:"Refusez-vous certaines demandes ?",
-     en:"Can requests be refused?",
-     it:"Rifiutate certe richieste?"
-   },
-   a:{
-     ar:"نعم، نرفض الطلبات المخالفة لسياسة TikTok أو ذات أهداف غير قانونية.",
-     fr:"Oui, nous refusons les demandes contraires aux règles TikTok.",
-     en:"Yes, requests against TikTok rules are refused.",
-     it:"Sì, rifiutiamo richieste contro le regole di TikTok."
-   }
-  }
-
- ]
-},
-
-/* ـــــــــــــــــــــــــــــــ 4 ـــــــــــــــــــــــــــــــ */
-{
- q:{
-   ar:"هل تقدمون دعم بلغة متعددة؟",
-   fr:"Support multilingue ?",
-   en:"Multilingual support?",
-   it:"Supporto multilingue?"
- },
- sub:[
-  {
-   q:{
-     ar:"ما اللغات المتاحة؟",
-     fr:"Quelles langues disponibles ?",
-     en:"Which languages available?",
-     it:"Quali lingue disponibili?"
-   },
-   a:{
-     ar:"عربي – فرنسي – إنجليزي – إيطالي.",
-     fr:"Arabe – Français – Anglais – Italien.",
-     en:"Arabic – French – English – Italian.",
-     it:"Arabo – Francese – Inglese – Italiano."
-   }
-  }
- ]
-}
-
-]
-},
-
-};
-
-// =================== فتح قسم خدمات =====================
-
-function openFAQ(key){
-  const lang = document.documentElement.lang || "ar";
-  const section = FAQ[key];
-
-  if(!section){
-    alert("⚠ القسم غير موجود");
-    return;
-  }
-
-  const box   = document.getElementById("faqList");
-  const title = document.getElementById("faqTitle");
-
-  title.textContent = section.title[lang] || section.title["ar"];
-  box.innerHTML = "";
-
-  if(!section.data || section.data.length === 0){
-    box.innerHTML = '<p style="padding:15px;font-weight:bold;color:#0E1E3A">❗ هذا القسم فارغ حاليًا – يمكنك إضافة أسئلة من الكود.</p>';
-  }else{
-    section.data.forEach((item,index)=>{
-      const b = document.createElement("button");
-      b.className   = "btn";
-      b.textContent = item.q[lang] || item.q["ar"];
-      b.onclick = ()=> openSecondLevel(key,index);
-      box.appendChild(b);
-    });
-  }
-
-  showScreen(".faq");
-}
-
-// =================== المستوى الثاني (لو حبيت sub) =====================
-
-function openSecondLevel(key,index){
-  const lang    = document.documentElement.lang || "ar";
-  const section = FAQ[key];
-  const item    = section.data[index];
-
-  // لو ما عندوش sub نعرض الجواب مباشرة
-  if(!item.sub || item.sub.length === 0){
-    showAnswer(item.q[lang] || item.q["ar"], item.a[lang] || item.a["ar"]);
-    return;
-  }
-
-  const box   = document.getElementById("faqList");
-  const title = document.getElementById("faqTitle");
-
-  title.textContent = item.q[lang] || item.q["ar"];
-  box.innerHTML = "";
-
-  item.sub.forEach(sub=>{
-    const sb = document.createElement("button");
-    sb.className   = "btn";
-    sb.textContent = sub.q[lang] || sub.q["ar"];
-    sb.onclick = ()=> showAnswer(sub.q[lang] || sub.q["ar"], sub.a[lang] || sub.a["ar"]);
-    box.appendChild(sb);
-  });
-}
-
-// =================== عرض الجواب النهائي =====================
-
-function showAnswer(qText,aText){
-  document.getElementById("answerTitle").textContent = qText;
-  document.getElementById("answerText").textContent  = aText;
-  showScreen(".answer");
-}
-
-// =================== رجوع =====================
-function goHome(){    showScreen(".card");  }
-function goBackFAQ(){ showScreen(".faq");   }
-
-async function sendTicket(){
-  const text = document.getElementById("ticketText").value.trim();
-
-  if(!text){
-    alert("❌ اكتب مشكلتك قبل الإرسال");
-    return;
-  }
-
-  // 🔐 إعدادات Firebase (نفس المشروع متاعك)
-  const PROJECT_ID = "davenci-conseils-pro";
-  const API_KEY = "AIzaSyAd8C9-0_Zw93XUn-9RokqRFI880L09qRI";
-
-  const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/tickets?key=${API_KEY}`;
-
-  const body = {
-    fields: {
-      message: { stringValue: text },
-      from: { stringValue: "bot" },
-      status: { stringValue: "open" },
-      createdAt: { timestampValue: new Date().toISOString() }
-    }
-  };
-
-  try{
-    const res = await fetch(url,{
-      method:"POST",
-      headers:{ "Content-Type":"application/json" },
-      body: JSON.stringify(body)
-    });
-
-    if(!res.ok){
-      const err = await res.text();
-      console.error(err);
-      alert("❌ فشل إرسال التذكرة");
-      return;
-    }
-
-    document.getElementById("ticketText").value = "";
-    alert("✅ تم إرسال التذكرة بنجاح، فريق الدعم سيتواصل معك");
-
-    // رجوع للواجهة الرئيسية
-    showScreen(".card");
-
-  }catch(e){
-    console.error(e);
-    alert("❌ خطأ في الاتصال");
-  }
-}
-}
- <script>
-  function openCreatorTicket() {
-    window.open(
-      "https://davenci-cos-support-bot.pages.dev/",
-      "_blank"
-    );
-  }<
-    /script>
-</body>
-</html>
+  background:linear-gradient(135deg,# 1 F3C5B, #6FAFC2);
+  color:# fff;
+} <
+/style> < /
+head >
+
+    <
+    body >
+
+    <
+    div class = "wrap" >
+    <
+    !--شاشة الرئيسية-- >
+    <
+    div class = "card" >
+    <
+    img src = "logo.png"
+class = "logoTop"
+alt = "Davenci C.O.S" >
+    <
+    h1 > Davenci C.O.S < /h1> <
+p id = "subtitle" > الدعم• التوجيه• الحماية < /p>
+
+    <
+    !--اختيار اللغة-- >
+    <
+    div class = "langRow" >
+    <
+    select id = "lang"
+value = "ar" >
+    <
+    option value = "ar" > 🇹🇳عربي < /option> <
+option value = "fr" > 🇫🇷Français < /option> <
+option value = "it" > 🇮🇹Italiano < /option> <
+option value = "en" > 🇬🇧English < /option> < /
+select > <
+    /div>
+
+    <
+    !--الأزرار-- >
+    <
+    div class = "list" >
+    <
+    button class = "btn"
+id = "btnA"
+onclick = "openFAQ('A')" > < /button> <
+button class = "btn"
+id = "btnB"
+onclick = "openFAQ('B')" > < /button> <
+button class = "btn"
+id = "btnC"
+onclick = "openFAQ('C')" > < /button> <
+button class = "btn"
+id = "btnD"
+onclick = "openFAQ('D')" > < /button> <
+button class = "btn"
+id = "btnE"
+onclick = "openFAQ('E')" > < /button> <
+button class = "btn"
+id = "btnF"
+onclick = "openFAQ('F')" > < /button> <
+button class = "btn"
+id = "btnG"
+onclick = "openFAQ('G')" > < /button> <
+button class = "btn"
+id = "btnH"
+onclick = "openFAQ('H')" > < /button> <
+button class = "btn"
+onclick = "openCreatorTicket()" > 🎫دعم تيكت للمبدعين < /button>
+
+    <
+    /div> < /
+div >
+
+    <
+    !--شاشة الأسئلة-- >
+    <
+    div class = "faq" >
+    <
+    h2 id = "faqTitle"
+style = "color:#0E1E3A;margin-bottom:15px;" > < /h2> <
+div id = "faqList" > < /div> <
+button class = "btn back-btn"
+onclick = "goHome()" > رجوع < /button> < /
+div >
+
+    <
+    !--شاشة الجواب-- >
+    <
+    div class = "answer" >
+    <
+    h2 id = "answerTitle"
+style = "color:#0E1E3A;margin-bottom:15px;" > < /h2> <
+p id = "answerText" > < /p> <
+button class = "btn back-btn"
+onclick = "goBackFAQ()" > رجوع < /button>
+
+    <
+    div class = "creatorTicket"
+style = "display:none; background:rgba(255,255,255,0.92); padding:22px; border-radius:18px; text-align:center;" >
+
+    <
+    h2 style = "color:#0E1E3A; margin-bottom:10px;" > 🎫اتصل بفريق الدعم < /h2>
+
+    <
+    p style = "color:#1E1E1E;" >
+    ارسل مشكلتك وسيتم الرد عليك من فريق وكالة Davenci C.O.S <
+    /p>
+
+    <
+    textarea id = "ticketText"
+style = "width:100%;height:120px; margin-top:10px; border-radius:12px; padding:10px;" >
+    <
+    /textarea>
+
+    <
+    button class = "btn"
+style = "margin-top:15px;"
+onclick = "sendTicket()" > إرسال التيكت < /button>
+
+    <
+    button class = "btn"
+style = "margin-top:15px;background:white;color:#1F3C5B;border:2px solid #1F3C5B"
+onclick = "goHome()" > رجوع < /button>
+
+    <
+    /div> < /
+div >
+
+    <
+    button class = "support-fab" > 🎧 < /button>
+
+
+    <
+    script >
+    // ==================== نصوص الواجهة الرئيسية (الأزرار) ====================
+    document.addEventListener("DOMContentLoaded", function() {
+
+            const BOT_LANG = {
+                ar: {
+                    subtitle: "الدعم • التوجيه • الحماية",
+                    A: "🚫 قوانين الحظر والانتهاكات",
+                    B: "📡 البث المباشر والمشاهدات",
+                    C: "🔐 أمان ومشاكل الحساب",
+                    D: "💰 الأرباح والسحب",
+                    E: "🧹 تنظيف الحساب",
+                    F: "📝 الشروط والانضمام إلى وكالتنا",
+                    G: "🚀 استفادة المبدع من الانضمام إلى وكالتنا",
+                    H: "🛡️ فريق دعم وكالة Davenci C.O.S",
+                    answerBack: "◀ رجوع"
+                },
+                fr: {
+                    subtitle: "Support • Orientation • Sécurité",
+                    A: "🚫 Règles de sanctions et violations",
+                    B: "📡 LIVE et vues",
+                    C: "🔐 Sécurité et problèmes de compte",
+                    D: "💰 Gains et retraits",
+                    E: "🧹 Nettoyage du compte",
+                    F: "📝 Conditions et adhésion à notre agence",
+                    G: "🚀 Avantages pour le créateur",
+                    H: "🛡️ Équipe de support Davenci C.O.S",
+                    answerBack: "◀ Retour"
+                },
+                it: {
+                    subtitle: "Supporto • Orientamento • Sicurezza",
+                    A: "🚫 Regole di blocchi e violazioni",
+                    B: "📡 LIVE e visualizzazioni",
+                    C: "🔐 Sicurezza e problemi account",
+                    D: "💰 Guadagni e prelievi",
+                    E: "🧹 Pulizia account",
+                    F: "📝 Condizioni e adesione alla nostra agenzia",
+                    G: "🚀 Vantaggi per il creator",
+                    H: "🛡️ Team di supporto Davenci C.O.S",
+                    answerBack: "◀ Indietro"
+                },
+                en: {
+                    subtitle: "Support • Guidance • Security",
+                    A: "🚫 Bans and violations rules",
+                    B: "📡 LIVE and views",
+                    C: "🔐 Account security and issues",
+                    D: "💰 Earnings and withdrawals",
+                    E: "🧹 Account cleanup",
+                    F: "📝 Terms and joining our agency",
+                    G: "🚀 Creator benefits",
+                    H: "🛡️ Davenci C.O.S support team",
+                    answerBack: "◀ Back"
+                }
+            };
+
+            const langSelector = document.getElementById("lang");
+
+            const elements = {
+                subtitle: document.getElementById("subtitle"),
+                btnA: document.getElementById("btnA"),
+                btnB: document.getElementById("btnB"),
+                btnC: document.getElementById("btnC"),
+                btnD: document.getElementById("btnD"),
+                btnE: document.getElementById("btnE"),
+                btnF: document.getElementById("btnF"),
+                btnG: document.getElementById("btnG"),
+                btnH: document.getElementById("btnH")
+            };
+
+            function setLang(lang) {
+                if (!BOT_LANG[lang]) return;
+                document.documentElement.lang = lang;
+                document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+
+
+                const dict = BOT_LANG[lang];
+                elements.subtitle.textContent = dict.subtitle;
+                elements.btnA.textContent = dict.A;
+                elements.btnB.textContent = dict.B;
+                elements.btnC.textContent = dict.C;
+                elements.btnD.textContent = dict.D;
+                elements.btnE.textContent = dict.E;
+                elements.btnF.textContent = dict.F;
+                elements.btnG.textContent = dict.G;
+                elements.btnH.textContent = dict.H;
+
+                const backBtn = document.getElementById("answerBackBtn");
+                if (backBtn) {
+                    backBtn.textContent = BOT_LANG[lang];
+                }
+
+                langSelector.addEventListener("change", function() {
+                    setLang(this.value);
+                });
+
+                setLang("ar");
+                langSelector.value = "ar";
+
+
+                // ======================= شاشة تحكم العرض =======================
+                function showScreen(name) {
+                    document.querySelector(".card").style.display = (name === ".card") ? "block" : "none";
+                    document.querySelector(".faq").style.display = (name === ".faq") ? "block" : "none";
+                    document.querySelector(".answer").style.display = (name === ".answer") ? "block" : "none";
+                }
+
+                // ======================= قاعدة بيانات FAQ =======================
+
+                const FAQ = {
+
+                    A: {
+                        title: {
+                            ar: "قوانين الحظر والانتهاكات 2025",
+                            fr: "Règles de bannissement & violations 2025",
+                            en: "Ban & violation rules 2025",
+                            it: "Regole di ban & violazioni 2025"
+                        },
+                        data: [{
+                                q: {
+                                    ar: "ماهو الشادو بان؟",
+                                    fr: "C'est quoi le Shadowban ?",
+                                    en: "What is shadowban?",
+                                    it: "Cos'è lo shadowban?"
+                                },
+                                a: {
+                                    ar: "الشادو بان هو تقليل وصول حسابك وفيديوهاتك بدون إشعار رسمي من تيك توك.",
+                                    fr: "Le shadowban est une baisse de visibilité sans notification officielle.",
+                                    en: "Shadowban means your reach is reduced without an official notice.",
+                                    it: "Lo shadowban è una riduzione della visibilità senza avviso ufficiale."
+                                }
+                            },
+                            {
+                                q: {
+                                    ar: "أسباب الشادو بان في 2025؟",
+                                    fr: "Causes du shadowban en 2025 ?",
+                                    en: "Causes of shadowban in 2025?",
+                                    it: "Cause dello shadowban nel 2025?"
+                                },
+                                a: {
+                                    ar: "• نشر كثيف في وقت قصير\n• استعمال VPN\n• تكرار نفس المحتوى أو نفس التعليق\n• بلاغات كثيرة على حسابك",
+                                    fr: "• Trop de posts en peu de temps\n• Utilisation de VPN\n• Contenu ou commentaires répétitifs\n• Trop de signalements sur ton compte",
+                                    en: "• Posting too much in short time\n• Using VPN\n• Repetitive content or comments\n• Many reports on your account",
+                                    it: "• Troppi post in poco tempo\n• Uso di VPN\n• Contenuti o commenti ripetitivi\n• Molte segnalazioni sul tuo account"
+                                }
+                            },
+                            {
+                                q: {
+                                    ar: "كيف نخرج من الشادو بان؟",
+                                    fr: "Comment sortir du shadowban ?",
+                                    en: "How to recover from shadowban?",
+                                    it: "Come uscire dallo shadowban?"
+                                },
+                                a: {
+                                    ar: "• توقف عن النشر 48 ساعة على الأقل\n• احذف الفيديوهات التي فيها مخاطرة\n• لا تستعمل VPN\n• ركّز على محتوى نظيف لفترة",
+                                    fr: "• Arrête de poster pendant 48h\n• Supprime les vidéos à risque\n• N'utilise pas de VPN\n• Publie du contenu propre pendant quelques jours",
+                                    en: "• Stop posting for at least 48h\n• Remove risky videos\n• Do not use VPN\n• Post clean content for a while",
+                                    it: "• Smetti di pubblicare per almeno 48h\n• Elimina i video rischiosi\n• Non usare VPN\n• Pubblica contenuti puliti per un po'"
+                                }
+                            },
+                            {
+                                q: {
+                                    ar: "لماذا يتم حذف الفيديو فورًا بعد النشر؟",
+                                    fr: "Pourquoi ma vidéo est supprimée directement ?",
+                                    en: "Why is my video removed instantly?",
+                                    it: "Perché il mio video viene rimosso subito?"
+                                },
+                                a: {
+                                    ar: "الذكاء الاصطناعي في تيك توك يكتشف:\n• عري أو إيحاء جنسي\n• دم وعنف شديد\n• أطفال في وضع حساس\n• موسيقى أو محتوى مخالف للسياسات",
+                                    fr: "L'IA de TikTok supprime si elle détecte :\n• Nudité ou contenu suggestif\n• Sang ou violence extrême\n• Enfants en situation sensible\n• Audio ou contenu contraire aux règles",
+                                    en: "TikTok AI removes videos that contain:\n• Nudity or sexual content\n• Strong violence or blood\n• Minors in risky situations\n• Audio or content against policies",
+                                    it: "L'IA di TikTok rimuove i video con:\n• Nudità o contenuti sessuali\n• Violenza forte o sangue\n• Minori in situazioni rischiose\n• Audio o contenuti contrari alle regole"
+                                }
+                            },
+                            {
+                                q: {
+                                    ar: "مشكلة موسيقى بحقوق نشر",
+                                    fr: "Problème de musique avec copyright",
+                                    en: "Copyright music issue",
+                                    it: "Problema di musica con copyright"
+                                },
+                                a: {
+                                    ar: "استعمل فقط الموسيقى الموجودة داخل مكتبة TikTok الرسمية لتجنب الحظر.",
+                                    fr: "Utilise seulement la musique de la bibliothèque officielle TikTok pour éviter les blocages.",
+                                    en: "Use only music from TikTok's official library to avoid copyright issues.",
+                                    it: "Usa solo la musica dalla libreria ufficiale di TikTok per evitare problemi di copyright."
+                                }
+                            },
+                            {
+                                q: {
+                                    ar: "الحظر الجغرافي (Ban Geo)",
+                                    fr: "Ban géographique (Geo Ban)",
+                                    en: "Geographical ban (Geo Ban)",
+                                    it: "Ban geografico (Geo Ban)"
+                                },
+                                a: {
+                                    ar: "يحدث غالبًا بسبب استعمال VPN أو تغيير الدولة كثيرًا.\nالحل: أوقف VPN واستعمل شريحة SIM من نفس البلد وثبّت الدخول من جهاز واحد.",
+                                    fr: "Ça arrive souvent à cause du VPN ou changement fréquent de pays.\nSolution : coupe le VPN, utilise une SIM du même pays et connecte-toi depuis un seul appareil.",
+                                    en: "Often happens due to VPN usage or frequent country changes.\nFix: disable VPN, use a SIM from one country and log in from one main device.",
+                                    it: "Succede spesso per via del VPN o cambi frequenti di paese.\nSoluzione: disattiva il VPN, usa una SIM dello stesso paese e accedi da un solo dispositivo."
+                                }
+                            },
+                            {
+                                q: {
+                                    ar: "تعليقات سبام تسبب حظر",
+                                    fr: "Commentaires spam qui provoquent un blocage",
+                                    en: "Spam comments causing restrictions",
+                                    it: "Commenti spam che causano blocchi"
+                                },
+                                a: {
+                                    ar: "• تكرار نفس التعليق في حسابات كثيرة\n• نشر روابط وإعلانات مزعجة\n• سرعة عالية في إرسال التعليقات\n\nالحل: خفّف التعليقات، لا تعلّق كوبي/بيست، وتجنب الروابط.",
+                                    fr: "• Même commentaire copié sur plusieurs comptes\n• Liens ou pubs agressives\n• Trop de commentaires en peu de temps\n\nSolution : ralentis, évite le copier/coller et les liens.",
+                                    en: "• Copy-paste same comment on many accounts\n• Posting links or aggressive ads\n• Commenting too fast\n\nFix: slow down, avoid copy/paste and external links.",
+                                    it: "• Stesso commento copiato su tanti account\n• Link o pubblicità aggressive\n• Troppi commenti in poco tempo\n\nSoluzione: rallenta, evita copia/incolla e link esterni."
+                                }
+                            }
+                        ]
+                    },
+
+                    B: {
+                        title: {
+                            ar: "البث المباشر والمشاهدات",
+                            fr: "LIVE et vues",
+                            en: "LIVE & views",
+                            it: "LIVE e visualizzazioni"
+                        },
+                        data: [{
+                                q: {
+                                    ar: "لا أستطيع فتح بث رغم أن عندي 1000 متابع",
+                                    fr: "Je ne peux pas lancer un LIVE avec 1000 abonnés",
+                                    en: "I can't start LIVE with 1000 followers",
+                                    it: "Non posso fare LIVE con 1000 follower"
+                                },
+                                a: {
+                                    ar: "الأسباب الممكنة:\n• الحساب جديد جدًا\n• وجود مخالفات سابقة\n• استعمال VPN\n\nالحل: أوقف VPN، حدّث التطبيق، وانتظر 24–72 ساعة بعد الوصول لـ 1000 متابع.",
+                                    fr: "Causes possibles :\n• Compte trop récent\n• Anciennes violations\n• VPN actif\n\nSolution : couper le VPN, mettre l'app à jour et attendre 24–72h après les 1000 abonnés.",
+                                    en: "Possible causes:\n• Very new account\n• Previous violations\n• VPN enabled\n\nFix: disable VPN, update the app and wait 24–72h after reaching 1000 followers.",
+                                    it: "Possibili cause:\n• Account troppo nuovo\n• Vecchie violazioni\n• VPN attivo\n\nSoluzione: disattiva VPN, aggiorna l'app e attendi 24–72h dopo i 1000 follower."
+                                }
+                            },
+                            {
+                                q: {
+                                    ar: "المشاهدات ضعيفة في البث المباشر",
+                                    fr: "Peu de vues en LIVE",
+                                    en: "Low LIVE views",
+                                    it: "Poche visualizzazioni in LIVE"
+                                },
+                                a: {
+                                    ar: "لرفع المشاهدات:\n• افتح البث في أوقات الذروة لجمهورك\n• استعمل عنوان واضح وجذاب\n• تفاعل مع التعليقات باستمرار\n• استعمل إضاءة وصوت جيدين\n• اربط اللايف مع فيديوهاتك الأخيرة.",
+                                    fr: "Pour augmenter les vues :\n• Lancer le LIVE aux heures de pointe\n• Titre clair et attractif\n• Interagir avec le chat\n• Bonne lumière et bon son\n• Relier le LIVE à tes dernières vidéos.",
+                                    en: "To increase views:\n• Go live at peak hours\n• Use a clear, attractive title\n• Engage constantly with chat\n• Use good lighting and audio\n• Connect the LIVE to your recent videos.",
+                                    it: "Per aumentare le views:\n• Vai in LIVE nelle ore di punta\n• Usa un titolo chiaro e accattivante\n• Interagisci con la chat\n• Usa buona luce e audio\n• Collega la LIVE ai tuoi ultimi video."
+                                }
+                            },
+                            {
+                                q: {
+                                    ar: "البث يقطع أو يسقط فجأة",
+                                    fr: "Le LIVE coupe ou s'arrête",
+                                    en: "LIVE keeps disconnecting",
+                                    it: "La LIVE si interrompe spesso"
+                                },
+                                a: {
+                                    ar: "غالبًا بسبب:\n• إنترنت ضعيف أو متذبذب\n• حرارة عالية في الجهاز\n\nالحل: استعمل إنترنت ثابت (4G أو ألياف)، أغلق التطبيقات الأخرى وأعد تشغيل الجهاز قبل البث.",
+                                    fr: "Souvent à cause de :\n• Connexion instable\n• Téléphone qui chauffe\n\nSolution : utiliser une connexion stable (4G/fibre), fermer les autres apps et redémarrer l'appareil avant le LIVE.",
+                                    en: "Often caused by:\n• Unstable connection\n• Overheating phone\n\nFix: use stable internet (4G/fiber), close background apps and restart the device before going live.",
+                                    it: "Spesso dovuto a:\n• Connessione instabile\n• Telefono che si surriscalda\n\nSoluzione: usa connessione stabile (4G/fibra), chiudi le altre app e riavvia il dispositivo prima della LIVE."
+                                }
+                            }
+                        ]
+                    },
+
+                    C: {
+                        title: {
+                            ar: "أمان الحساب والدخول",
+                            fr: "Sécurité du compte & connexion",
+                            en: "Account security & login",
+                            it: "Sicurezza e accesso account"
+                        },
+
+                        data: [
+
+                            {
+                                q: {
+                                    ar: "حسابي تهكّر",
+                                    fr: "Mon compte est piraté",
+                                    en: "My account is hacked",
+                                    it: "Il mio account è stato hackerato"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "شنو العلامات؟",
+                                            fr: "Signes de piratage ?",
+                                            en: "Signs of hack?",
+                                            it: "Segni di hack?"
+                                        },
+                                        a: {
+                                            ar: "تغيّر كلمة السر – تسجيل دخول من جهاز موش متاعك – رسائل حذف فيديوهات بدون إذنك.",
+                                            fr: "Mot de passe changé, connexion inconnue, suppression vidéo non voulue.",
+                                            en: "Password changed, unknown login, videos deleted without permission.",
+                                            it: "Password cambiata, accessi sconosciuti, video cancellati."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "شنو الحل الأولي؟",
+                                            fr: "Première solution ?",
+                                            en: "First step?",
+                                            it: "Primo passo?"
+                                        },
+                                        a: {
+                                            ar: "بدّل كلمة السر فورًا – سجّل خروج من كل الأجهزة – حذف أي تطبيق خارجي مربوط.",
+                                            fr: "Changer mot de passe, déconnexion de tous appareils.",
+                                            en: "Change password, logout all devices.",
+                                            it: "Cambia password, disconnetti tutti i dispositivi."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل نجم نرجّع التحكم؟",
+                                            fr: "Récupération possible ?",
+                                            en: "Can I recover access?",
+                                            it: "Posso recuperarlo?"
+                                        },
+                                        a: {
+                                            ar: "نعم عبر: الإعدادات → الأمان → مراجعة الأجهزة → حذف الغرباء.",
+                                            fr: "Oui via sécurité → appareils.",
+                                            en: "Yes via security → manage devices.",
+                                            it: "Si tramite sicurezza dispositivi."
+                                        }
+                                    }
+
+                                ]
+                            },
+
+                            {
+                                q: {
+                                    ar: "ما يوصلنيش رمز SMS",
+                                    fr: "Code SMS non reçu",
+                                    en: "SMS code not received",
+                                    it: "Codice SMS non ricevuto"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "شنو الأسباب؟",
+                                            fr: "Pourquoi ?",
+                                            en: "Why?",
+                                            it: "Perché?"
+                                        },
+                                        a: {
+                                            ar: "ضعف الشبكة – رقم خطأ – sim مزدحمة – block من المشغل.",
+                                            fr: "Réseau faible, mauvais numéro.",
+                                            en: "Weak network, wrong phone.",
+                                            it: "Rete debole o numero errato."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "شنو نعمل؟",
+                                            fr: "Que faire ?",
+                                            en: "Fix?",
+                                            it: "Soluzione?"
+                                        },
+                                        a: {
+                                            ar: "أعد محاولة بعد 5 دقائق – بدّل لرمز البريد بدل SMS – أطفئ VPN.",
+                                            fr: "Réessayer 5 minutes plus tard.",
+                                            en: "Retry after 5 min – try email – disable VPN.",
+                                            it: "Riprovare dopo 5 minuti – email – togli VPN."
+                                        }
+                                    }
+
+                                ]
+
+                            },
+
+
+                            {
+                                q: {
+                                    ar: "تفعيل المصادقة الثنائية",
+                                    fr: "Activer double authentification",
+                                    en: "Enable 2FA",
+                                    it: "Attiva verifica in due passaggi"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "علاش مهمة؟",
+                                            fr: "Pourquoi ?",
+                                            en: "Why?",
+                                            it: "Perché?"
+                                        },
+                                        a: {
+                                            ar: "تحمي الحساب من السرقة بنسبة 90٪.",
+                                            fr: "Sécurité forte contre piratage.",
+                                            en: "Strong hack protection.",
+                                            it: "Protezione forte contro hack."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "كيف نفعلها؟",
+                                            fr: "Comment ?",
+                                            en: "How?",
+                                            it: "Come?"
+                                        },
+                                        a: {
+                                            ar: "الإعدادات → الأمان → المصادقة الثنائية → تفعيل.",
+                                            fr: "Paramètres → sécurité → double auth.",
+                                            en: "Settings → security → 2FA.",
+                                            it: "Impostazioni → sicurezza → 2FA."
+                                        }
+                                    }
+
+                                ]
+
+                            }
+
+                        ]
+
+                    },
+
+                    D: {
+                        title: {
+                            ar: "الأرباح والسحب",
+                            fr: "Gains & retraits",
+                            en: "Earnings & withdrawals",
+                            it: "Guadagni & Prelievi"
+                        },
+
+                        data: [
+
+                            {
+                                q: {
+                                    ar: "شنو شروط الربح من TikTok؟",
+                                    fr: "Conditions pour gagner sur TikTok ?",
+                                    en: "Requirements to earn money on TikTok?",
+                                    it: "Requisiti per guadagnare su TikTok?"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "كم العمر المطلوب؟",
+                                            fr: "Quel âge minimum ?",
+                                            en: "Minimum age?",
+                                            it: "Età minima?"
+                                        },
+                                        a: {
+                                            ar: "لازم عمرك 18 سنة فما فوق.",
+                                            fr: "18 ans minimum.",
+                                            en: "18 years old minimum.",
+                                            it: "Minimo 18 anni."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل لازم عدد متابعين؟",
+                                            fr: "Followers requis ?",
+                                            en: "Followers required?",
+                                            it: "Followers richiesti?"
+                                        },
+                                        a: {
+                                            ar: "لازم نشاط جيد + مجتمع متفاعل، عادة من 10k فما فوق.",
+                                            fr: "En général 10k ou plus.",
+                                            en: "Usually 10k+ audience.",
+                                            it: "Solitamente oltre 10k."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل الربح مضمون؟",
+                                            fr: "Gains garantis ?",
+                                            en: "Guaranteed earnings?",
+                                            it: "Guadagni garantiti?"
+                                        },
+                                        a: {
+                                            ar: "لا، الربح يعتمد على المحتوى والبث والمتابعين.",
+                                            fr: "Non, dépend du contenu.",
+                                            en: "No, depends on your content.",
+                                            it: "No, dipende dal contenuto."
+                                        }
+                                    }
+
+                                ]
+                            },
+
+
+                            {
+                                q: {
+                                    ar: "تأخر السحب من TikTok",
+                                    fr: "Retrait TikTok en retard",
+                                    en: "TikTok payout delay",
+                                    it: "Ritardo nel pagamento TikTok"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "شنو الأسباب؟",
+                                            fr: "Pourquoi ?",
+                                            en: "Why?",
+                                            it: "Perché?"
+                                        },
+                                        a: {
+                                            ar: "البنك يتأخر – عطلة – خطأ في بيانات السحب – مراجعة أمان.",
+                                            fr: "Banque lente, erreur info, sécurité.",
+                                            en: "Bank slow, info error, security check.",
+                                            it: "Banca lenta, errore info, controllo sicurezza."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "كيف نحل؟",
+                                            fr: "Solution ?",
+                                            en: "Fix?",
+                                            it: "Soluzione?"
+                                        },
+                                        a: {
+                                            ar: "راجع بياناتك المالية – تأكد من الحساب – انتظر 3–7 أيام عمل.",
+                                            fr: "Vérifier infos bancaires – 3 à 7 jours.",
+                                            en: "Verify bank info – wait 3–7 days.",
+                                            it: "Controlla info – 3–7 giorni."
+                                        }
+                                    }
+
+                                ]
+
+                            },
+
+
+                            {
+                                q: {
+                                    ar: "هل يمكن سحب الأرباح من غير بنك؟",
+                                    fr: "Retrait sans banque ?",
+                                    en: "Withdraw without bank?",
+                                    it: "Prelievo senza banca?"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "شنو البدائل؟",
+                                            fr: "Alternatives ?",
+                                            en: "Alternatives?",
+                                            it: "Alternative?"
+                                        },
+                                        a: {
+                                            ar: "PayPal – Revolut – طرق محلية حسب الدولة.",
+                                            fr: "PayPal – Revolut – méthodes locales.",
+                                            en: "PayPal – Revolut – local options.",
+                                            it: "PayPal – Revolut – opzioni locali."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل آمن؟",
+                                            fr: "Sécurisé ?",
+                                            en: "Safe?",
+                                            it: "Sicuro?"
+                                        },
+                                        a: {
+                                            ar: "نعم إذا كنت تربط حساب رسمي وتفعل حماية البريد.",
+                                            fr: "Oui si compte officiel.",
+                                            en: "Yes if using official accounts.",
+                                            it: "Sì se account ufficiale."
+                                        }
+                                    }
+
+                                ]
+
+                            },
+
+
+                            {
+                                q: {
+                                    ar: "الأرباح ناقصة",
+                                    fr: "Gains diminués",
+                                    en: "Low earnings",
+                                    it: "Guadagni bassi"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "علاش؟",
+                                            fr: "Pourquoi ?",
+                                            en: "Why?",
+                                            it: "Perché?"
+                                        },
+                                        a: {
+                                            ar: "لانخفاض مشاهدات – تراجع نشاط – مخالفة محتوى.",
+                                            fr: "Baisse vues + activité.",
+                                            en: "Low views + activity drop.",
+                                            it: "Basse visualizzazioni + attività."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "حل؟",
+                                            fr: "Solution ?",
+                                            en: "Solution?",
+                                            it: "Soluzione?"
+                                        },
+                                        a: {
+                                            ar: "إعمل محتوى ثابت – بث مباشر – تفاعل قوي.",
+                                            fr: "Contenu régulier + live.",
+                                            en: "Regular content + lives.",
+                                            it: "Contenuti regolari + live."
+                                        }
+                                    }
+
+                                ]
+
+                            }
+
+                        ]
+
+                    },
+
+                    E: {
+                        title: {
+                            ar: "تنظيف الحساب",
+                            fr: "Nettoyage du compte",
+                            en: "Account cleanup",
+                            it: "Pulizia account"
+                        },
+
+                        data: [
+
+                            {
+                                q: {
+                                    ar: "الحساب ضعيف الوصول",
+                                    fr: "Faible portée",
+                                    en: "Low reach",
+                                    it: "Bassa reach"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "شنو الأسباب؟",
+                                            fr: "Pourquoi ?",
+                                            en: "Why?",
+                                            it: "Perché?"
+                                        },
+                                        a: {
+                                            ar: "Shadowban – محتوى متكرر – متابعين وهميين – مخالفات قديمة.",
+                                            fr: "Shadowban – contenu répété – faux abonnés.",
+                                            en: "Shadowban – repeated content – fake followers.",
+                                            it: "Shadowban – contenuti ripetuti – follower falsi."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "كيف نرجّع الوصول؟",
+                                            fr: "Solution ?",
+                                            en: "Fix?",
+                                            it: "Soluzione?"
+                                        },
+                                        a: {
+                                            ar: "حذف فيديوهات ضعيفة – تغيير مجال – نشر تدريجي.",
+                                            fr: "Supprimer vieux contenus – changer niche.",
+                                            en: "Remove weak videos – change niche.",
+                                            it: "Rimuovere video deboli – cambiare nicchia."
+                                        }
+                                    }
+
+                                ]
+                            },
+
+
+                            {
+                                q: {
+                                    ar: "نجم ننظف الحساب بلا ضرر؟",
+                                    fr: "Nettoyage sans perte ?",
+                                    en: "Cleanup without loss?",
+                                    it: "Pulizia senza perdita?"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "شنو نعمل؟",
+                                            fr: "Comment ?",
+                                            en: "How?",
+                                            it: "Come?"
+                                        },
+                                        a: {
+                                            ar: "احذف فيديوهات أقل من 200 مشاهدة – نظف التعليقات القديمة.",
+                                            fr: "Supprimer vidéos -200 vues.",
+                                            en: "Delete videos under 200 views.",
+                                            it: "Cancella video sotto 200 views."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل يؤثر على الحساب؟",
+                                            fr: "Impact ?",
+                                            en: "Impact?",
+                                            it: "Impatto?"
+                                        },
+                                        a: {
+                                            ar: "إذا تنظف بالتدريج ما يصير حتى ضرر.",
+                                            fr: "Si progressif = aucun risque.",
+                                            en: "If gradual = no risk.",
+                                            it: "Se graduale = nessun rischio."
+                                        }
+                                    }
+
+                                ]
+
+                            },
+
+
+                            {
+                                q: {
+                                    ar: "خروج من Shadowban عبر تنظيف",
+                                    fr: "Sortir du shadowban",
+                                    en: "Removing shadowban",
+                                    it: "Uscire dallo shadowban"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "شنو الطريقة؟",
+                                            fr: "Méthode ?",
+                                            en: "Method?",
+                                            it: "Metodo?"
+                                        },
+                                        a: {
+                                            ar: "توقف نشر 48 ساعة – تنظيف هاشتاجات – تعديل الوصف.",
+                                            fr: "Pause 48h + nettoyer hashtags.",
+                                            en: "48h pause + clean hashtags.",
+                                            it: "Pausa 48h + pulizia hashtag."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل تمشي؟",
+                                            fr: "Ça marche ?",
+                                            en: "Works?",
+                                            it: "Funziona?"
+                                        },
+                                        a: {
+                                            ar: "في أغلب الحسابات نعم.",
+                                            fr: "Oui pour la majorité.",
+                                            en: "Yes for most accounts.",
+                                            it: "Sì per la maggior parte."
+                                        }
+                                    }
+
+                                ]
+
+                            },
+
+
+                            {
+                                q: {
+                                    ar: "تنظيف المتابعين الوهميين",
+                                    fr: "Followers faux",
+                                    en: "Fake followers cleanup",
+                                    it: "Follower falsi"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "علاش مهم؟",
+                                            fr: "Pourquoi ?",
+                                            en: "Why?",
+                                            it: "Perché?"
+                                        },
+                                        a: {
+                                            ar: "فولو وهمي يقلل الثقة والتوزيع ويضرب الحساب.",
+                                            fr: "Faux abonnés réduisent portée.",
+                                            en: "Fake followers kill reach.",
+                                            it: "Follower falsi riducono il reach."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "طريقة التنظيف؟",
+                                            fr: "Nettoyage ?",
+                                            en: "How to delete?",
+                                            it: "Come eliminarli?"
+                                        },
+                                        a: {
+                                            ar: "استعمال أدوات داخل تيك توك + فحص يدوي يومي.",
+                                            fr: "Outils + suppression manuelle.",
+                                            en: "Tools + manual removal.",
+                                            it: "Strumenti + rimozione manuale."
+                                        }
+                                    }
+
+                                ]
+
+                            }
+
+
+                        ]
+
+                    },
+
+                    F: {
+                        title: {
+                            ar: "الشروط والانضمام للوكالة",
+                            fr: "Conditions & adhésion à l’agence",
+                            en: "Agency requirements & joining",
+                            it: "Requisiti per unirsi all’agenzia"
+                        },
+
+                        data: [
+
+                            {
+                                q: {
+                                    ar: "شنو شروط الإنضمام؟",
+                                    fr: "Conditions pour rejoindre l’agence ?",
+                                    en: "Requirements to join the agency?",
+                                    it: "Requisiti per entrare nell’agenzia?"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "عمر المبدع؟",
+                                            fr: "Âge requis ?",
+                                            en: "Age requirement?",
+                                            it: "Età richiesta?"
+                                        },
+                                        a: {
+                                            ar: "لازم يكون عمرك 18 سنة فما فوق.",
+                                            fr: "18 ans minimum.",
+                                            en: "Must be 18+.",
+                                            it: "Minimo 18 anni."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "متابعين؟",
+                                            fr: "Followers requis ?",
+                                            en: "Followers needed?",
+                                            it: "Followers richiesti?"
+                                        },
+                                        a: {
+                                            ar: "عمومًا يلزم على الأقل 1000 متابع + محتوى نشيط.",
+                                            fr: "Au moins 1000 abonnés + contenu actif.",
+                                            en: "Usually 1000 followers + active content.",
+                                            it: "Di solito 1000 follower + contenuti attivi."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "نوع المحتوى؟",
+                                            fr: "Type de contenu ?",
+                                            en: "Content type?",
+                                            it: "Tipo di contenuto?"
+                                        },
+                                        a: {
+                                            ar: "محتوى شرعي، غير مخالف، ومناسب للجمهور.",
+                                            fr: "Contenu légal & correct.",
+                                            en: "Legal and safe content.",
+                                            it: "Contenuti legali e sicuri."
+                                        }
+                                    }
+
+                                ]
+                            },
+
+
+                            {
+                                q: {
+                                    ar: "شنو فائدة الانضمام؟",
+                                    fr: "Quel avantage ?",
+                                    en: "What are the benefits?",
+                                    it: "Quali vantaggi?"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "زيادة مشاهدات؟",
+                                            fr: "Plus de vues ?",
+                                            en: "More views?",
+                                            it: "Più visualizzazioni?"
+                                        },
+                                        a: {
+                                            ar: "الوكالة تعاون ترفع توزيع المحتوى وتفتح فرص.",
+                                            fr: "Oui, meilleur référencement et accompagnement.",
+                                            en: "Better content reach and support.",
+                                            it: "Miglior reach e supporto."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل تزيد أرباحي؟",
+                                            fr: "Plus de gains ?",
+                                            en: "More earnings?",
+                                            it: "Più guadagni?"
+                                        },
+                                        a: {
+                                            ar: "نعم لأنك تتحصل على استشارات احترافية + فرص عروض.",
+                                            fr: "Plus d’offres + conseils.",
+                                            en: "More offers + strategy.",
+                                            it: "Più offerte + strategia."
+                                        }
+                                    }
+
+                                ]
+
+                            },
+
+
+                            {
+                                q: {
+                                    ar: "هل الإنضمام مجاني؟",
+                                    fr: "Gratuit ?",
+                                    en: "Is joining free?",
+                                    it: "Unirsi è gratuito?"
+                                },
+
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "مصاريف الانضمام؟",
+                                            fr: "Coût ?",
+                                            en: "Cost?",
+                                            it: "Costo?"
+                                        },
+                                        a: {
+                                            ar: "الانضمام مجاني 100% بدون دفع.",
+                                            fr: "Totalement gratuit.",
+                                            en: "Completely free.",
+                                            it: "Totalmente gratuito."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "وكيف تربحون؟",
+                                            fr: "Comment gagnez-vous ?",
+                                            en: "How do you earn?",
+                                            it: "Come guadagnate?"
+                                        },
+                                        a: {
+                                            ar: "نسبة الأرباح تأتي من TikTok فقط، ولا يوجد أي خصم أو علاقة بالأرباح الخاصة بالمبدعين نهائيًا.",
+                                            fr: "Le pourcentage des gains provient uniquement de TikTok, sans aucun impact ni retenue sur les revenus des créateurs.",
+                                            en: "The revenue share comes directly from TikTok and has no involvement or deduction from creators’ earnings at all.",
+                                            it: "La percentuale dei guadagni proviene esclusivamente da TikTok, senza alcun coinvolgimento o detrazione dai guadagni dei creator."
+
+                                        }
+                                    }
+
+                                ]
+
+                            }
+
+
+                        ]
+
+                    },
+
+                    G: {
+                        title: {
+                            ar: "استفادة المبدع من الانضمام للوكالة",
+                            fr: "Avantages pour le créateur en rejoignant l’agence",
+                            en: "Creator benefits of joining the agency",
+                            it: "Vantaggi per il creator nell’agenzia"
+                        },
+                        data: [
+
+                            /* ـــــــــــــــــــــــــــــــ 1 ـــــــــــــــــــــــــــــــ */
+                            {
+                                q: {
+                                    ar: "ضمان حماية الحساب",
+                                    fr: "Sécurité du compte assurée",
+                                    en: "Account security guarantee",
+                                    it: "Garanzia di sicurezza dell’account"
+                                },
+                                sub: [{
+                                        q: {
+                                            ar: "كيف نضمن حماية حسابي؟",
+                                            fr: "Comment garantissez-vous la sécurité de mon compte ?",
+                                            en: "How do you guarantee my account security?",
+                                            it: "Come garantite la sicurezza del mio account?"
+                                        },
+                                        a: {
+                                            ar: "الوكالة تراقب تنبيهات TikTok وتحذّرك قبل وقوع أي مشكلة.",
+                                            fr: "L’agence surveille les alertes TikTok et vous avertit avant les problèmes.",
+                                            en: "The agency monitors TikTok alerts and warns you before issues.",
+                                            it: "L’agenzia monitora gli avvisi TikTok e ti avvisa prima dei problemi."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل يتم مراقبة الحساب؟",
+                                            fr: "Surveillez-vous mon compte ?",
+                                            en: "Do you monitor my account?",
+                                            it: "Monitorate il mio account?"
+                                        },
+                                        a: {
+                                            ar: "لا، الحساب يبقى ملكك فقط. نحن نتابع الإشعارات لا غير.",
+                                            fr: "Non, le compte reste à vous. Nous suivons uniquement les notifications.",
+                                            en: "No, the account remains yours. We only check alerts.",
+                                            it: "No, l’account resta tuo. Controlliamo solo gli avvisi."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل أحتاج كلمة السر؟",
+                                            fr: "Faut-il partager le mot de passe ?",
+                                            en: "Do I need to share my password?",
+                                            it: "Serve condividere la password?"
+                                        },
+                                        a: {
+                                            ar: "لا إطلاقًا! لا نطلب كلمة سر ولا دخول للحساب.",
+                                            fr: "Jamais ! Aucun mot de passe n’est demandé.",
+                                            en: "Never! We never ask for your password.",
+                                            it: "Mai! Non chiediamo la tua password."
+                                        }
+                                    }
+                                ]
+                            },
+
+
+                            /* ـــــــــــــــــــــــــــــــ 2 ـــــــــــــــــــــــــــــــ */
+                            {
+                                q: {
+                                    ar: "مساعدات TikTok Live",
+                                    fr: "Aide pour TikTok Live",
+                                    en: "TikTok Live assistance",
+                                    it: "Assistenza per TikTok Live"
+                                },
+                                sub: [{
+                                        q: {
+                                            ar: "هل تساعدون في البث؟",
+                                            fr: "Aidez-vous au LIVE ?",
+                                            en: "Do you help with LIVE?",
+                                            it: "Aiutate con le LIVE?"
+                                        },
+                                        a: {
+                                            ar: "نقدّم تدريب + نصائح + خطة للبث.",
+                                            fr: "Nous fournissons coaching + conseils + plan LIVE.",
+                                            en: "We offer coaching + guidance + LIVE planning.",
+                                            it: "Offriamo coaching + guida + pianificazione LIVE."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل ترتفع المشاهدات؟",
+                                            fr: "Les vues augmentent-elles ?",
+                                            en: "Will views increase?",
+                                            it: "Le visualizzazioni aumentano?"
+                                        },
+                                        a: {
+                                            ar: "تزيد حسب نشاطك وجودة البث بدون طرق وهمية.",
+                                            fr: "Elles augmentent selon l’activité, jamais par fraude.",
+                                            en: "They rise based on performance, not fake methods.",
+                                            it: "Aumentano secondo l’attività, non metodi falsi."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل هناك محتوى لايف جاهز؟",
+                                            fr: "Contenu LIVE disponible ?",
+                                            en: "LIVE content available?",
+                                            it: "Contenuti LIVE disponibili?"
+                                        },
+                                        a: {
+                                            ar: "نوفر لك أفكار + نصائح + مراجعة بث.",
+                                            fr: "Idées + conseils + révision du LIVE.",
+                                            en: "Ideas + guidance + LIVE feedback.",
+                                            it: "Idee + guida + revisione LIVE."
+                                        }
+                                    }
+                                ]
+                            },
+
+
+                            /* ـــــــــــــــــــــــــــــــ 3 ـــــــــــــــــــــــــــــــ */
+                            {
+                                q: {
+                                    ar: "فرص الربح السريع",
+                                    fr: "Opportunités de gains rapides",
+                                    en: "Fast earning opportunities",
+                                    it: "Opportunità di guadagno veloce"
+                                },
+                                sub: [{
+                                        q: {
+                                            ar: "كيف نربح أسرع؟",
+                                            fr: "Comment gagner plus vite ?",
+                                            en: "How to earn faster?",
+                                            it: "Come guadagnare più velocemente?"
+                                        },
+                                        a: {
+                                            ar: "تحليل محتوى + خطة نشر + متابعة يومية.",
+                                            fr: "Analyse du contenu + plan + suivi quotidien.",
+                                            en: "Content analysis + posting plan + daily follow-up.",
+                                            it: "Analisi dei contenuti + piano + controllo quotidiano."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل الأرباح مؤكدة؟",
+                                            fr: "Les gains sont-ils garantis ?",
+                                            en: "Are profits guaranteed?",
+                                            it: "I guadagni sono garantiti?"
+                                        },
+                                        a: {
+                                            ar: "الأرباح تعتمد على عملك ونشاطك فقط.",
+                                            fr: "Les gains dépendent de votre activité.",
+                                            en: "Earnings depend on your activity.",
+                                            it: "I guadagni dipendono dalla tua attività."
+                                        }
+                                    }
+                                ]
+                            },
+
+
+                            /* ـــــــــــــــــــــــــــــــ 4 ـــــــــــــــــــــــــــــــ */
+                            {
+                                q: {
+                                    ar: "حل مشاكل الحساب",
+                                    fr: "Résolution des problèmes du compte",
+                                    en: "Account problem fixing",
+                                    it: "Risoluzione problemi account"
+                                },
+                                sub: [{
+                                        q: {
+                                            ar: "هل تصلحون مشاكل الحظر؟",
+                                            fr: "Résolvez-vous les bannissements ?",
+                                            en: "Do you fix bans?",
+                                            it: "Risolvete i ban?"
+                                        },
+                                        a: {
+                                            ar: "نقدم توجيه كامل وخطوات استرجاع حسب الحالة.",
+                                            fr: "Nous guidons la récupération selon le cas.",
+                                            en: "We guide recovery depending on case.",
+                                            it: "Guidiamo il recupero secondo il caso."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "مشاكل Shadowban؟",
+                                            fr: "Shadowban ?",
+                                            en: "Shadowban issues?",
+                                            it: "Shadowban?"
+                                        },
+                                        a: {
+                                            ar: "نقدّم علاج shadowban بخطوات واقعية.",
+                                            fr: "Traitement shadowban réaliste.",
+                                            en: "Practical shadowban fixing.",
+                                            it: "Soluzione shadowban realistica."
+                                        }
+                                    }
+                                ]
+                            }
+
+                        ]
+                    },
+
+                    H: {
+                        title: {
+                            ar: "فريق الدعم",
+                            fr: "Équipe de support",
+                            en: "Support team",
+                            it: "Team di supporto"
+                        },
+
+                        data: [
+
+                            /* ـــــــــــــــــــــــــــــــ 1 ـــــــــــــــــــــــــــــــ */
+                            {
+                                q: {
+                                    ar: "كيف يعمل فريق الدعم؟",
+                                    fr: "Comment fonctionne l’équipe de support ?",
+                                    en: "How does the support team work?",
+                                    it: "Come lavora il team di supporto?"
+                                },
+                                sub: [{
+                                        q: {
+                                            ar: "هل الفريق متواجد دائمًا؟",
+                                            fr: "L’équipe est-elle toujours disponible ?",
+                                            en: "Is the team always available?",
+                                            it: "Il team è sempre disponibile?"
+                                        },
+                                        a: {
+                                            ar: "نعم، فريق الدعم متواجد يوميًا لمتابعة الحالات والرد على المشاكل.",
+                                            fr: "Oui, l’équipe est disponible chaque jour pour suivre les cas.",
+                                            en: "Yes, the support team is available daily to follow up on issues.",
+                                            it: "Sì, il team è disponibile ogni giorno per seguire i casi."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل فريقكم محترف؟",
+                                            fr: "Votre équipe est-elle professionnelle ?",
+                                            en: "Is your team professional?",
+                                            it: "Il vostro team è professionale?"
+                                        },
+                                        a: {
+                                            ar: "نعم، الفريق يضم خبراء TikTok و متخصصين في حل المشكلات التقنية.",
+                                            fr: "Oui, l’équipe comprend des experts TikTok et techniques.",
+                                            en: "Yes, our team includes TikTok and tech specialists.",
+                                            it: "Sì, il team include specialisti TikTok e tecnici."
+                                        }
+                                    }
+                                ]
+                            },
+
+
+                            /* ـــــــــــــــــــــــــــــــ 2 ـــــــــــــــــــــــــــــــ */
+                            {
+                                q: {
+                                    ar: "ما نوع الدعم المقدم؟",
+                                    fr: "Quel type de support offrez-vous ?",
+                                    en: "What kind of support do you offer?",
+                                    it: "Che tipo di supporto offrite?"
+                                },
+                                sub: [{
+                                        q: {
+                                            ar: "مشاكل الحساب؟",
+                                            fr: "Problèmes de compte ?",
+                                            en: "Account issues?",
+                                            it: "Problemi di account?"
+                                        },
+                                        a: {
+                                            ar: "نعالج مشكلات الدخول – الحظر – shadowban – المخالفات.",
+                                            fr: "Nous traitons connexion – ban – shadowban – violations.",
+                                            en: "We handle login – ban – shadowban – violations.",
+                                            it: "Gestiamo accesso – ban – shadowban – violazioni."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "مشاكل الأرباح؟",
+                                            fr: "Problèmes de gains ?",
+                                            en: "Earnings issues?",
+                                            it: "Problemi di guadagni?"
+                                        },
+                                        a: {
+                                            ar: "نقدّم خطوات استرجاع الأرباح و حل رفض السحب.",
+                                            fr: "Nous aidons à débloquer les gains et retraits.",
+                                            en: "We help unlock earnings and withdrawal issues.",
+                                            it: "Aiutiamo a sbloccare guadagni e prelievi."
+                                        }
+                                    }
+                                ]
+                            },
+
+
+                            /* ـــــــــــــــــــــــــــــــ 3 ـــــــــــــــــــــــــــــــ */
+                            {
+                                q: {
+                                    ar: "هل التواصل مع الفريق مجاني؟",
+                                    fr: "Le contact avec l’équipe est-il gratuit ?",
+                                    en: "Is contacting the team free?",
+                                    it: "Il contatto con il team è gratuito?"
+                                },
+                                sub: [{
+                                        q: {
+                                            ar: "هل توجد رسوم؟",
+                                            fr: "Frais à payer ?",
+                                            en: "Any fees?",
+                                            it: "Ci sono costi?"
+                                        },
+                                        a: {
+                                            ar: "التواصل مجاني بالكامل، والخدمات المدفوعة اختيارية وليست إجبارية.",
+                                            fr: "Contact gratuit, services payants optionnels.",
+                                            en: "Contact is free, paid services optional.",
+                                            it: "Contatto gratuito, servizi a pagamento opzionali."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل يمكنني طلب دعم خاص؟",
+                                            fr: "Support privatisé possible ?",
+                                            en: "Can I request private support?",
+                                            it: "Supporto privato disponibile?"
+                                        },
+                                        a: {
+                                            ar: "نعم، نوفر دعم خاص حسب الحاجة والمشكلة.",
+                                            fr: "Oui, support privatisé disponible selon besoin.",
+                                            en: "Yes, private support available if needed.",
+                                            it: "Sì, supporto privato disponibile se necessario."
+                                        }
+                                    }
+                                ]
+                            },
+
+                            {
+                                q: {
+                                    ar: "استفسارات إضافية حول فريق الدعم",
+                                    fr: "Questions supplémentaires sur l’équipe de support",
+                                    en: "Additional support team inquiries",
+                                    it: "Domande aggiuntive sul team di supporto"
+                                },
+                                sub: [
+
+                                    {
+                                        q: {
+                                            ar: "هل يتم الرد بسرعة؟",
+                                            fr: "Répondez-vous rapidement ?",
+                                            en: "Do you reply quickly?",
+                                            it: "Rispondete rapidamente?"
+                                        },
+                                        a: {
+                                            ar: "نعم، متوسط سرعة الرد بين 5 دقائق و3 ساعات حسب ضغط الرسائل.",
+                                            fr: "Oui, temps de réponse moyen entre 5 minutes et 3 heures.",
+                                            en: "Yes, average response time is between 5 minutes and 3 hours.",
+                                            it: "Sì, tempo medio di risposta tra 5 minuti e 3 ore."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "كيف يتم التواصل مع الفريق؟",
+                                            fr: "Comment contacter l’équipe ?",
+                                            en: "How can I contact the team?",
+                                            it: "Come contattare il team?"
+                                        },
+                                        a: {
+                                            ar: "عبر TikTok – WhatsApp – أو داخل المنصة مباشرة.",
+                                            fr: "Via TikTok – WhatsApp – ou directement sur la plateforme.",
+                                            en: "Via TikTok – WhatsApp – or directly through the platform.",
+                                            it: "Tramite TikTok – WhatsApp – o direttamente sulla piattaforma."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل فريقكم رسمي؟",
+                                            fr: "Votre équipe est-elle officielle ?",
+                                            en: "Is your team official?",
+                                            it: "Il vostro team è ufficiale?"
+                                        },
+                                        a: {
+                                            ar: "نعم، فريق Davenci C.O.S معتمد ويعمل تحت نظام وكالة حقيقية.",
+                                            fr: "Oui, l’équipe Davenci C.O.S est certifiée et officielle.",
+                                            en: "Yes, the Davenci C.O.S team is official and certified.",
+                                            it: "Sì, il team Davenci C.O.S è ufficiale e certificato."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل البيانات سرية؟",
+                                            fr: "Les données sont-elles protégées ?",
+                                            en: "Is data confidential?",
+                                            it: "I dati sono riservati?"
+                                        },
+                                        a: {
+                                            ar: "نعم، كل المعلومات تبقى سرية ولا تتم مشاركتها مع أي جهة خارجية.",
+                                            fr: "Oui, toutes les données restent confidentielles.",
+                                            en: "Yes, all information stays confidential.",
+                                            it: "Sì, tutte le informazioni restano riservate."
+                                        }
+                                    },
+
+                                    {
+                                        q: {
+                                            ar: "هل يمكن رفض طلب؟",
+                                            fr: "Refusez-vous certaines demandes ?",
+                                            en: "Can requests be refused?",
+                                            it: "Rifiutate certe richieste?"
+                                        },
+                                        a: {
+                                            ar: "نعم، نرفض الطلبات المخالفة لسياسة TikTok أو ذات أهداف غير قانونية.",
+                                            fr: "Oui, nous refusons les demandes contraires aux règles TikTok.",
+                                            en: "Yes, requests against TikTok rules are refused.",
+                                            it: "Sì, rifiutiamo richieste contro le regole di TikTok."
+                                        }
+                                    }
+
+                                ]
+                            },
+
+                            /* ـــــــــــــــــــــــــــــــ 4 ـــــــــــــــــــــــــــــــ */
+                            {
+                                q: {
+                                    ar: "هل تقدمون دعم بلغة متعددة؟",
+                                    fr: "Support multilingue ?",
+                                    en: "Multilingual support?",
+                                    it: "Supporto multilingue?"
+                                },
+                                sub: [{
+                                    q: {
+                                        ar: "ما اللغات المتاحة؟",
+                                        fr: "Quelles langues disponibles ?",
+                                        en: "Which languages available?",
+                                        it: "Quali lingue disponibili?"
+                                    },
+                                    a: {
+                                        ar: "عربي – فرنسي – إنجليزي – إيطالي.",
+                                        fr: "Arabe – Français – Anglais – Italien.",
+                                        en: "Arabic – French – English – Italian.",
+                                        it: "Arabo – Francese – Inglese – Italiano."
+                                    }
+                                }]
+                            }
+
+                        ]
+                    },
+
+                };
+
+                // =================== فتح قسم خدمات =====================
+
+                function openFAQ(key) {
+                    const lang = document.documentElement.lang || "ar";
+                    const section = FAQ[key];
+
+                    if (!section) {
+                        alert("⚠ القسم غير موجود");
+                        return;
+                    }
+
+                    const box = document.getElementById("faqList");
+                    const title = document.getElementById("faqTitle");
+
+                    title.textContent = section.title[lang] || section.title["ar"];
+                    box.innerHTML = "";
+
+                    if (!section.data || section.data.length === 0) {
+                        box.innerHTML = '<p style="padding:15px;font-weight:bold;color:#0E1E3A">❗ هذا القسم فارغ حاليًا – يمكنك إضافة أسئلة من الكود.</p>';
+                    } else {
+                        section.data.forEach((item, index) => {
+                            const b = document.createElement("button");
+                            b.className = "btn";
+                            b.textContent = item.q[lang] || item.q["ar"];
+                            b.onclick = () => openSecondLevel(key, index);
+                            box.appendChild(b);
+                        });
+                    }
+
+                    showScreen(".faq");
+                }
+
+                // =================== المستوى الثاني (لو حبيت sub) =====================
+
+                function openSecondLevel(key, index) {
+                    const lang = document.documentElement.lang || "ar";
+                    const section = FAQ[key];
+                    const item = section.data[index];
+
+                    // لو ما عندوش sub نعرض الجواب مباشرة
+                    if (!item.sub || item.sub.length === 0) {
+                        showAnswer(item.q[lang] || item.q["ar"], item.a[lang] || item.a["ar"]);
+                        return;
+                    }
+
+                    const box = document.getElementById("faqList");
+                    const title = document.getElementById("faqTitle");
+
+                    title.textContent = item.q[lang] || item.q["ar"];
+                    box.innerHTML = "";
+
+                    item.sub.forEach(sub => {
+                        const sb = document.createElement("button");
+                        sb.className = "btn";
+                        sb.textContent = sub.q[lang] || sub.q["ar"];
+                        sb.onclick = () => showAnswer(sub.q[lang] || sub.q["ar"], sub.a[lang] || sub.a["ar"]);
+                        box.appendChild(sb);
+                    });
+                }
+
+                // =================== عرض الجواب النهائي =====================
+
+                function showAnswer(qText, aText) {
+                    document.getElementById("answerTitle").textContent = qText;
+                    document.getElementById("answerText").textContent = aText;
+                    showScreen(".answer");
+                }
+
+                // =================== رجوع =====================
+                function goHome() {
+                    showScreen(".card");
+                }
+
+                function goBackFAQ() {
+                    showScreen(".faq");
+                }
+
+                async function sendTicket() {
+                    const text = document.getElementById("ticketText").value.trim();
+
+                    if (!text) {
+                        alert("❌ اكتب مشكلتك قبل الإرسال");
+                        return;
+                    }
+
+                    // 🔐 إعدادات Firebase (نفس المشروع متاعك)
+                    const PROJECT_ID = "davenci-conseils-pro";
+                    const API_KEY = "AIzaSyAd8C9-0_Zw93XUn-9RokqRFI880L09qRI";
+
+                    const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/tickets?key=${API_KEY}`;
+
+                    const body = {
+                        fields: {
+                            message: {
+                                stringValue: text
+                            },
+                            from: {
+                                stringValue: "bot"
+                            },
+                            status: {
+                                stringValue: "open"
+                            },
+                            createdAt: {
+                                timestampValue: new Date().toISOString()
+                            }
+                        }
+                    };
+
+                    try {
+                        const res = await fetch(url, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(body)
+                        });
+
+                        if (!res.ok) {
+                            const err = await res.text();
+                            console.error(err);
+                            alert("❌ فشل إرسال التذكرة");
+                            return;
+                        }
+
+                        document.getElementById("ticketText").value = "";
+                        alert("✅ تم إرسال التذكرة بنجاح، فريق الدعم سيتواصل معك");
+
+                        // رجوع للواجهة الرئيسية
+                        showScreen(".card");
+
+                    } catch (e) {
+                        console.error(e);
+                        alert("❌ خطأ في الاتصال");
+                    }
+                }
+            } <
+            /script> < /
+            body > <
+                /html>
