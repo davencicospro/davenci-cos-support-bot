@@ -1700,6 +1700,55 @@ function showAnswer(qText,aText){
 // =================== رجوع =====================
 function goHome(){    showScreen(".card");  }
 function goBackFAQ(){ showScreen(".faq");   }
+<script>
+async function sendTicket(){
+  const text = document.getElementById("ticketText").value.trim();
+
+  if(!text){
+    alert("❌ اكتب مشكلتك قبل الإرسال");
+    return;
+  }
+
+  // 🔐 إعدادات Firebase (نفس المشروع متاعك)
+  const PROJECT_ID = "davenci-conseils-pro";
+  const API_KEY = "AIzaSyAd8C9-0_Zw93XUn-9RokqRFI880L09qRI";
+
+  const url = `https://firestore.googleapis.com/v1/projects/${PROJECT_ID}/databases/(default)/documents/tickets?key=${API_KEY}`;
+
+  const body = {
+    fields: {
+      message: { stringValue: text },
+      from: { stringValue: "bot" },
+      status: { stringValue: "open" },
+      createdAt: { timestampValue: new Date().toISOString() }
+    }
+  };
+
+  try{
+    const res = await fetch(url,{
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify(body)
+    });
+
+    if(!res.ok){
+      const err = await res.text();
+      console.error(err);
+      alert("❌ فشل إرسال التذكرة");
+      return;
+    }
+
+    document.getElementById("ticketText").value = "";
+    alert("✅ تم إرسال التذكرة بنجاح، فريق الدعم سيتواصل معك");
+
+    // رجوع للواجهة الرئيسية
+    showScreen(".card");
+
+  }catch(e){
+    console.error(e);
+    alert("❌ خطأ في الاتصال");
+  }
+}
 
 </script>
 </body>
